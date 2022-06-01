@@ -34,7 +34,12 @@ class BaseDatos():
             """Línea de codigo que nos permite añadir los datos de un juego a la base de datos, considerando
                 que la conexión fue correcta desde el inicio y que no falta ningún dato, solamente se 
                 verifica si la clave primaria no es nula para poder añadir los datos"""
-            cursor.execute("INSERT INTO juego(nombre,clasificacion, descripcion, genero) VALUES (%s,%s,%s,%s)",
+
+            if self.consultaDatos('juego', nombreG, cursor):
+                print("El dato ya existe")
+                return False
+            else:
+                cursor.execute("INSERT INTO juego(nombre,clasificacion, descripcion, genero) VALUES (%s,%s,%s,%s)",
                            (nombreG, clasificacionG, descripcionG, generoG))
 
             if cursor:

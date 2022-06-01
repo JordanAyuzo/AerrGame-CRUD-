@@ -99,4 +99,4 @@ class Ui_MainWindow(object):
         self.ljuego.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-weight:600; color:#ffffff;\">JUEGO</span></p></body></html>"))
         self.lplatform.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-weight:600; color:#ffffff;\">PLATAFORMA</span></p></body></html>"))
         self.label.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\"><img src=\":/recurso/img/01title.png\"/></p></body></html>"))
-import recurso_rc
+

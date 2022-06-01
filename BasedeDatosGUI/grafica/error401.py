@@ -16,7 +16,7 @@ class Ui_error(object):
         error.setObjectName("error")
         error.resize(280, 96)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("img/danger.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("../img/danger.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         error.setWindowIcon(icon)
         error.setStyleSheet("background-color: rgb(255, 255, 255);")
         self.centralwidget = QtWidgets.QWidget(error)

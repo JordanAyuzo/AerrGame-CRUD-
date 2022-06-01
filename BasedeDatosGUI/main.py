@@ -1,14 +1,12 @@
 import sys
 import time
-from clasedatos import *
-from menu import *
-from game import *
-from error401 import *
-from error402 import *
-from error403 import *
+from logica.clasedatos import *
+from grafica.menu import *
+from grafica.game import *
+from grafica.error401 import *
+from grafica.error402 import *
+from grafica.error403 import *
 from PyQt5.QtWidgets import *
-from PyQt5.QtGui import *
-from PyQt5.QtCore import *
 
 
 class MiApp(QMainWindow):
@@ -24,9 +22,6 @@ class MiApp(QMainWindow):
         """Secuencias de conexión a la base de datos mediante la case BaseDatos.
             En dicha base se tienen ya registrados los datos para el inicio de sesión
             por lo que están ocultos para el usuario final."""
-
-
-
 
         """Finaliza secuencia de conexión"""
 
@@ -170,8 +165,7 @@ class Juego(QMainWindow):
             REGRESA en:true o false
             valor=self.clase.metodo_crear(nombre,clasificacion,descripcion,genero) """
 
-            self.principal.agregarJuego(nombre, clasificacion, descripcion, genero, self.cursor)
-            respuesta = True
+            respuesta = self.principal.agregarJuego(nombre, clasificacion, descripcion, genero, self.cursor)
             ######################
             if respuesta != True:
                 self.ui.cargando.setText('Cargando...')

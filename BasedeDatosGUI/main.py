@@ -63,12 +63,12 @@ class Juego(QMainWindow):
         REGRESA en:datoB <Es una lista de 1 tupla>  ej:[(soft,dato2,dat3,dato4)](llega lista vacia 
         si no hay nada)
         datoB=self.clase.metodo_buscar(clave) """
-        datoB = [('Minecraft', 'dat1', 'dat2', 'dat3')]
+        datosB = self.principal.consultaDatos('juego', clave, self.cursor)
 
 
 
         #########################
-        if datoB == []:
+        if datosB == []:
             self.error(2)
         else:
             #########################
@@ -102,6 +102,7 @@ class Juego(QMainWindow):
         MANDA   en:clave <es la clave primaria>     ej:soft
         REGRESA en:datoB <Es una lista de 1 tupla>  ej:[](llega lista vacia si no hay nada)
         datoB=self.clase.metodo_buscar(clave) """
+        datosB = self.principal.consultaDatos('juego', clave, self.cursor)
         datoB = []
         ########################
         if datoB == []:
@@ -129,6 +130,7 @@ class Juego(QMainWindow):
             MANDA   en:nombre,clasificacion,descripcion,genero
             REGRESA en:valor true o false
             valor=self.clase.metodo_actualizar(nombre,clasificacion,descripcion,genero) """
+
             valor = True
             ###############################
             if valor != True:

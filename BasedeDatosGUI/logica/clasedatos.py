@@ -122,6 +122,11 @@ class BaseDatos():
             print("La consulta no pudo realizarse")
             return []
 
+
+    def modificarJuego(self):
+
+
+
     def borrarColumna(self, clavePrimaria,tablaConsultar, cursor):
         sql = "DELETE FROM " + tablaConsultar + " WHERE nombre = " + "'" + clavePrimaria + "'"
         print(sql)

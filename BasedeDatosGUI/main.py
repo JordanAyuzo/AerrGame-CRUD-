@@ -60,42 +60,51 @@ class Juego(QMainWindow):
     def borrar(self):
         clav = self.ui.lcod_0.text()
         clave = str(clav)
-        #########################
-        """Llama al metodo de busqueda pasandole como parametro la clave primaria
-        MANDA   en:clave <es la clave primaria>     ej:soft
-        REGRESA en:datoB <Es una lista de 1 tupla>  ej:[(soft,dato2,dat3,dato4)](llega lista vacia 
-        si no hay nada)
-        datoB=self.clase.metodo_buscar(clave) """
-        datoB = [('Minecraft', 'dat1', 'dat2', 'dat3')]
-
-
-
-        #########################
-        if datoB == []:
-            self.error(2)
+        if clave == '':
+            self.error(1)
         else:
             #########################
-            """ Llama al metodo de borrar pasandole la clave primaria
+            """Llama al metodo de busqueda pasandole como parametro la clave primaria
             MANDA   en:clave <es la clave primaria>     ej:soft
-            REGRESA en:valor <boleano>                  ej:True
-            valor=self.clase.metodo_borrar(clave) """
-
-            valor = self.principal.borrarColumna(clave, 'juego', self.cursor)
+            REGRESA en:datoB <Es una lista de 1 tupla>  ej:[(soft,dato2,dat3,dato4)](llega lista vacia 
+            si no hay nada)
+            datoB=self.clase.metodo_buscar(clave) """
+            datoB = [('Minecraft', 'dat1', 'dat2', 'dat3')]
             #########################
-            if valor != True:
+            if datoB == []:
                 self.ui.cargando_0.setText('Cargando...')
                 for i in range(0, 50):
-                    time.sleep(0.02)
+                    time.sleep(0.01)
                     self.ui.progressBar_0.setValue(i)
                 self.ui.cargando_0.setText('')
-                self.error(3)
+                self.error(2)
+                time.sleep(0.3)
                 self.ui.progressBar_0.setValue(0)
             else:
-                self.ui.cargando_0.setText('Cargando...')
-                for i in range(0, 101):
-                    time.sleep(0.02)
-                    self.ui.progressBar_0.setValue(i)
-                self.ui.cargando_0.setText('¡Operaciónn Exitosa!')
+                #########################
+                """ Llama al metodo de borrar pasandole la clave primaria
+                MANDA   en:clave <es la clave primaria>     ej:soft
+                REGRESA en:valor <boleano>                  ej:True
+                valor=self.clase.metodo_borrar(clave) """
+                valor = self.principal.borrarColumna(clave, 'juego', self.cursor)
+                #########################
+                if valor != True:
+                    self.ui.cargando_0.setText('Cargando...')
+                    for i in range(0, 50):
+                        time.sleep(0.01)
+                        self.ui.progressBar_0.setValue(i)
+                    self.ui.cargando_0.setText('')
+                    self.error(3)
+                    time.sleep(0.2)
+                    self.ui.progressBar_0.setValue(0)
+                else:
+                    self.ui.cargando_0.setText('Cargando...')
+                    for i in range(0, 101):
+                        time.sleep(0.01)
+                        self.ui.progressBar_0.setValue(i)
+                    self.ui.cargando_0.setText('¡Operación Exitosa!')
+                    time.sleep(0.2)
+                    self.ui.progressBar_0.setValue(0)
 
     def modificar(self):
         clav = self.ui.lcod_2.text()
@@ -147,7 +156,7 @@ class Juego(QMainWindow):
                 for i in range(0, 101):
                     time.sleep(0.02)
                     self.ui.progressBar_2.setValue(i)
-                self.ui.cargando_2.setText('¡Operaciónn Exitosa!')
+                self.ui.cargando_2.setText('¡Operación Exitosa!')
 
     def crear(self):
         nom = self.ui.jnombre.text()

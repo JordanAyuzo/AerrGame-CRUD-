@@ -42,6 +42,7 @@ class Ui_MainWindow(object):
         self.bjuego.setText("")
         self.bjuego.setObjectName("bjuego")
         self.ljuego = QtWidgets.QLabel(self.frame)
+        self.ljuego.setEnabled(True)
         self.ljuego.setGeometry(QtCore.QRect(70, 160, 61, 21))
         font = QtGui.QFont()
         font.setFamily("xos4 Terminus")
@@ -49,6 +50,7 @@ class Ui_MainWindow(object):
         font.setBold(False)
         font.setWeight(50)
         self.ljuego.setFont(font)
+        self.ljuego.setMouseTracking(True)
         self.ljuego.setStyleSheet("background-color: rgba(0, 0, 0,0%);\n"
 "border :none;")
         self.ljuego.setObjectName("ljuego")
@@ -60,6 +62,7 @@ class Ui_MainWindow(object):
         self.bplatform.setText("")
         self.bplatform.setObjectName("bplatform")
         self.lplatform = QtWidgets.QLabel(self.frame)
+        self.lplatform.setEnabled(True)
         self.lplatform.setGeometry(QtCore.QRect(260, 160, 121, 21))
         font = QtGui.QFont()
         font.setFamily("xos4 Terminus")
@@ -93,7 +96,7 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Menú"))
-        self.ljuego.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-weight:600;\">JUEGO</span></p></body></html>"))
-        self.lplatform.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-weight:600;\">PLATAFORMA</span></p></body></html>"))
+        self.ljuego.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-weight:600; color:#ffffff;\">JUEGO</span></p></body></html>"))
+        self.lplatform.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-weight:600; color:#ffffff;\">PLATAFORMA</span></p></body></html>"))
         self.label.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\"><img src=\":/recurso/img/01title.png\"/></p></body></html>"))
 import recurso_rc

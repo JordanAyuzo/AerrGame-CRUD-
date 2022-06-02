@@ -123,7 +123,7 @@ class BaseDatos():
             return []
 
 
-    def modificarJuego(self):
+   # def modificarJuego(self):
 
 
 

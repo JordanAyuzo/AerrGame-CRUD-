@@ -30,6 +30,7 @@ class Juego(QMainWindow):
         self.ui = Ui_game1()
         self.ui.setupUi(self)
         self.ui.bCode.clicked.connect(self.buscar)
+        self.ui.limpiar.clicked.connect(self.limpio)
         self.ui.bcrear.clicked.connect(self.crear)
         self.ui.bactualizar.clicked.connect(self.modificar)
         self.ui.bborrar.clicked.connect(self.borrar)
@@ -200,6 +201,9 @@ class Juego(QMainWindow):
                 self.ui.jclasif.setText('')
                 self.ui.jdesc.setText('')
                 self.ui.jgene.setText('')
+    def limpio(self):
+        self.ui.tableWidget.setRowCount(0)
+        self.ui.lcod.setText('')
     def buscar(self):
         clav = self.ui.lcod.text()
         clave = str(clav)
@@ -228,6 +232,7 @@ class Juego(QMainWindow):
                     self.ui.tableWidget.setItem(tablerow, 2, QtWidgets.QTableWidgetItem(row[2]))
                     self.ui.tableWidget.setItem(tablerow, 3, QtWidgets.QTableWidgetItem(row[3]))
                     tablerow += 1
+                self.ui.lcod.setText('')
     ##NO TOCAR ESTOS ELEMENTOS##
     def retroceder(self):
         self.hide()

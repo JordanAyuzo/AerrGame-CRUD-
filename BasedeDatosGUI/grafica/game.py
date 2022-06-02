@@ -23,7 +23,6 @@ class Ui_game1(object):
         self.centralwidget.setStyleSheet("background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:1, y2:1, stop:0 rgba(90, 0, 182, 255), stop:0.289216 rgba(150, 155, 255, 255), stop:0.921569 rgba(74, 206, 205, 255));")
         self.centralwidget.setObjectName("centralwidget")
         self.barGame = QtWidgets.QTabWidget(self.centralwidget)
-        self.barGame.setEnabled(True)
         self.barGame.setGeometry(QtCore.QRect(0, 0, 511, 519))
         font = QtGui.QFont()
         font.setFamily("DejaVu Sans")
@@ -34,7 +33,11 @@ class Ui_game1(object):
         self.barGame.setContextMenuPolicy(QtCore.Qt.PreventContextMenu)
         self.barGame.setAcceptDrops(False)
         self.barGame.setStyleSheet("alternate-background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:1, y2:1, stop:0 rgba(90, 0, 182, 255), stop:0.289216 rgba(150, 155, 255, 255), stop:0.921569 rgba(74, 206, 205, 255));\n"
-"color:rgb(255, 255, 255);")
+"color: rgb(255, 255, 255)")
+        self.barGame.setTabPosition(QtWidgets.QTabWidget.North)
+        self.barGame.setTabShape(QtWidgets.QTabWidget.Rounded)
+        self.barGame.setElideMode(QtCore.Qt.ElideNone)
+        self.barGame.setTabBarAutoHide(False)
         self.barGame.setObjectName("barGame")
         self.create = QtWidgets.QWidget()
         self.create.setObjectName("create")
@@ -213,6 +216,13 @@ class Ui_game1(object):
 "border:none;")
         self.atras_2.setText("")
         self.atras_2.setObjectName("atras_2")
+        self.limpiar = QtWidgets.QPushButton(self.google)
+        self.limpiar.setGeometry(QtCore.QRect(400, 410, 71, 51))
+        self.limpiar.setStyleSheet("background-color: rgba(0, 0, 0,0%);\n"
+"border:none;\n"
+"image: url(:/recurso/img/limpiar.png)")
+        self.limpiar.setText("")
+        self.limpiar.setObjectName("limpiar")
         self.label_2.raise_()
         self.tableWidget.raise_()
         self.labelCod.raise_()
@@ -220,6 +230,7 @@ class Ui_game1(object):
         self.bCode.raise_()
         self.label_3.raise_()
         self.atras_2.raise_()
+        self.limpiar.raise_()
         self.barGame.addTab(self.google, "")
         self.refresh = QtWidgets.QWidget()
         self.refresh.setObjectName("refresh")
@@ -411,7 +422,7 @@ class Ui_game1(object):
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'Noto Sans\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#474747;\">ej:Minecraft</span></p></body></html>"))
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#474747;\">Ej:Minecraft</span></p></body></html>"))
         self.nombre.setText(_translate("game1", "<html><head/><body><p align=\"right\"><span style=\" font-size:11pt; font-weight:600;\">Nombre:</span></p></body></html>"))
         self.clasificacion.setText(_translate("game1", "<html><head/><body><p align=\"right\"><span style=\" font-size:11pt; font-weight:600;\">Clasificación:</span></p></body></html>"))
         self.jclasif.setToolTip(_translate("game1", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
@@ -424,7 +435,7 @@ class Ui_game1(object):
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'Noto Sans\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#474747;\">ej: juego de Bloques.</span></p></body></html>"))
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#474747;\">Ej: juego de Bloques.</span></p></body></html>"))
         self.jgene.setToolTip(_translate("game1", "<html><head/><body><p><span style=\" color:#474747;\">Ej: Sandbox</span></p></body></html>"))
         self.label.setText(_translate("game1", "<html><head/><body><p align=\"center\"><img src=\":/recurso/img/01title.png\"/></p></body></html>"))
         self.indicaciones.setText(_translate("game1", "<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">Ingrese Los Datos Del Juego. </span></p></body></html>"))
@@ -468,13 +479,13 @@ class Ui_game1(object):
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'Noto Sans\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#474747;\">ej:Minecraft</span></p></body></html>"))
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#474747;\">Ej:Minecraft</span></p></body></html>"))
         self.descripcion_2.setText(_translate("game1", "<html><head/><body><p align=\"right\"><span style=\" font-size:11pt; font-weight:600;\">Descripción: </span></p></body></html>"))
         self.jdesc_2.setToolTip(_translate("game1", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'Noto Sans\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#474747;\">ej: juego de Bloques.</span></p></body></html>"))
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#474747;\">Ej: juego de Bloques.</span></p></body></html>"))
         self.genero_2.setText(_translate("game1", "<html><head/><body><p align=\"right\"><span style=\" font-size:11pt; font-weight:600;\">Género:</span></p></body></html>"))
         self.cargando_2.setText(_translate("game1", "<html><head/><body><p align=\"center\"><br/></p></body></html>"))
         self.barGame.setTabText(self.barGame.indexOf(self.refresh), _translate("game1", "Actualizar"))

@@ -6,6 +6,7 @@ import time
 from logica.clasedatos import *
 from grafica.menu import *
 from grafica.game import *
+from grafica.plataforma import *
 from grafica.error401 import *
 from grafica.error402 import *
 from grafica.error403 import *
@@ -18,10 +19,229 @@ class MiApp(QMainWindow):
         self.setWindowFlag(Qt.FramelessWindowHint)
         self.setAttribute(Qt.WA_TranslucentBackground)
         self.ui.bjuego.clicked.connect(self.abrirJuego)
+        self.ui.bplatform.clicked.connect(self.abrirPlataforma)
 
     def abrirJuego(self):
         self.hide()
         self.ventana = Juego()
+        self.ventana.show()
+    def abrirPlataforma(self):
+        self.hide()
+        self.ventana2 = Plataforma()
+        self.ventana2.show()
+class Plataforma(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.ui = Ui_plataforma()
+        self.ui.setupUi(self)
+        self.ui.aceptar.clicked.connect(self.crear)
+        self.ui.atras1.clicked.connect(self.retroceder)
+        self.ui.atras2.clicked.connect(self.retroceder)
+        self.ui.atras3.clicked.connect(self.retroceder)
+        self.ui.atras4.clicked.connect(self.retroceder)
+        self.ui.busca.clicked.connect(self.buscar)
+        self.ui.limpiar.clicked.connect(self.limpio)
+        self.ui.aceptar_3.clicked.connect(self.actualizar)
+        self.ui.aceptar_4.clicked.connect(self.borrar)
+    def crear(self):
+        nom = self.ui.nombre.text()
+        nombre = str(nom)
+        fech = self.ui.fecha.text()
+        fecha = str(fech)
+        model = self.ui.modelo.text()
+        modelo = str(model)
+        if nombre == '' or fecha == '' or modelo == '':
+            self.error(1)
+        else:
+            #SE INSERTA LA TUPLA
+            #valor=llamada(nombre,fecha,modelo)
+            valor = True #borrar cuando se haga la union de la BDT
+            ######
+            if valor !=True:
+                self.ui.cargando.setText('Cargando...')
+                for i in range(0, 50):
+                    time.sleep(0.01)
+                    self.ui.progreso1.setValue(i)
+                self.ui.cargando.setText('')
+                self.error(3)
+                time.sleep(0.2)
+                self.ui.progreso1.setValue(0)
+                self.ui.nombre.setText('')
+                self.ui.modelo.setText('')
+            else:
+                self.ui.cargando.setText('Cargando...')
+                for i in range(0, 101):
+                    time.sleep(0.01)
+                    self.ui.progreso1.setValue(i)
+                self.ui.cargando.setText('¡Operación Exitosa!')
+                self.ui.progreso1.setValue(0)
+                self.ui.nombre.setText('')
+                self.ui.modelo.setText('')
+    def buscar(self):
+        cod = self.ui.codigo.text()
+        codigo = str(cod)
+        if codigo == '*':
+            ############################
+            datosB=[]#llamada de base de datos
+            ############################
+            i = len(datosB)
+            if i == 0:
+                self.error(2)
+                self.ui.resultado.setRowCount(0)
+            else:
+                self.ui.resultado.setRowCount(i)
+                tablerow = 0
+                for row in datosB:
+                    self.ui.resultado.setItem(tablerow, 0, QtWidgets.QTableWidgetItem(row[0]))
+                    self.ui.resultado.setItem(tablerow, 1, QtWidgets.QTableWidgetItem(row[1]))
+                    self.ui.resultado.setItem(tablerow, 2, QtWidgets.QTableWidgetItem(row[2]))
+                    tablerow += 1
+                self.ui.codigo.setText('')
+        else:
+            if codigo == '':
+                self.error(1)
+                self.ui.resultado.setRowCount(0)
+            else:
+                ##########################
+                datosB = [('hola','mundo','cruel')] #manda a llamar a la funcion buscar
+                #parametro en : codigo
+                ############################
+                i = len(datosB)
+                if i == 0:
+                    self.error(2)
+                    self.ui.resultado.setRowCount(0)
+                else:
+                    self.ui.resultado.setRowCount(i)
+                    tablerow = 0
+                    for row in datosB:
+                        self.ui.resultado.setItem(tablerow, 0, QtWidgets.QTableWidgetItem(row[0]))
+                        self.ui.resultado.setItem(tablerow, 1, QtWidgets.QTableWidgetItem(row[1]))
+                        self.ui.resultado.setItem(tablerow, 2, QtWidgets.QTableWidgetItem(row[2]))
+                        tablerow += 1
+                    self.ui.codigo.setText('')
+    def actualizar(self):
+        cod = self.ui.codigo_2.text()
+        codigo = str(cod)
+        nom = self.ui.nombre_3.text()
+        nombre = str(nom)
+        fech = self.ui.fecha_3.text()
+        fecha = str(fech)
+        model = self.ui.modelo_3.text()
+        modelo = str(model)
+        if codigo =="":
+            self.error(1)
+            self.ui.nombre_3.setText('')
+            self.ui.modelo_3.setText('')
+        else:
+            ######
+            #aqui hace una consulta y trae tupla del elemento a actualizar
+            #parametro (codigo) regresa tupla
+            datoB=[('dat1','dat2','dat3')]#se puede borrar despues de hacer la conexion
+            ######
+            if datoB==[]:
+                self.ui.cargando2.setText('Cargando...')
+                for i in range(0, 50):
+                    time.sleep(0.01)
+                    self.ui.progreso2.setValue(i)
+                self.ui.cargando2.setText('')
+                self.error(2)
+                time.sleep(0.3)
+                self.ui.progreso2.setValue(0)
+                self.ui.codigo_2.setText('')
+                self.ui.nombre_3.setText('')
+                self.ui.modelo_3.setText('')
+            else:
+                if nombre== '':
+                    nombre = datoB[0][0]
+                if fecha == '01/01/1900':
+                    fecha = datoB[0][1]
+                if modelo== '':
+                    modelo =datoB[0][2]
+                ########
+
+                print(nombre + fecha+modelo)
+                #se llama a la funcion actualizar llevandose (nombre,fecha,modelo) y regresa un true o false
+                valor= True#se puede borrar cuando haga la conexion
+                #######
+                if valor !=True:
+                    self.ui.cargando2.setText('Cargando...')
+                    for i in range(0, 50):
+                        time.sleep(0.01)
+                        self.ui.progreso2.setValue(i)
+                    self.ui.cargando2.setText('')
+                    self.error(3)
+                    time.sleep(0.3)
+                    self.ui.progreso2.setValue(0)
+                else:
+                    self.ui.cargando2.setText('Cargando...')
+                    for i in range(0, 101):
+                        time.sleep(0.01)
+                        self.ui.progreso2.setValue(i)
+                    self.ui.cargando2.setText('Operación Exitosa')
+                    time.sleep(0.3)
+                    self.ui.progreso2.setValue(0)
+                self.ui.codigo_2.setText('')
+                self.ui.nombre_3.setText('')
+                self.ui.modelo_3.setText('')
+    def borrar(self):
+        cod = self.ui.codigo_3.text()
+        codigo=str(cod)
+        if codigo=='':
+            self.error(1)
+        else:
+            #hace consulta si existe el dato regresa true o false
+            #el dato se va en el parametro (codigo)
+            valor=True #puede borrar el true cuando se haga la conexion de BD
+            if valor !=True:
+                self.ui.cargando3.setText('Cargando...')
+                for i in range(0, 50):
+                    time.sleep(0.01)
+                    self.ui.progreso3.setValue(i)
+                self.ui.cargando3.setText('')
+                self.error(2)
+                time.sleep(0.3)
+                self.ui.progreso3.setValue(0)
+                self.ui.codigo_3.setText('')
+            else:
+                #hace llamada de la funcion borrar elemento
+                #el dato se va en el parametro (codigo)
+                valor2=True #puede borrar el true cuando se haga la conexion de BD
+                if valor2 !=True:
+                    self.ui.cargando3.setText('Cargando...')
+                    for i in range(0, 50):
+                        time.sleep(0.01)
+                        self.ui.progreso3.setValue(i)
+                    self.ui.cargando3.setText('')
+                    self.error(3)
+                    time.sleep(0.3)
+                    self.ui.progreso3.setValue(0)
+                    self.ui.codigo_3.setText('')
+                else:
+                    self.ui.cargando3.setText('Cargando...')
+                    for i in range(0, 101):
+                        time.sleep(0.01)
+                        self.ui.progreso3.setValue(i)
+                    self.ui.cargando3.setText('¡Operación Exitosa!')
+                    time.sleep(0.3)
+                    self.ui.progreso3.setValue(0)
+                    self.ui.codigo_3.setText('')
+
+    def limpio(self):
+        self.ui.codigo.setText('')
+        self.ui.resultado.setRowCount(0)
+    def error(self,x):
+        if x==1:
+            self.ventana = error401()
+            self.ventana.show()
+        elif x==2:
+            self.ventana = error402()
+            self.ventana.show()
+        elif x==3:
+            self.ventana = error403()
+            self.ventana.show()
+    def retroceder(self):
+        self.hide()
+        self.ventana = MiApp()
         self.ventana.show()
 
 class Juego(QMainWindow):

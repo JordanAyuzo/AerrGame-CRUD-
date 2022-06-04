@@ -32,6 +32,7 @@ class MiApp(QMainWindow):
         self.hide()
         self.ventana2 = Plataforma()
         self.ventana2.show()
+
 class Plataforma(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -276,13 +277,13 @@ class Juego(QMainWindow):
         REGRESA en:datoB <Es una lista de 1 tupla>  ej:[(soft,dato2,dat3,dato4)](llega lista vacia 
         si no hay nada)
         datoB=self.clase.metodo_buscar(clave) """
+
         datosB = self.principal.consultaDatos('juego', clave, self.cursor)
         #########################
         if datosB == []:
             self.error(2)
         if clave == '':
             self.error(1)
-
         else:
             #########################
             """Llama al metodo de busqueda pasandole como parametro la clave primaria
@@ -290,9 +291,9 @@ class Juego(QMainWindow):
             REGRESA en:datoB <Es una lista de 1 tupla>  ej:[(soft,dato2,dat3,dato4)](llega lista vacia 
             si no hay nada)
             datoB=self.clase.metodo_buscar(clave) """
-            datoB = [('Minecraft', 'dat1', 'dat2', 'dat3')]#cuando se haya hecho la conexion borrar esto
+
             #########################
-            if datoB == []:
+            if datosB == []:
                 self.ui.cargando_0.setText('Cargando...')
                 for i in range(0, 50):
                     time.sleep(0.01)
@@ -335,8 +336,9 @@ class Juego(QMainWindow):
         MANDA   en:clave <es la clave primaria>     ej:soft
         REGRESA en:datoB <Es una lista de 1 tupla>  ej:[](llega lista vacia si no hay nada)
         datoB=self.clase.metodo_buscar(clave) """
-        datosB = self.principal.consultaDatos('juego', clave, self.cursor)
-        datoB = []
+        datoB = self.principal.consultaDatos('juego', clave, self.cursor)
+
+
         ########################
         if datoB == []:
             self.error(2)

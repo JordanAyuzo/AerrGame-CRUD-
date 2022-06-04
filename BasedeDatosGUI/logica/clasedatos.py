@@ -6,6 +6,8 @@ import datetime
 import psycopg2
 
 
+
+
 class BaseDatos():
     """
         Esta clase tiene las funcionalidades de la base de datos, por este medio
@@ -102,8 +104,6 @@ class BaseDatos():
             return -51
 
     def consultaDatos(self, tablaConsultar, claveDatoBusc, cursor):
-
-
         print(cursor)
         vista = "CREATE VIEW consulta AS SELECT * FROM " + tablaConsultar
         print(vista)
@@ -123,7 +123,21 @@ class BaseDatos():
             return []
 
 
-   # def modificarJuego(self):
+
+
+
+    def modificarJuego(self,nombreK, nombreG, clasificacionG, descripcionG, generoG, cursor):
+        try:
+            datos = self.consultaDatos('juego', nombreK, cursor)
+            if  datos != []:
+                print(datos)
+                return True
+            else:
+                print("Clave no existe")
+                return False
+
+        except:
+            return False
 
 
 

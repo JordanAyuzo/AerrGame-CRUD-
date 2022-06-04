@@ -14,31 +14,30 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_game1(object):
     def setupUi(self, game1):
         game1.setObjectName("game1")
-        game1.resize(517, 523)
+        game1.resize(513, 523)
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(":/recurso/img/02button.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         game1.setWindowIcon(icon)
-        game1.setStyleSheet("background-color: rgba(0, 0, 0,0%);")
+        game1.setStyleSheet("alternate-background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:1, y2:1, stop:0 rgba(90, 0, 182, 255), stop:0.289216 rgba(150, 155, 255, 255), stop:0.921569 rgba(74, 206, 205, 255));")
         self.centralwidget = QtWidgets.QWidget(game1)
+        self.centralwidget.setStyleSheet("background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:1, y2:1, stop:0 rgba(90, 0, 182, 255), stop:0.289216 rgba(150, 155, 255, 255), stop:0.921569 rgba(74, 206, 205, 255));")
         self.centralwidget.setObjectName("centralwidget")
-        self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
-        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
-        self.verticalLayout.setSpacing(0)
-        self.verticalLayout.setObjectName("verticalLayout")
-        self.fGame = QtWidgets.QFrame(self.centralwidget)
-        self.fGame.setStyleSheet("background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:1, y2:1, stop:0 rgba(90, 0, 182, 255), stop:0.289216 rgba(150, 155, 255, 255), stop:0.921569 rgba(74, 206, 205, 255));")
-        self.fGame.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.fGame.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.fGame.setObjectName("fGame")
-        self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.fGame)
-        self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
-        self.verticalLayout_2.setSpacing(0)
-        self.verticalLayout_2.setObjectName("verticalLayout_2")
-        self.barGame = QtWidgets.QTabWidget(self.fGame)
-        self.barGame.setEnabled(True)
+        self.barGame = QtWidgets.QTabWidget(self.centralwidget)
+        self.barGame.setGeometry(QtCore.QRect(0, 0, 511, 519))
+        font = QtGui.QFont()
+        font.setFamily("DejaVu Sans")
+        font.setBold(True)
+        font.setWeight(75)
+        font.setKerning(True)
+        self.barGame.setFont(font)
         self.barGame.setContextMenuPolicy(QtCore.Qt.PreventContextMenu)
         self.barGame.setAcceptDrops(False)
-        self.barGame.setStyleSheet("color:rgb(255, 255, 255)")
+        self.barGame.setStyleSheet("alternate-background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:1, y2:1, stop:0 rgba(90, 0, 182, 255), stop:0.289216 rgba(150, 155, 255, 255), stop:0.921569 rgba(74, 206, 205, 255));\n"
+"color: rgb(255, 255, 255)")
+        self.barGame.setTabPosition(QtWidgets.QTabWidget.North)
+        self.barGame.setTabShape(QtWidgets.QTabWidget.Rounded)
+        self.barGame.setElideMode(QtCore.Qt.ElideNone)
+        self.barGame.setTabBarAutoHide(False)
         self.barGame.setObjectName("barGame")
         self.create = QtWidgets.QWidget()
         self.create.setObjectName("create")
@@ -217,6 +216,13 @@ class Ui_game1(object):
 "border:none;")
         self.atras_2.setText("")
         self.atras_2.setObjectName("atras_2")
+        self.limpiar = QtWidgets.QPushButton(self.google)
+        self.limpiar.setGeometry(QtCore.QRect(400, 410, 71, 51))
+        self.limpiar.setStyleSheet("background-color: rgba(0, 0, 0,0%);\n"
+"border:none;\n"
+"image: url(:/recurso/img/limpiar.png)")
+        self.limpiar.setText("")
+        self.limpiar.setObjectName("limpiar")
         self.label_2.raise_()
         self.tableWidget.raise_()
         self.labelCod.raise_()
@@ -224,6 +230,7 @@ class Ui_game1(object):
         self.bCode.raise_()
         self.label_3.raise_()
         self.atras_2.raise_()
+        self.limpiar.raise_()
         self.barGame.addTab(self.google, "")
         self.refresh = QtWidgets.QWidget()
         self.refresh.setObjectName("refresh")
@@ -367,6 +374,13 @@ class Ui_game1(object):
         self.lcod_0.setObjectName("lcod_0")
         self.checkBox = QtWidgets.QCheckBox(self.delete_2)
         self.checkBox.setGeometry(QtCore.QRect(40, 210, 391, 31))
+        font = QtGui.QFont()
+        font.setFamily("Noto Sans Arabic Blk")
+        font.setPointSize(10)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(11)
+        self.checkBox.setFont(font)
         self.checkBox.setStyleSheet("font: 87 10pt \"Noto Sans Arabic Blk\";\n"
 "background-color: rgba(0, 0, 0,0%);\n"
 "color:rgb(170, 0, 0)")
@@ -395,34 +409,11 @@ class Ui_game1(object):
         self.cargando_0.setStyleSheet("background-color: rgba(0, 0, 0,0%);")
         self.cargando_0.setObjectName("cargando_0")
         self.barGame.addTab(self.delete_2, "")
-        self.verticalLayout_2.addWidget(self.barGame)
-        self.verticalLayout.addWidget(self.fGame)
         game1.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(game1)
         self.barGame.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(game1)
-        game1.setTabOrder(self.barGame, self.jnombre)
-        game1.setTabOrder(self.jnombre, self.jclasif)
-        game1.setTabOrder(self.jclasif, self.jdesc)
-        game1.setTabOrder(self.jdesc, self.jgene)
-        game1.setTabOrder(self.jgene, self.atras)
-        game1.setTabOrder(self.atras, self.bcrear)
-        game1.setTabOrder(self.bcrear, self.atras_2)
-        game1.setTabOrder(self.atras_2, self.lcod)
-        game1.setTabOrder(self.lcod, self.bCode)
-        game1.setTabOrder(self.bCode, self.tableWidget)
-        game1.setTabOrder(self.tableWidget, self.atras_3)
-        game1.setTabOrder(self.atras_3, self.lcod_2)
-        game1.setTabOrder(self.lcod_2, self.jnombre_2)
-        game1.setTabOrder(self.jnombre_2, self.jclasif_2)
-        game1.setTabOrder(self.jclasif_2, self.jdesc_2)
-        game1.setTabOrder(self.jdesc_2, self.jgene_2)
-        game1.setTabOrder(self.jgene_2, self.bactualizar)
-        game1.setTabOrder(self.bactualizar, self.atras_4)
-        game1.setTabOrder(self.atras_4, self.lcod_0)
-        game1.setTabOrder(self.lcod_0, self.checkBox)
-        game1.setTabOrder(self.checkBox, self.bborrar)
 
     def retranslateUi(self, game1):
         _translate = QtCore.QCoreApplication.translate
@@ -431,7 +422,7 @@ class Ui_game1(object):
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'Noto Sans\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#474747;\">ej:Minecraft</span></p></body></html>"))
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#474747;\">Ej:Minecraft</span></p></body></html>"))
         self.nombre.setText(_translate("game1", "<html><head/><body><p align=\"right\"><span style=\" font-size:11pt; font-weight:600;\">Nombre:</span></p></body></html>"))
         self.clasificacion.setText(_translate("game1", "<html><head/><body><p align=\"right\"><span style=\" font-size:11pt; font-weight:600;\">Clasificación:</span></p></body></html>"))
         self.jclasif.setToolTip(_translate("game1", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
@@ -444,7 +435,7 @@ class Ui_game1(object):
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'Noto Sans\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#474747;\">ej: juego de Bloques.</span></p></body></html>"))
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#474747;\">Ej: juego de Bloques.</span></p></body></html>"))
         self.jgene.setToolTip(_translate("game1", "<html><head/><body><p><span style=\" color:#474747;\">Ej: Sandbox</span></p></body></html>"))
         self.label.setText(_translate("game1", "<html><head/><body><p align=\"center\"><img src=\":/recurso/img/01title.png\"/></p></body></html>"))
         self.indicaciones.setText(_translate("game1", "<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">Ingrese Los Datos Del Juego. </span></p></body></html>"))
@@ -488,13 +479,13 @@ class Ui_game1(object):
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'Noto Sans\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#474747;\">ej:Minecraft</span></p></body></html>"))
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#474747;\">Ej:Minecraft</span></p></body></html>"))
         self.descripcion_2.setText(_translate("game1", "<html><head/><body><p align=\"right\"><span style=\" font-size:11pt; font-weight:600;\">Descripción: </span></p></body></html>"))
         self.jdesc_2.setToolTip(_translate("game1", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'Noto Sans\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#474747;\">ej: juego de Bloques.</span></p></body></html>"))
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#474747;\">Ej: juego de Bloques.</span></p></body></html>"))
         self.genero_2.setText(_translate("game1", "<html><head/><body><p align=\"right\"><span style=\" font-size:11pt; font-weight:600;\">Género:</span></p></body></html>"))
         self.cargando_2.setText(_translate("game1", "<html><head/><body><p align=\"center\"><br/></p></body></html>"))
         self.barGame.setTabText(self.barGame.indexOf(self.refresh), _translate("game1", "Actualizar"))

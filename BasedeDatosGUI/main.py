@@ -7,6 +7,9 @@ import time
 from PyQt5.QtCore import Qt
 
 from logica.clasedatos import *
+from logica.claseJuego import *
+from logica.clasePlataforma import *
+
 from grafica.menu import *
 from grafica.game import *
 from grafica.plataforma import *
@@ -263,10 +266,11 @@ class Juego(QMainWindow):
         self.ui.atras_3.clicked.connect(self.retroceder)
         self.ui.atras_4.clicked.connect(self.retroceder)
 
-        self.principal = BaseDatos()
+        self.principal = JuegoBase()
         self.con = self.principal.connectDB()
         self.con.autocommit = True
         self.cursor = self.con.cursor()
+
 
     def borrar(self):
         clav = self.ui.lcod_0.text()
@@ -457,7 +461,7 @@ class Juego(QMainWindow):
             REGRESA en:true o false
             valor=self.clase.metodo_crear(nombre,clasificacion,descripcion,genero) """
 
-            respuesta = self.principal.agregarJuego(nombre, clasificacion, descripcion, genero, self.cursor)
+            respuesta = self.principal.agregar(nombre, clasificacion, descripcion, genero, self.cursor)
             ######################
             if respuesta != True:
                 self.ui.cargando.setText('Cargando...')

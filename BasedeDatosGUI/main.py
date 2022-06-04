@@ -3,6 +3,9 @@
 ##
 import sys
 import time
+
+from PyQt5.QtCore import Qt
+
 from logica.clasedatos import *
 from grafica.menu import *
 from grafica.game import *
@@ -267,7 +270,6 @@ class Juego(QMainWindow):
     def borrar(self):
         clav = self.ui.lcod_0.text()
         clave = str(clav)
-<<<<<<< HEAD
         #########################
         """Llama al metodo de busqueda pasandole como parametro la clave primaria
         MANDA   en:clave <es la clave primaria>     ej:soft
@@ -275,16 +277,12 @@ class Juego(QMainWindow):
         si no hay nada)
         datoB=self.clase.metodo_buscar(clave) """
         datosB = self.principal.consultaDatos('juego', clave, self.cursor)
-
-
-
         #########################
         if datosB == []:
             self.error(2)
-=======
         if clave == '':
             self.error(1)
->>>>>>> Grap
+
         else:
             #########################
             """Llama al metodo de busqueda pasandole como parametro la clave primaria
@@ -331,7 +329,7 @@ class Juego(QMainWindow):
     def modificar(self):
         clav = self.ui.lcod_2.text()
         clave = str(clav)
-<<<<<<< HEAD
+
         ########################
         """Llama al metodo de busqueda pasandole como parametro la clave primaria
         MANDA   en:clave <es la clave primaria>     ej:soft
@@ -372,7 +370,7 @@ class Juego(QMainWindow):
                 self.ui.cargando_2.setText('Cargando...')
                 for i in range(0, 50):
                     time.sleep(0.02)
-=======
+
         if clave == '':
             self.error(1)
         else:
@@ -386,7 +384,7 @@ class Juego(QMainWindow):
             if datoB == []:
                 for i in range(0,   41):
                     time.sleep(0.01)
->>>>>>> Grap
+
                     self.ui.progressBar_2.setValue(i)
                 self.error(2)
                 time.sleep(0.2)

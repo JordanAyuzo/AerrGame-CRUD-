@@ -1,18 +1,18 @@
 from logica.clasedatos import *
 
-class Plataforma(BaseDatos):
+class PlataformaBase(BaseDatos):
 
     def agregar(self, nombreG, anioG, modeloG, cursor):
         self.cursor = cursor
-
         if nombreG != None:
             """Línea de codigo que nos permite añadir los datos de una plataforma a la base de datos, considerando
                 que la conexión fue correcta desde el inicio y que no falta ningún dato, solamente se
                 verifica si la clave primaria no es nula para poder añadir los datos"""
+            print("Hasta aquí")
             cursor.execute("""INSERT INTO plataforma(
                                    nombre,anio, modelo)
                                    VALUES (%s,%s,%s)""",
-                           (nombreG, datetime.date(anioG[0], anioG[1], anioG[2]), modeloG))
+                           (nombreG, anioG, modeloG))
 
             if cursor:
                 print("Añadida plataforma con éxito")

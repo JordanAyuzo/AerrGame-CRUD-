@@ -14,16 +14,18 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_game1(object):
     def setupUi(self, game1):
         game1.setObjectName("game1")
-        game1.resize(513, 523)
+        game1.resize(522, 518)
+        game1.setMinimumSize(QtCore.QSize(522, 510))
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(":/recurso/img/02button.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         game1.setWindowIcon(icon)
+        game1.setAutoFillBackground(False)
         game1.setStyleSheet("alternate-background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:1, y2:1, stop:0 rgba(90, 0, 182, 255), stop:0.289216 rgba(150, 155, 255, 255), stop:0.921569 rgba(74, 206, 205, 255));")
         self.centralwidget = QtWidgets.QWidget(game1)
         self.centralwidget.setStyleSheet("background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:1, y2:1, stop:0 rgba(90, 0, 182, 255), stop:0.289216 rgba(150, 155, 255, 255), stop:0.921569 rgba(74, 206, 205, 255));")
         self.centralwidget.setObjectName("centralwidget")
         self.barGame = QtWidgets.QTabWidget(self.centralwidget)
-        self.barGame.setGeometry(QtCore.QRect(0, 0, 511, 519))
+        self.barGame.setGeometry(QtCore.QRect(0, 0, 521, 519))
         font = QtGui.QFont()
         font.setFamily("DejaVu Sans")
         font.setBold(True)
@@ -42,14 +44,15 @@ class Ui_game1(object):
         self.create = QtWidgets.QWidget()
         self.create.setObjectName("create")
         self.bcrear = QtWidgets.QPushButton(self.create)
-        self.bcrear.setGeometry(QtCore.QRect(270, 330, 61, 61))
+        self.bcrear.setGeometry(QtCore.QRect(280, 330, 61, 61))
         self.bcrear.setStyleSheet("image: url(:/recurso/img/elegir.png);\n"
 "background-color: rgba(0, 0, 0,0%);\n"
 "border:none;")
         self.bcrear.setText("")
+        self.bcrear.setAutoDefault(True)
         self.bcrear.setObjectName("bcrear")
         self.jnombre = QtWidgets.QLineEdit(self.create)
-        self.jnombre.setGeometry(QtCore.QRect(180, 130, 241, 31))
+        self.jnombre.setGeometry(QtCore.QRect(190, 130, 241, 31))
         self.jnombre.setAutoFillBackground(False)
         self.jnombre.setStyleSheet("background-color: rgb(255, 255, 255);\n"
 "border-radius: 10px;\n"
@@ -59,17 +62,17 @@ class Ui_game1(object):
         self.jnombre.setPlaceholderText("")
         self.jnombre.setObjectName("jnombre")
         self.nombre = QtWidgets.QLabel(self.create)
-        self.nombre.setGeometry(QtCore.QRect(90, 130, 71, 31))
+        self.nombre.setGeometry(QtCore.QRect(100, 130, 71, 31))
         self.nombre.setStyleSheet("border:none;\n"
 "background-color: rgba(0, 0, 0,0%);")
         self.nombre.setObjectName("nombre")
         self.clasificacion = QtWidgets.QLabel(self.create)
-        self.clasificacion.setGeometry(QtCore.QRect(60, 180, 101, 31))
+        self.clasificacion.setGeometry(QtCore.QRect(70, 180, 101, 31))
         self.clasificacion.setStyleSheet("border:none;\n"
 "background-color: rgba(0, 0, 0,0%);")
         self.clasificacion.setObjectName("clasificacion")
         self.jclasif = QtWidgets.QLineEdit(self.create)
-        self.jclasif.setGeometry(QtCore.QRect(180, 180, 241, 31))
+        self.jclasif.setGeometry(QtCore.QRect(190, 180, 241, 31))
         self.jclasif.setAutoFillBackground(False)
         self.jclasif.setStyleSheet("background-color: rgb(255, 255, 255);\n"
 "border-radius: 10px;\n"
@@ -78,13 +81,13 @@ class Ui_game1(object):
         self.jclasif.setText("")
         self.jclasif.setObjectName("jclasif")
         self.descripcion = QtWidgets.QLabel(self.create)
-        self.descripcion.setGeometry(QtCore.QRect(70, 230, 91, 31))
+        self.descripcion.setGeometry(QtCore.QRect(80, 230, 91, 31))
         self.descripcion.setStyleSheet("border:none;\n"
 "background-color: rgba(0, 0, 0,0%);\n"
 "")
         self.descripcion.setObjectName("descripcion")
         self.jdesc = QtWidgets.QLineEdit(self.create)
-        self.jdesc.setGeometry(QtCore.QRect(180, 230, 241, 31))
+        self.jdesc.setGeometry(QtCore.QRect(190, 230, 241, 31))
         self.jdesc.setAutoFillBackground(False)
         self.jdesc.setStyleSheet("background-color: rgb(255, 255, 255);\n"
 "border-radius: 10px;\n"
@@ -93,7 +96,7 @@ class Ui_game1(object):
         self.jdesc.setText("")
         self.jdesc.setObjectName("jdesc")
         self.jgene = QtWidgets.QLineEdit(self.create)
-        self.jgene.setGeometry(QtCore.QRect(180, 280, 241, 31))
+        self.jgene.setGeometry(QtCore.QRect(190, 280, 241, 31))
         self.jgene.setAutoFillBackground(False)
         self.jgene.setStyleSheet("background-color: rgb(255, 255, 255);\n"
 "border-radius: 10px;\n"
@@ -102,31 +105,32 @@ class Ui_game1(object):
         self.jgene.setText("")
         self.jgene.setObjectName("jgene")
         self.label = QtWidgets.QLabel(self.create)
-        self.label.setGeometry(QtCore.QRect(50, 20, 381, 51))
+        self.label.setGeometry(QtCore.QRect(60, 20, 381, 51))
         self.label.setStyleSheet("background-color: rgba(0, 0, 0,0%);\n"
 "border:none;\n"
 "")
         self.label.setObjectName("label")
         self.indicaciones = QtWidgets.QLabel(self.create)
         self.indicaciones.setEnabled(True)
-        self.indicaciones.setGeometry(QtCore.QRect(130, 80, 221, 31))
+        self.indicaciones.setGeometry(QtCore.QRect(140, 80, 221, 31))
         self.indicaciones.setStyleSheet("border:none;\n"
 "background-color: rgba(0, 0, 0,0%);")
         self.indicaciones.setObjectName("indicaciones")
         self.genero = QtWidgets.QLabel(self.create)
-        self.genero.setGeometry(QtCore.QRect(100, 280, 61, 31))
+        self.genero.setGeometry(QtCore.QRect(110, 280, 61, 31))
         self.genero.setStyleSheet("border:none;\n"
 "background-color: rgba(0, 0, 0,0%);")
         self.genero.setObjectName("genero")
         self.atras = QtWidgets.QPushButton(self.create)
-        self.atras.setGeometry(QtCore.QRect(170, 330, 61, 61))
+        self.atras.setGeometry(QtCore.QRect(180, 330, 61, 61))
         self.atras.setStyleSheet("image: url(:/recurso/img/atras.png);\n"
 "background-color: rgba(0, 0, 0,0%);\n"
 "border:none;")
         self.atras.setText("")
+        self.atras.setAutoDefault(True)
         self.atras.setObjectName("atras")
         self.progressBar = QtWidgets.QProgressBar(self.create)
-        self.progressBar.setGeometry(QtCore.QRect(90, 400, 371, 23))
+        self.progressBar.setGeometry(QtCore.QRect(100, 400, 371, 23))
         self.progressBar.setAutoFillBackground(False)
         self.progressBar.setStyleSheet("")
         self.progressBar.setProperty("value", 0)
@@ -197,6 +201,7 @@ class Ui_game1(object):
 "border:none;\n"
 "image: url(:/recurso/img/busqueda.png);")
         self.bCode.setText("")
+        self.bCode.setAutoDefault(True)
         self.bCode.setObjectName("bCode")
         self.label_2 = QtWidgets.QLabel(self.google)
         self.label_2.setGeometry(QtCore.QRect(-50, 30, 571, 481))
@@ -215,6 +220,7 @@ class Ui_game1(object):
 "background-color: rgba(0, 0, 0,0%);\n"
 "border:none;")
         self.atras_2.setText("")
+        self.atras_2.setAutoDefault(True)
         self.atras_2.setObjectName("atras_2")
         self.limpiar = QtWidgets.QPushButton(self.google)
         self.limpiar.setGeometry(QtCore.QRect(400, 410, 71, 51))
@@ -222,6 +228,7 @@ class Ui_game1(object):
 "border:none;\n"
 "image: url(:/recurso/img/limpiar.png)")
         self.limpiar.setText("")
+        self.limpiar.setAutoDefault(True)
         self.limpiar.setObjectName("limpiar")
         self.label_2.raise_()
         self.tableWidget.raise_()
@@ -323,6 +330,7 @@ class Ui_game1(object):
 "background-color: rgba(0, 0, 0,0%);\n"
 "border:none;")
         self.bactualizar.setText("")
+        self.bactualizar.setAutoDefault(True)
         self.bactualizar.setObjectName("bactualizar")
         self.atras_3 = QtWidgets.QPushButton(self.refresh)
         self.atras_3.setGeometry(QtCore.QRect(20, 20, 31, 41))
@@ -330,6 +338,7 @@ class Ui_game1(object):
 "background-color: rgba(0, 0, 0,0%);\n"
 "border:none;")
         self.atras_3.setText("")
+        self.atras_3.setAutoDefault(True)
         self.atras_3.setObjectName("atras_3")
         self.progressBar_2 = QtWidgets.QProgressBar(self.refresh)
         self.progressBar_2.setGeometry(QtCore.QRect(80, 420, 371, 23))
@@ -357,6 +366,7 @@ class Ui_game1(object):
 "background-color: rgba(0, 0, 0,0%);\n"
 "border:none;")
         self.atras_4.setText("")
+        self.atras_4.setAutoDefault(True)
         self.atras_4.setObjectName("atras_4")
         self.labelCod_7 = QtWidgets.QLabel(self.delete_2)
         self.labelCod_7.setGeometry(QtCore.QRect(40, 120, 141, 31))
@@ -396,6 +406,7 @@ class Ui_game1(object):
 "background-color: rgba(0, 0, 0,0%);\n"
 "border:none;")
         self.bborrar.setText("")
+        self.bborrar.setAutoDefault(True)
         self.bborrar.setObjectName("bborrar")
         self.progressBar_0 = QtWidgets.QProgressBar(self.delete_2)
         self.progressBar_0.setGeometry(QtCore.QRect(50, 390, 331, 23))
@@ -414,6 +425,28 @@ class Ui_game1(object):
         self.retranslateUi(game1)
         self.barGame.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(game1)
+        game1.setTabOrder(self.jnombre, self.jclasif)
+        game1.setTabOrder(self.jclasif, self.jdesc)
+        game1.setTabOrder(self.jdesc, self.jgene)
+        game1.setTabOrder(self.jgene, self.atras)
+        game1.setTabOrder(self.atras, self.bcrear)
+        game1.setTabOrder(self.bcrear, self.barGame)
+        game1.setTabOrder(self.barGame, self.atras_2)
+        game1.setTabOrder(self.atras_2, self.lcod)
+        game1.setTabOrder(self.lcod, self.bCode)
+        game1.setTabOrder(self.bCode, self.tableWidget)
+        game1.setTabOrder(self.tableWidget, self.limpiar)
+        game1.setTabOrder(self.limpiar, self.lcod_2)
+        game1.setTabOrder(self.lcod_2, self.jclasif_2)
+        game1.setTabOrder(self.jclasif_2, self.jgene_2)
+        game1.setTabOrder(self.jgene_2, self.jnombre_2)
+        game1.setTabOrder(self.jnombre_2, self.jdesc_2)
+        game1.setTabOrder(self.jdesc_2, self.bactualizar)
+        game1.setTabOrder(self.bactualizar, self.atras_3)
+        game1.setTabOrder(self.atras_3, self.atras_4)
+        game1.setTabOrder(self.atras_4, self.lcod_0)
+        game1.setTabOrder(self.lcod_0, self.checkBox)
+        game1.setTabOrder(self.checkBox, self.bborrar)
 
     def retranslateUi(self, game1):
         _translate = QtCore.QCoreApplication.translate

@@ -15,10 +15,13 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(434, 520)
+        MainWindow.setMinimumSize(QtCore.QSize(434, 520))
+        MainWindow.setMaximumSize(QtCore.QSize(434, 520))
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(":/recurso/img/logo.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         MainWindow.setWindowIcon(icon)
         MainWindow.setStyleSheet("background-color: rgba(0, 0, 0,0%);")
+        MainWindow.setWindowFilePath("")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
@@ -26,6 +29,7 @@ class Ui_MainWindow(object):
         self.verticalLayout.setSpacing(0)
         self.verticalLayout.setObjectName("verticalLayout")
         self.frame = QtWidgets.QFrame(self.centralwidget)
+        self.frame.setAcceptDrops(False)
         self.frame.setStyleSheet("background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:1, y2:1, stop:0 rgba(0, 0, 0, 255), stop:0.122549 rgba(109, 117, 255, 255), stop:0.921569 rgba(74, 206, 205, 255));\n"
 "border-radius: 20px;\n"
 "border: 1px solid #00007f;")
@@ -34,16 +38,19 @@ class Ui_MainWindow(object):
         self.frame.setMidLineWidth(-1)
         self.frame.setObjectName("frame")
         self.bjuego = QtWidgets.QPushButton(self.frame)
-        self.bjuego.setGeometry(QtCore.QRect(60, 100, 81, 71))
+        self.bjuego.setGeometry(QtCore.QRect(40, 120, 81, 71))
+        self.bjuego.setFocusPolicy(QtCore.Qt.StrongFocus)
         self.bjuego.setStyleSheet("background-color: rgba(0, 0, 0,0%);\n"
 "image: url(:/recurso/img/02button.png);\n"
 "border:none;\n"
 "")
         self.bjuego.setText("")
+        self.bjuego.setAutoDefault(True)
+        self.bjuego.setDefault(False)
         self.bjuego.setObjectName("bjuego")
         self.ljuego = QtWidgets.QLabel(self.frame)
         self.ljuego.setEnabled(True)
-        self.ljuego.setGeometry(QtCore.QRect(70, 160, 61, 21))
+        self.ljuego.setGeometry(QtCore.QRect(50, 190, 61, 21))
         font = QtGui.QFont()
         font.setFamily("xos4 Terminus")
         font.setPointSize(18)
@@ -55,15 +62,16 @@ class Ui_MainWindow(object):
 "border :none;")
         self.ljuego.setObjectName("ljuego")
         self.bplatform = QtWidgets.QPushButton(self.frame)
-        self.bplatform.setGeometry(QtCore.QRect(290, 100, 71, 61))
+        self.bplatform.setGeometry(QtCore.QRect(180, 120, 71, 61))
         self.bplatform.setStyleSheet("image: url(:/recurso/img/03plataform.png);\n"
 "background-color: rgba(0, 0, 0,0%);\n"
 "border:none;")
         self.bplatform.setText("")
+        self.bplatform.setAutoDefault(True)
         self.bplatform.setObjectName("bplatform")
         self.lplatform = QtWidgets.QLabel(self.frame)
         self.lplatform.setEnabled(True)
-        self.lplatform.setGeometry(QtCore.QRect(260, 160, 121, 21))
+        self.lplatform.setGeometry(QtCore.QRect(150, 190, 121, 21))
         font = QtGui.QFont()
         font.setFamily("xos4 Terminus")
         font.setPointSize(18)
@@ -80,12 +88,91 @@ class Ui_MainWindow(object):
         self.label.setObjectName("label")
         self.bexit = QtWidgets.QPushButton(self.frame)
         self.bexit.setGeometry(QtCore.QRect(170, 440, 81, 71))
+        self.bexit.setMouseTracking(False)
+        self.bexit.setTabletTracking(True)
+        self.bexit.setFocusPolicy(QtCore.Qt.StrongFocus)
         self.bexit.setStyleSheet("background-color: rgba(0, 0, 0,0%);\n"
 "image: url(:/recurso/img/05exit.png);\n"
 "border:none;\n"
 "")
         self.bexit.setText("")
+        self.bexit.setCheckable(False)
+        self.bexit.setAutoDefault(True)
+        self.bexit.setDefault(False)
+        self.bexit.setFlat(False)
         self.bexit.setObjectName("bexit")
+        self.ljuego_2 = QtWidgets.QLabel(self.frame)
+        self.ljuego_2.setEnabled(True)
+        self.ljuego_2.setGeometry(QtCore.QRect(50, 300, 91, 21))
+        font = QtGui.QFont()
+        font.setFamily("xos4 Terminus")
+        font.setPointSize(18)
+        font.setBold(False)
+        font.setWeight(50)
+        self.ljuego_2.setFont(font)
+        self.ljuego_2.setMouseTracking(True)
+        self.ljuego_2.setStyleSheet("background-color: rgba(0, 0, 0,0%);\n"
+"border :none;")
+        self.ljuego_2.setObjectName("ljuego_2")
+        self.bjuego_2 = QtWidgets.QPushButton(self.frame)
+        self.bjuego_2.setGeometry(QtCore.QRect(50, 230, 91, 71))
+        self.bjuego_2.setFocusPolicy(QtCore.Qt.StrongFocus)
+        self.bjuego_2.setStyleSheet("background-color: rgba(0, 0, 0,0%);\n"
+"image: url(:/recurso/img/usuario.png);\n"
+"border:none;\n"
+"")
+        self.bjuego_2.setText("")
+        self.bjuego_2.setAutoDefault(True)
+        self.bjuego_2.setDefault(False)
+        self.bjuego_2.setObjectName("bjuego_2")
+        self.bjuego_3 = QtWidgets.QPushButton(self.frame)
+        self.bjuego_3.setGeometry(QtCore.QRect(270, 230, 91, 71))
+        self.bjuego_3.setFocusPolicy(QtCore.Qt.StrongFocus)
+        self.bjuego_3.setStyleSheet("background-color: rgba(0, 0, 0,0%);\n"
+"image: url(:/recurso/img/tarjeta.png);\n"
+"border:none;\n"
+"")
+        self.bjuego_3.setText("")
+        self.bjuego_3.setAutoDefault(True)
+        self.bjuego_3.setDefault(False)
+        self.bjuego_3.setObjectName("bjuego_3")
+        self.ljuego_3 = QtWidgets.QLabel(self.frame)
+        self.ljuego_3.setEnabled(True)
+        self.ljuego_3.setGeometry(QtCore.QRect(270, 300, 91, 21))
+        font = QtGui.QFont()
+        font.setFamily("xos4 Terminus")
+        font.setPointSize(18)
+        font.setBold(False)
+        font.setWeight(50)
+        self.ljuego_3.setFont(font)
+        self.ljuego_3.setMouseTracking(True)
+        self.ljuego_3.setStyleSheet("background-color: rgba(0, 0, 0,0%);\n"
+"border :none;")
+        self.ljuego_3.setObjectName("ljuego_3")
+        self.bversion = QtWidgets.QPushButton(self.frame)
+        self.bversion.setGeometry(QtCore.QRect(300, 120, 91, 71))
+        self.bversion.setFocusPolicy(QtCore.Qt.StrongFocus)
+        self.bversion.setStyleSheet("background-color: rgba(0, 0, 0,0%);\n"
+"image: url(:/recurso/img/04version.png);\n"
+"border:none;\n"
+"")
+        self.bversion.setText("")
+        self.bversion.setAutoDefault(True)
+        self.bversion.setDefault(False)
+        self.bversion.setObjectName("bversion")
+        self.ljuego_7 = QtWidgets.QLabel(self.frame)
+        self.ljuego_7.setEnabled(True)
+        self.ljuego_7.setGeometry(QtCore.QRect(300, 190, 91, 21))
+        font = QtGui.QFont()
+        font.setFamily("xos4 Terminus")
+        font.setPointSize(18)
+        font.setBold(False)
+        font.setWeight(50)
+        self.ljuego_7.setFont(font)
+        self.ljuego_7.setMouseTracking(True)
+        self.ljuego_7.setStyleSheet("background-color: rgba(0, 0, 0,0%);\n"
+"border :none;")
+        self.ljuego_7.setObjectName("ljuego_7")
         self.verticalLayout.addWidget(self.frame)
         MainWindow.setCentralWidget(self.centralwidget)
 
@@ -99,4 +186,7 @@ class Ui_MainWindow(object):
         self.ljuego.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-weight:600; color:#ffffff;\">JUEGO</span></p></body></html>"))
         self.lplatform.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-weight:600; color:#ffffff;\">PLATAFORMA</span></p></body></html>"))
         self.label.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\"><img src=\":/recurso/img/01title.png\"/></p></body></html>"))
-
+        self.ljuego_2.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-weight:600; color:#ffffff;\">USUARIO</span></p></body></html>"))
+        self.ljuego_3.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-weight:600; color:#ffffff;\">TARJETA</span></p></body></html>"))
+        self.ljuego_7.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-weight:600; color:#ffffff;\">VERSIÓN</span></p></body></html>"))
+import recurso_rc

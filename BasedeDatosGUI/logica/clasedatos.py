@@ -30,6 +30,8 @@ class BaseDatos():
 
     def consultaDatos(self, tablaConsultar, claveDatoBusc, cursor):
         print(cursor)
+        borrado = "DROP VIEW IF EXISTS consulta;"
+        cursor.execute(borrado)
         vista = "CREATE VIEW consulta AS SELECT * FROM " + tablaConsultar
         print(vista)
 
@@ -40,8 +42,16 @@ class BaseDatos():
             cursor.execute(vista)
             cursor.execute(sql)
             datos = cursor.fetchall()
-            cursor.execute(borrado)
+            temp = list(datos[0])
+            print(type(temp[1]))
 
+            if isinstance(temp[1], datetime.date):
+                temp[1] = str(temp[1])
+                print(temp)
+                datos[0] = temp
+
+            cursor.execute(borrado)
+            print("retornado")
             return datos
         except:
             print("La consulta no pudo realizarse")

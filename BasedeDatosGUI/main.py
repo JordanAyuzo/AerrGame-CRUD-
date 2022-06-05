@@ -50,6 +50,12 @@ class Plataforma(QMainWindow):
         self.ui.limpiar.clicked.connect(self.limpio)
         self.ui.aceptar_3.clicked.connect(self.actualizar)
         self.ui.aceptar_4.clicked.connect(self.borrar)
+
+        self.principal = PlataformaBase()
+        self.con = self.principal.connectDB()
+        self.con.autocommit = True
+        self.cursor = self.con.cursor()
+
     def crear(self):
         nom = self.ui.nombre.text()
         nombre = str(nom)
@@ -62,7 +68,8 @@ class Plataforma(QMainWindow):
         else:
             #SE INSERTA LA TUPLA
             #valor=llamada(nombre,fecha,modelo)
-            valor = True #borrar cuando se haga la union de la BDT
+            valor = self.principal.agregar(nombre, fecha, modelo, self.cursor)
+            valor = True #TODO: borrar cuando se haga la union de la BDT
             ######
             if valor !=True:
                 self.ui.cargando.setText('Cargando...')
@@ -110,7 +117,7 @@ class Plataforma(QMainWindow):
                 self.ui.resultado.setRowCount(0)
             else:
                 ##########################
-                datosB = [('hola','mundo','cruel')] #manda a llamar a la funcion buscar
+                datosB = self.principal.consultaDatos('plataforma', codigo, self.cursor) #manda a llamar a la funcion buscar
                 #parametro en : codigo
                 ############################
                 i = len(datosB)
@@ -518,6 +525,10 @@ class Juego(QMainWindow):
                 self.ui.lcod.setText('')
     ##NO TOCAR ESTOS ELEMENTOS##
     def retroceder(self):
+
+        self.cursor.close()
+        self.con.close()
+
         self.hide()
         self.ventana = MiApp()
         self.ventana.show()

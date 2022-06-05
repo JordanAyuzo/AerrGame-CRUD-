@@ -13,6 +13,7 @@ from logica.clasePlataforma import *
 from grafica.menu import *
 from grafica.game import *
 from grafica.plataforma import *
+from grafica.version import *
 from grafica.error401 import *
 from grafica.error402 import *
 from grafica.error403 import *
@@ -26,7 +27,11 @@ class MiApp(QMainWindow):
         self.setAttribute(Qt.WA_TranslucentBackground)
         self.ui.bjuego.clicked.connect(self.abrirJuego)
         self.ui.bplatform.clicked.connect(self.abrirPlataforma)
-
+        self.ui.bversion.clicked.connect(self.abrirVersion)
+    def abrirVersion(self):
+        self.hide()
+        self.ventana = Version()
+        self.ventana.show()
     def abrirJuego(self):
         self.hide()
         self.ventana = Juego()
@@ -35,7 +40,261 @@ class MiApp(QMainWindow):
         self.hide()
         self.ventana2 = Plataforma()
         self.ventana2.show()
+ ####
+class Version(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.ui = Ui_version()
+        self.ui.setupUi(self)
+        tuplasJuegos=[('hola','mundo','adios'),('hola2','mundo','adios'),('hola3','mundo','adios')]    #TODO mandas a traer en forma de lista de lista de tuplas a  todos los  juegos
+                           #     el primer atributo será el "nombre"
+        j=0
+        for i in tuplasJuegos:
+            juego1=tuplasJuegos[j][0]
+            self.ui.combojuego.addItem(juego1)
+            self.ui.combojuego2.addItem(juego1)
+            j+=1
+        tuplasPlataforma=[('hoola','mundo','adios'),('holaa2','mundo','adios'),('holla3','mundo','adios')]    #TODO mandas a traer en forma de lista de lista de tuplas a  todos las plataformas
+                           #     el primer atributo será el "nombre"
+        k=0
+        for i in tuplasPlataforma:
+            plataforma1=tuplasPlataforma[k][0]
+            self.ui.comboplataforma.addItem(plataforma1)
+            self.ui.comboplataforma2.addItem(plataforma1)
+            k+=1
+        self.ui.atras1.clicked.connect(self.retroceder)
+        self.ui.atras2.clicked.connect(self.retroceder)
+        self.ui.atras3.clicked.connect(self.retroceder)
+        self.ui.atras4.clicked.connect(self.retroceder)
+        self.ui.aceptar1.clicked.connect(self.crear)
+        self.ui.aceptar2.clicked.connect(self.actualizar)
+        self.ui.aceptar3.clicked.connect(self.borrar)
+        self.ui.busca.clicked.connect(self.buscar)
+        self.ui.limpiar.clicked.connect(self.limpio)
+    def crear(self):
+        jue=self.ui.combojuego.currentText()
+        juego=str(jue)
+        plata=self.ui.comboplataforma.currentText()
+        plataforma=str(plata)
+        nom = self.ui.textnombre.text()
+        nombre = str(nom)
+        fech = self.ui.textfecha.text()
+        fecha = str(fech)
+        req = self.ui.textrequisitos.text()
+        requisitos = str(req)
+        if plataforma == '' or juego == '' or nombre == '' or requisitos=='':
+                        self.error(1)
+        else:
+            #TODO:se inserta la tupla
+            valor=True#funcion(nombre,fecha,requisitos,juego,plataforma) nombre es nombre de la Version
+            if valor != True:
+                self.ui.cargando1.setText('Cargando...')
+                for i in range(0, 50):
+                    time.sleep(0.01)
+                    self.ui.progreso1.setValue(i)
+                self.ui.cargando1.setText('')
+                self.error(3)
+                time.sleep(0.2)
+                self.ui.progreso1.setValue(0)
+                self.ui.textnombre.setText('')
+                self.ui.textrequisitos.setText('')
+                self.ui.combojuego.setCurrentIndex(0)
+                self.ui.comboplataforma.setCurrentIndex(0)
+            else:
+                self.ui.cargando1.setText('Cargando...')
+                for i in range(0, 101):
+                    time.sleep(0.01)
+                    self.ui.progreso1.setValue(i)
+                self.ui.cargando1.setText('¡Operación Exitosa!')
+                self.ui.progreso1.setValue(0)
+                self.ui.textnombre.setText('')
+                self.ui.textrequisitos.setText('')
+                self.ui.combojuego.setCurrentIndex(0)
+                self.ui.comboplataforma.setCurrentIndex(0)
+    def buscar(self):
+        cod = self.ui.codigo1.text()
+        codigo = str(cod)
+        if codigo == '*':
+            datosB=[]#TODO:llamada de base de datos regresa tuplas asi:(juego,plataforma,version,fecha, requsito)
+                    #si llega de otra forma avisar
+            i = len(datosB)
+            if i == 0:
+                self.error(2)
+                self.ui.resultado.setRowCount(0)
+            else:
+                self.ui.resultado.setRowCount(i)
+                tablerow = 0
+                for row in datosB:
+                    self.ui.resultado.setItem(tablerow, 0, QtWidgets.QTableWidgetItem(row[0]))
+                    self.ui.resultado.setItem(tablerow, 1, QtWidgets.QTableWidgetItem(row[1]))
+                    self.ui.resultado.setItem(tablerow, 2, QtWidgets.QTableWidgetItem(row[2]))
+                    self.ui.resultado.setItem(tablerow, 3, QtWidgets.QTableWidgetItem(row[3]))
+                    self.ui.resultado.setItem(tablerow, 4, QtWidgets.QTableWidgetItem(row[4]))
+                    tablerow += 1
+                self.ui.codigo1.setText('')
+        else:
+            if codigo == '':
+                self.error(1)
+                self.ui.resultado.setRowCount(0)
+            else:
+                ##########################
+                datosB = [('hola','mundo','cruel','es','feo')] #TODO:manda a llamar a la funcion buscar
+                #parametro en : codigo
+                ############################
+                i = len(datosB)
+                if i == 0:
+                    self.error(2)
+                    self.ui.resultado.setRowCount(0)
+                else:
+                    self.ui.resultado.setRowCount(i)
+                    tablerow = 0
+                    for row in datosB:
+                        self.ui.resultado.setItem(tablerow, 0, QtWidgets.QTableWidgetItem(row[0]))
+                        self.ui.resultado.setItem(tablerow, 1, QtWidgets.QTableWidgetItem(row[1]))
+                        self.ui.resultado.setItem(tablerow, 2, QtWidgets.QTableWidgetItem(row[2]))
+                        self.ui.resultado.setItem(tablerow, 3, QtWidgets.QTableWidgetItem(row[3]))
+                        self.ui.resultado.setItem(tablerow, 4, QtWidgets.QTableWidgetItem(row[4]))
+                        tablerow += 1
+                    self.ui.codigo1.setText('')
+    def actualizar(self):
+        cod = self.ui.codigo2.text()
+        codigo = str(cod)
+        jue=self.ui.combojuego2.currentText()
+        juego=str(jue)
+        plata=self.ui.comboplataforma2.currentText()
+        plataforma=str(plata)
+        nom = self.ui.textnombre2.text()
+        nombre = str(cod)
+        fech = self.ui.textfecha2.text()
+        fecha = str(fech)
+        req = self.ui.textrequisitos2.text()
+        requisitos = str(req)
+        if codigo =="":
+            self.error(1)
+            self.ui.codigo2.setText('')
+            self.ui.textnombre2.setText('')
+            self.ui.textrequisitos2.setText('')
+            self.ui.combojuego2.setCurrentIndex(0)
+            self.ui.comboplataforma2.setCurrentIndex(0)
+        else:
+            ######
+            #aqui hace una consulta y trae tupla del elemento a actualizar
+            #parametro (codigo) regresa tupla
+            datoB=[('dat1','dat2','dat3','dato4','dato5')]#TODO:se puede borrar despues de hacer la conexion
+                                                            #el orden que lleva es (juego,plataforma,version,fecha, requsito) si es otra forma avisar
+            if datoB==[]:
+                self.ui.cargando2.setText('Cargando...')
+                for i in range(0, 50):
+                    time.sleep(0.01)
+                    self.ui.progreso2.setValue(i)
+                self.ui.cargando2.setText('')
+                self.error(2)
+                time.sleep(0.3)
+                self.ui.progreso2.setValue(0)
+                self.ui.codigo2.setText('')
+                self.ui.textnombre2.setText('')
+                self.ui.textrequisitos2.setText('')
+                self.ui.combojuego2.setCurrentIndex(0)
+                self.ui.comboplataforma2.setCurrentIndex(0)
+            else:
+                if juego == '' :
+                    juego = datoB[0][0]
+                if plataforma == '':
+                    plataforma =datoB[0][1]
+                if nombre == '':
+                    nombre = datoB[0][2]
+                if fecha == '01/01/1900':
+                    fecha = datoB[0][3]
+                if requisitos == '':
+                    requisitos=datoB[0][4]
+                ########
+                #TODO: se lleva los datos de la siguiente manera (nombre,fecha,requisitos,juego,plataforma)
+                valor= True#se puede borrar cuando haga la conexion
+                #######
+                if valor !=True:
+                    self.ui.cargando2.setText('Cargando...')
+                    for i in range(0, 50):
+                        time.sleep(0.01)
+                        self.ui.progreso2.setValue(i)
+                    self.ui.cargando2.setText('')
+                    self.error(3)
+                    time.sleep(0.3)
+                    self.ui.progreso2.setValue(0)
+                else:
+                    self.ui.cargando2.setText('Cargando...')
+                    for i in range(0, 101):
+                        time.sleep(0.01)
+                        self.ui.progreso2.setValue(i)
+                    self.ui.cargando2.setText('Operación Exitosa')
+                    time.sleep(0.3)
+                    self.ui.progreso2.setValue(0)
+                self.ui.codigo2.setText('')
+                self.ui.progreso2.setValue(0)
+                self.ui.textnombre2.setText('')
+                self.ui.textrequisitos2.setText('')
+                self.ui.combojuego2.setCurrentIndex(0)
+                self.ui.comboplataforma2.setCurrentIndex(0)
 
+    def borrar(self):
+        cod = self.ui.codigo3.text()
+        codigo=str(cod)
+        if codigo=='':
+            self.error(1)
+        else:
+            #TODO:hace consulta si existe el dato regresa true o false
+            #### el dato se va en el parametro (codigo)
+            valor=True #puede borrar el true cuando se haga la conexion de BD
+            if valor !=True:
+                self.ui.cargando3.setText('Cargando...')
+                for i in range(0, 50):
+                    time.sleep(0.01)
+                    self.ui.progreso3.setValue(i)
+                self.ui.cargando3.setText('')
+                self.error(2)
+                time.sleep(0.3)
+                self.ui.progreso3.setValue(0)
+                self.ui.codigo3.setText('')
+            else:
+                #TODO: hace llamada de la funcion borrar elemento
+                #el dato se va en el parametro (codigo)
+                valor2=True #puede borrar el true cuando se haga la conexion de BD
+                if valor2 !=True:
+                    self.ui.cargando3.setText('Cargando...')
+                    for i in range(0, 50):
+                        time.sleep(0.01)
+                        self.ui.progreso3.setValue(i)
+                    self.ui.cargando3.setText('')
+                    self.error(3)
+                    time.sleep(0.3)
+                    self.ui.progreso3.setValue(0)
+                    self.ui.codigo3.setText('')
+                else:
+                    self.ui.cargando3.setText('Cargando...')
+                    for i in range(0, 101):
+                        time.sleep(0.01)
+                        self.ui.progreso3.setValue(i)
+                    self.ui.cargando3.setText('¡Operación Exitosa!')
+                    time.sleep(0.3)
+                    self.ui.progreso3.setValue(0)
+                    self.ui.codigo3.setText('')
+    def limpio(self):
+        self.ui.codigo1.setText('')
+        self.ui.resultado.setRowCount(0)
+    def error(self,x):
+        if x==1:
+            self.ventana = error401()
+            self.ventana.show()
+        elif x==2:
+            self.ventana = error402()
+            self.ventana.show()
+        elif x==3:
+            self.ventana = error403()
+            self.ventana.show()
+    def retroceder(self):
+        self.hide()
+        self.ventana = MiApp()
+        self.ventana.show()
+####
 class Plataforma(QMainWindow):
     def __init__(self):
         super().__init__()

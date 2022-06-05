@@ -15,6 +15,8 @@ class Ui_plataforma(object):
     def setupUi(self, plataforma):
         plataforma.setObjectName("plataforma")
         plataforma.resize(521, 519)
+        plataforma.setMinimumSize(QtCore.QSize(521, 519))
+        plataforma.setMaximumSize(QtCore.QSize(521, 519))
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(":/recurso/img/03plataform.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         plataforma.setWindowIcon(icon)
@@ -100,6 +102,7 @@ class Ui_plataforma(object):
 "background-color: rgba(0, 0, 0,0%);\n"
 "border:none;")
         self.aceptar.setText("")
+        self.aceptar.setAutoDefault(True)
         self.aceptar.setObjectName("aceptar")
         self.atras1 = QtWidgets.QPushButton(self.crear)
         self.atras1.setGeometry(QtCore.QRect(180, 330, 61, 61))
@@ -107,6 +110,7 @@ class Ui_plataforma(object):
 "background-color: rgba(0, 0, 0,0%);\n"
 "border:none;")
         self.atras1.setText("")
+        self.atras1.setAutoDefault(True)
         self.atras1.setObjectName("atras1")
         self.cargando = QtWidgets.QLabel(self.crear)
         self.cargando.setGeometry(QtCore.QRect(190, 420, 141, 20))
@@ -159,6 +163,7 @@ class Ui_plataforma(object):
 "background-color: rgba(0, 0, 0,0%);\n"
 "border:none;")
         self.atras2.setText("")
+        self.atras2.setAutoDefault(True)
         self.atras2.setObjectName("atras2")
         self.frame = QtWidgets.QLabel(self.buscar)
         self.frame.setGeometry(QtCore.QRect(-50, 30, 571, 481))
@@ -180,6 +185,7 @@ class Ui_plataforma(object):
 "border:none;\n"
 "image: url(:/recurso/img/busqueda.png);")
         self.busca.setText("")
+        self.busca.setAutoDefault(True)
         self.busca.setObjectName("busca")
         self.nom_2 = QtWidgets.QLabel(self.buscar)
         self.nom_2.setGeometry(QtCore.QRect(10, 100, 201, 31))
@@ -192,6 +198,7 @@ class Ui_plataforma(object):
 "border:none;\n"
 "image: url(:/recurso/img/limpiar.png)")
         self.limpiar.setText("")
+        self.limpiar.setAutoDefault(True)
         self.limpiar.setObjectName("limpiar")
         self.frame.raise_()
         self.logo_2.raise_()
@@ -268,11 +275,6 @@ class Ui_plataforma(object):
         self.fecha_3.setCalendarPopup(True)
         self.fecha_3.setDate(QtCore.QDate(1900, 1, 1))
         self.fecha_3.setObjectName("fecha_3")
-        self.nom_7 = QtWidgets.QLabel(self.actualizar)
-        self.nom_7.setGeometry(QtCore.QRect(160, 140, 201, 31))
-        self.nom_7.setStyleSheet("border:none;\n"
-"background-color: rgba(0, 0, 0,0%);")
-        self.nom_7.setObjectName("nom_7")
         self.progreso2 = QtWidgets.QProgressBar(self.actualizar)
         self.progreso2.setGeometry(QtCore.QRect(80, 410, 371, 23))
         self.progreso2.setAutoFillBackground(False)
@@ -286,6 +288,7 @@ class Ui_plataforma(object):
 "background-color: rgba(0, 0, 0,0%);\n"
 "border:none;")
         self.aceptar_3.setText("")
+        self.aceptar_3.setAutoDefault(True)
         self.aceptar_3.setObjectName("aceptar_3")
         self.atras3 = QtWidgets.QPushButton(self.actualizar)
         self.atras3.setGeometry(QtCore.QRect(30, 20, 31, 41))
@@ -293,11 +296,18 @@ class Ui_plataforma(object):
 "background-color: rgba(0, 0, 0,0%);\n"
 "border:none;")
         self.atras3.setText("")
+        self.atras3.setAutoDefault(True)
         self.atras3.setObjectName("atras3")
         self.cargando2 = QtWidgets.QLabel(self.actualizar)
         self.cargando2.setGeometry(QtCore.QRect(180, 430, 141, 20))
         self.cargando2.setStyleSheet("background-color: rgba(0, 0, 0,0%);")
         self.cargando2.setObjectName("cargando2")
+        self.indicaciones_2 = QtWidgets.QLabel(self.actualizar)
+        self.indicaciones_2.setEnabled(True)
+        self.indicaciones_2.setGeometry(QtCore.QRect(120, 150, 271, 31))
+        self.indicaciones_2.setStyleSheet("border:none;\n"
+"background-color: rgba(0, 0, 0,0%);")
+        self.indicaciones_2.setObjectName("indicaciones_2")
         self.tabWidget.addTab(self.actualizar, "")
         self.tab_4 = QtWidgets.QWidget()
         self.tab_4.setObjectName("tab_4")
@@ -313,6 +323,7 @@ class Ui_plataforma(object):
 "background-color: rgba(0, 0, 0,0%);\n"
 "border:none;")
         self.aceptar_4.setText("")
+        self.aceptar_4.setAutoDefault(True)
         self.aceptar_4.setObjectName("aceptar_4")
         self.codigo_3 = QtWidgets.QLineEdit(self.tab_4)
         self.codigo_3.setGeometry(QtCore.QRect(230, 130, 241, 31))
@@ -346,17 +357,52 @@ class Ui_plataforma(object):
 "background-color: rgba(0, 0, 0,0%);\n"
 "border:none;")
         self.atras4.setText("")
+        self.atras4.setAutoDefault(True)
         self.atras4.setObjectName("atras4")
         self.cargando3 = QtWidgets.QLabel(self.tab_4)
         self.cargando3.setGeometry(QtCore.QRect(130, 420, 141, 20))
         self.cargando3.setStyleSheet("background-color: rgba(0, 0, 0,0%);")
         self.cargando3.setObjectName("cargando3")
+        self.checkBox = QtWidgets.QCheckBox(self.tab_4)
+        self.checkBox.setGeometry(QtCore.QRect(40, 220, 391, 31))
+        font = QtGui.QFont()
+        font.setFamily("Noto Sans Arabic Blk")
+        font.setPointSize(10)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(11)
+        self.checkBox.setFont(font)
+        self.checkBox.setStyleSheet("font: 87 10pt \"Noto Sans Arabic Blk\";\n"
+"background-color: rgba(0, 0, 0,0%);\n"
+"color:rgb(170, 0, 0)")
+        self.checkBox.setTristate(False)
+        self.checkBox.setObjectName("checkBox")
         self.tabWidget.addTab(self.tab_4, "")
         plataforma.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(plataforma)
         self.tabWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(plataforma)
+        plataforma.setTabOrder(self.nombre, self.fecha)
+        plataforma.setTabOrder(self.fecha, self.modelo)
+        plataforma.setTabOrder(self.modelo, self.atras1)
+        plataforma.setTabOrder(self.atras1, self.aceptar)
+        plataforma.setTabOrder(self.aceptar, self.tabWidget)
+        plataforma.setTabOrder(self.tabWidget, self.atras2)
+        plataforma.setTabOrder(self.atras2, self.codigo)
+        plataforma.setTabOrder(self.codigo, self.busca)
+        plataforma.setTabOrder(self.busca, self.atras3)
+        plataforma.setTabOrder(self.atras3, self.codigo_2)
+        plataforma.setTabOrder(self.codigo_2, self.nombre_3)
+        plataforma.setTabOrder(self.nombre_3, self.fecha_3)
+        plataforma.setTabOrder(self.fecha_3, self.modelo_3)
+        plataforma.setTabOrder(self.modelo_3, self.aceptar_3)
+        plataforma.setTabOrder(self.aceptar_3, self.atras4)
+        plataforma.setTabOrder(self.atras4, self.codigo_3)
+        plataforma.setTabOrder(self.codigo_3, self.checkBox)
+        plataforma.setTabOrder(self.checkBox, self.aceptar_4)
+        plataforma.setTabOrder(self.aceptar_4, self.limpiar)
+        plataforma.setTabOrder(self.limpiar, self.resultado)
 
     def retranslateUi(self, plataforma):
         _translate = QtCore.QCoreApplication.translate
@@ -418,8 +464,8 @@ class Ui_plataforma(object):
         self.model_3.setText(_translate("plataforma", "<html><head/><body><p align=\"right\"><span style=\" font-size:11pt; font-weight:600;\">Modelo: </span></p></body></html>"))
         self.fecha_3.setToolTip(_translate("plataforma", "<html><head/><body><p><span style=\" color:#474747;\">Ej:02/09/2017</span></p></body></html>"))
         self.fecha_3.setDisplayFormat(_translate("plataforma", "dd/MM/yyyy"))
-        self.nom_7.setText(_translate("plataforma", "<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">Nombre de la plataforma: </span></p></body></html>"))
         self.cargando2.setText(_translate("plataforma", "<html><head/><body><p align=\"center\"><br/></p></body></html>"))
+        self.indicaciones_2.setText(_translate("plataforma", "<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">Ingrese Los Datos De La Plataforma. </span></p></body></html>"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.actualizar), _translate("plataforma", "Actualizar"))
         self.logo_4.setText(_translate("plataforma", "<html><head/><body><p align=\"center\"><img src=\":/recurso/img/01title.png\"/></p></body></html>"))
         self.codigo_3.setToolTip(_translate("plataforma", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
@@ -436,5 +482,6 @@ class Ui_plataforma(object):
 "<p align=\"justify\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600; color:#aa0000;\">existir y no habrá forma de recuperarlo, si usted está seguro </span></p>\n"
 "<p align=\"justify\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600; color:#aa0000;\">de esto continue.</span></p></body></html>"))
         self.cargando3.setText(_translate("plataforma", "<html><head/><body><p align=\"center\"><br/></p></body></html>"))
+        self.checkBox.setText(_translate("plataforma", "ADVERTENCIA:"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_4), _translate("plataforma", "Borrar"))
 import recurso_rc

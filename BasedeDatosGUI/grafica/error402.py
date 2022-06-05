@@ -14,7 +14,9 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_error2(object):
     def setupUi(self, error2):
         error2.setObjectName("error2")
-        error2.resize(284, 97)
+        error2.resize(280, 96)
+        error2.setMinimumSize(QtCore.QSize(280, 96))
+        error2.setMaximumSize(QtCore.QSize(280, 96))
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(":/recurso/img/pregunta.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         error2.setWindowIcon(icon)
@@ -26,7 +28,7 @@ class Ui_error2(object):
         self.label_3.setStyleSheet("background-color: rgba(0, 0, 0,0%);")
         self.label_3.setObjectName("label_3")
         self.label_5 = QtWidgets.QLabel(self.centralwidget)
-        self.label_5.setGeometry(QtCore.QRect(60, 30, 231, 51))
+        self.label_5.setGeometry(QtCore.QRect(50, 30, 231, 51))
         font = QtGui.QFont()
         font.setFamily("Noto Sans Arabic UI Bk")
         font.setPointSize(10)

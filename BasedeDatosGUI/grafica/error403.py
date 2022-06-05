@@ -14,7 +14,12 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_error3(object):
     def setupUi(self, error3):
         error3.setObjectName("error3")
-        error3.resize(283, 96)
+        error3.resize(280, 96)
+        error3.setMinimumSize(QtCore.QSize(280, 96))
+        error3.setMaximumSize(QtCore.QSize(280, 96))
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(":/recurso/img/resolver.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        error3.setWindowIcon(icon)
         error3.setStyleSheet("background-color: rgb(255, 255, 255);")
         self.centralwidget = QtWidgets.QWidget(error3)
         self.centralwidget.setObjectName("centralwidget")
@@ -42,7 +47,7 @@ class Ui_error3(object):
 
     def retranslateUi(self, error3):
         _translate = QtCore.QCoreApplication.translate
-        error3.setWindowTitle(_translate("error3", "MainWindow"))
+        error3.setWindowTitle(_translate("error3", "Error 403"))
         self.label_4.setText(_translate("error3", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"

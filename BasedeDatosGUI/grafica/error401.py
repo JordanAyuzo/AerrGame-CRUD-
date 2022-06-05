@@ -15,8 +15,10 @@ class Ui_error(object):
     def setupUi(self, error):
         error.setObjectName("error")
         error.resize(280, 96)
+        error.setMinimumSize(QtCore.QSize(280, 96))
+        error.setMaximumSize(QtCore.QSize(280, 96))
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("../img/danger.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap(":/recurso/img/danger.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         error.setWindowIcon(icon)
         error.setStyleSheet("background-color: rgb(255, 255, 255);")
         self.centralwidget = QtWidgets.QWidget(error)

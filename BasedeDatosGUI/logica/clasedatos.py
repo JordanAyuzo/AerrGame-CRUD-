@@ -36,12 +36,21 @@ class BaseDatos():
         print(vista)
 
         try:
-            sql = "SELECT * FROM " + 'consulta' + " WHERE nombre = " + "'" + claveDatoBusc + "'"
-            borrado = "DROP VIEW " + "consulta"
-            print(sql)
-            cursor.execute(vista)
-            cursor.execute(sql)
-            datos = cursor.fetchall()
+
+            if claveDatoBusc == '*':
+                sql = "SELECT * FROM " + 'consulta'
+                borrado = "DROP VIEW " + "consulta"
+                cursor.execute(vista)
+                cursor.execute(sql)
+                datos = cursor.fetchall()
+
+            else:
+                sql = "SELECT * FROM " + 'consulta' + " WHERE nombre = " + "'" + claveDatoBusc + "'"
+                borrado = "DROP VIEW " + "consulta"
+                print(sql)
+                cursor.execute(vista)
+                cursor.execute(sql)
+                datos = cursor.fetchall()
             temp = list(datos[0])
             print(type(temp[1]))
 

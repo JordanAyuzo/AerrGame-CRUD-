@@ -6,8 +6,11 @@
 >>Robles Robles Emmanuel Guadalupe
 
 
-[] Cargar lista de datos en actualizar
-[] Método actualizar para todas las clases
-[] Tarjeta
-[] Transacción
-[] Usuario
+- [ ] Cargar lista de datos en actualizar
+- [ ] Método actualizar para todas las clases
+- [x] Juego
+- [x] Plataforma
+- [x] Version
+- [ ] Tarjeta
+- [ ] Transacción
+- [ ] Usuario

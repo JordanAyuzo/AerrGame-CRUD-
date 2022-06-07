@@ -9,6 +9,7 @@ from PyQt5.QtCore import Qt
 from logica.clasedatos import *
 from logica.claseJuego import *
 from logica.clasePlataforma import *
+from logica.claseVersion import *
 
 from grafica.menu import *
 from grafica.game import *
@@ -46,7 +47,23 @@ class Version(QMainWindow):
         super().__init__()
         self.ui = Ui_version()
         self.ui.setupUi(self)
-        tuplasJuegos=[('hola','mundo','adios'),('hola2','mundo','adios'),('hola3','mundo','adios')]    #TODO mandas a traer en forma de lista de lista de tuplas a  todos los  juegos
+
+        self.principalJue = JuegoBase()
+        self.conJ = self.principalJue.connectDB()
+        self.conJ.autocommit = True
+        self.cursorJ= self.conJ.cursor()
+
+        self.principalPla = PlataformaBase()
+        self.conP = self.principalPla.connectDB()
+        self.conP.autocommit = True
+        self.cursorP = self.conP.cursor()
+
+        self.principal = VersionBase()
+        self.conV = self.principal.connectDB()
+        self.conV.autocommit = True
+        self.cursorV = self.conV.cursor()
+
+        tuplasJuegos= self.principalJue.consultaDatos('juego', '*', 'nombre', self.cursorJ)
                            #     el primer atributo será el "nombre"
         j=0
         for i in tuplasJuegos:
@@ -54,7 +71,7 @@ class Version(QMainWindow):
             self.ui.combojuego.addItem(juego1)
             self.ui.combojuego2.addItem(juego1)
             j+=1
-        tuplasPlataforma=[('hoola','mundo','adios'),('holaa2','mundo','adios'),('holla3','mundo','adios')]    #TODO mandas a traer en forma de lista de lista de tuplas a  todos las plataformas
+        tuplasPlataforma=self.principalPla.consultaTodos('plataforma', '*', self.cursorP)
                            #     el primer atributo será el "nombre"
         k=0
         for i in tuplasPlataforma:
@@ -85,8 +102,7 @@ class Version(QMainWindow):
         if plataforma == '' or juego == '' or nombre == '' or requisitos=='':
                         self.error(1)
         else:
-            #TODO:se inserta la tupla
-            valor=True#funcion(nombre,fecha,requisitos,juego,plataforma) nombre es nombre de la Version
+            valor= self.principal.agregar(nombre, requisitos, fecha, plataforma, juego, self.cursorV)#funcion(nombre,fecha,requisitos,juego,plataforma) nombre es nombre de la Version
             if valor != True:
                 self.ui.cargando1.setText('Cargando...')
                 for i in range(0, 50):
@@ -115,7 +131,7 @@ class Version(QMainWindow):
         cod = self.ui.codigo1.text()
         codigo = str(cod)
         if codigo == '*':
-            datosB=[]#TODO:llamada de base de datos regresa tuplas asi:(juego,plataforma,version,fecha, requsito)
+            datosB=self.principal.consultaTodos('version', codigo, self.cursorV)
                     #si llega de otra forma avisar
             i = len(datosB)
             if i == 0:
@@ -138,8 +154,10 @@ class Version(QMainWindow):
                 self.ui.resultado.setRowCount(0)
             else:
                 ##########################
-                datosB = [('hola','mundo','cruel','es','feo')] #TODO:manda a llamar a la funcion buscar
+                print(codigo)
+                datosB = self.principal.consultaDatos('version', codigo,'id', self.cursorV)
                 #parametro en : codigo
+                print(datosB)
                 ############################
                 i = len(datosB)
                 if i == 0:
@@ -241,9 +259,8 @@ class Version(QMainWindow):
         if codigo=='':
             self.error(1)
         else:
-            #TODO:hace consulta si existe el dato regresa true o false
             #### el dato se va en el parametro (codigo)
-            valor=True #puede borrar el true cuando se haga la conexion de BD
+            valor=self.principal.consultaDatos('version', codigo, 'id', self.cursorV) #puede borrar el true cuando se haga la conexion de BD
             if valor !=True:
                 self.ui.cargando3.setText('Cargando...')
                 for i in range(0, 50):
@@ -255,9 +272,8 @@ class Version(QMainWindow):
                 self.ui.progreso3.setValue(0)
                 self.ui.codigo3.setText('')
             else:
-                #TODO: hace llamada de la funcion borrar elemento
                 #el dato se va en el parametro (codigo)
-                valor2=True #puede borrar el true cuando se haga la conexion de BD
+                valor2=self.principal.borrarColumna(codigo, 'version', self.cursorV) #puede borrar el true cuando se haga la conexion de BD
                 if valor2 !=True:
                     self.ui.cargando3.setText('Cargando...')
                     for i in range(0, 50):
@@ -328,7 +344,6 @@ class Plataforma(QMainWindow):
             #SE INSERTA LA TUPLA
             #valor=llamada(nombre,fecha,modelo)
             valor = self.principal.agregar(nombre, fecha, modelo, self.cursor)
-            valor = True #TODO: borrar cuando se haga la union de la BDT
             ######
             if valor !=True:
                 self.ui.cargando.setText('Cargando...')
@@ -355,7 +370,7 @@ class Plataforma(QMainWindow):
         codigo = str(cod)
         if codigo == '*':
             ############################
-            datosB=[]#llamada de base de datos
+            datosB = self.principal.consultaTodos('plataforma', codigo, self.cursor)#llamada de base de datos
             ############################
             i = len(datosB)
             if i == 0:
@@ -376,7 +391,7 @@ class Plataforma(QMainWindow):
                 self.ui.resultado.setRowCount(0)
             else:
                 ##########################
-                datosB = self.principal.consultaDatos('plataforma', codigo, self.cursor) #manda a llamar a la funcion buscar
+                datosB = self.principal.consultaDatos('plataforma', codigo,'nombre', self.cursor) #manda a llamar a la funcion buscar
                 #parametro en : codigo
                 ############################
                 i = len(datosB)
@@ -464,8 +479,9 @@ class Plataforma(QMainWindow):
         else:
             #hace consulta si existe el dato regresa true o false
             #el dato se va en el parametro (codigo)
-            valor=True #puede borrar el true cuando se haga la conexion de BD
-            if valor !=True:
+
+            valor = self.principal.consultaDatos('plataforma', codigo, self.cursor) #puede borrar el true cuando se haga la conexion de BD
+            if valor == []:
                 self.ui.cargando3.setText('Cargando...')
                 for i in range(0, 50):
                     time.sleep(0.01)
@@ -478,7 +494,8 @@ class Plataforma(QMainWindow):
             else:
                 #hace llamada de la funcion borrar elemento
                 #el dato se va en el parametro (codigo)
-                valor2=True #puede borrar el true cuando se haga la conexion de BD
+
+                valor2= self.principal.borrarColumna(codigo, 'plataforma', self.cursor) #puede borrar el true cuando se haga la conexion de BD
                 if valor2 !=True:
                     self.ui.cargando3.setText('Cargando...')
                     for i in range(0, 50):
@@ -548,7 +565,7 @@ class Juego(QMainWindow):
         si no hay nada)
         datoB=self.clase.metodo_buscar(clave) """
 
-        datosB = self.principal.consultaDatos('juego', clave, self.cursor)
+        datosB = self.principal.consultaDatos('juego', clave, 'nombre', self.cursor)
         #########################
         if datosB == []:
             self.error(2)
@@ -765,7 +782,7 @@ class Juego(QMainWindow):
             REGRESA en:datoB <Es una lista de 1 tupla>  ej:[](llega lista vacia si no hay nada)
             datoB=self.clase.metodo_buscar(clave) """
             print(type(clave))
-            datosB = self.principal.consultaDatos('juego', clave, self.cursor)
+            datosB = self.principal.consultaDatos('juego', clave, 'nombre', self.cursor)
 
             #datosB = [('Minecraft', 'dat1', 'dat2', 'dat3'), ('Minecraft2', 'dat1', 'dat2', 'dat3')]
             ############################

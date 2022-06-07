@@ -28,7 +28,7 @@ class BaseDatos():
             print("Datos inválidos para la conexión de la base")
             return -50
 
-    def consultaDatos(self, tablaConsultar, claveDatoBusc, cursor):
+    def consultaDatos(self, tablaConsultar, claveDatoBusc,condicion, cursor):
         print(cursor)
         borrado = "DROP VIEW IF EXISTS consulta;"
         cursor.execute(borrado)
@@ -45,7 +45,7 @@ class BaseDatos():
                 datos = cursor.fetchall()
 
             else:
-                sql = "SELECT * FROM " + 'consulta' + " WHERE nombre = " + "'" + claveDatoBusc + "'"
+                sql = "SELECT * FROM " + 'consulta' + " WHERE " + condicion + " = '" + claveDatoBusc + "'"
                 borrado = "DROP VIEW " + "consulta"
                 print(sql)
                 cursor.execute(vista)
@@ -58,7 +58,10 @@ class BaseDatos():
                 temp[1] = str(temp[1])
                 print(temp)
                 datos[0] = temp
-
+            if isinstance(temp[2], datetime.date):
+                temp[2] = str(temp[2])
+                print(temp)
+                datos[0] = temp
             cursor.execute(borrado)
             print("retornado")
             return datos

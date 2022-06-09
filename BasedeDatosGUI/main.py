@@ -543,7 +543,7 @@ class Juego(QMainWindow):
         self.ui.bCode.clicked.connect(self.buscar)
         self.ui.limpiar.clicked.connect(self.limpio)
         self.ui.bcrear.clicked.connect(self.crear)
-        self.ui.bactualizar .clicked.connect(self.carga_modificar)
+        self.ui.bactualizar.clicked.connect(self.carga_modificar)
         self.ui.bactualizar2.clicked.connect(self.modificar)
         self.ui.bborrar.clicked.connect(self.borrar)
         self.ui.atras.clicked.connect(self.retroceder)

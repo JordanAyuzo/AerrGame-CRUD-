@@ -614,12 +614,17 @@ class Juego(QMainWindow):
                     time.sleep(0.2)
                     self.ui.progressBar_0.setValue(0)
     def carga_modificar(self):
-
         clav = self.ui.lcod_2.text()
         clave = str(clav)
         if clave =='':
+            self.error(1)
+            self.ui.jnombre_2.setText('')
+            self.ui.jclasif_2.setText('')
+            self.ui.jdesc_2.setText('')
+            self.ui.jgene_2.setText('')
             ####
-            datoB = self.principal.consultaDatos('juego', clave, self.cursor)
+        else:
+            datoB = [( 'nombre','clasificacion' ,'descripcion', 'genero')]##self.principal.consultaDatos('juego', clave, self.cursor)
             # SE REGRESA LOS DATOS DE LA SIGUIENTE MANERA: nombre,clasificacion descripcion genero
             ####
             if datoB == []:
@@ -635,7 +640,7 @@ class Juego(QMainWindow):
                 self.ui.jdesc_2.setText(datoB[0][2])
                 self.ui.jgene_2.setText(datoB[0][3])
             #datos Cargados en los textos
-    def modificar():
+    def modificar(self):
             nom = self.ui.jnombre_2.text()
             nombre = str(nom)
             clas = self.ui.jclasif_2.text()
@@ -644,7 +649,7 @@ class Juego(QMainWindow):
             descripcion = str(desc)
             gen = self.ui.jgene_2.text()
             genero = str(gen)
-            #TODO: manda  a llamar actualizar(nombre,clasificacion,descripcion,genero)
+            valor = True#TODO: manda  a llamar actualizar(nombre,clasificacion,descripcion,genero)
                     #devuelve true o false
             if valor != True:
                 self.ui.cargando_2.setText('Cargando...')

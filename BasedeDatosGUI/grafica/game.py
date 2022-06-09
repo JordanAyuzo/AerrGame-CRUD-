@@ -248,7 +248,7 @@ class Ui_game1(object):
 "")
         self.label_4.setObjectName("label_4")
         self.lcod_2 = QtWidgets.QLineEdit(self.refresh)
-        self.lcod_2.setGeometry(QtCore.QRect(200, 90, 241, 31))
+        self.lcod_2.setGeometry(QtCore.QRect(190, 90, 241, 31))
         self.lcod_2.setAutoFillBackground(False)
         self.lcod_2.setStyleSheet("background-color: rgb(255, 255, 255);\n"
 "border-radius: 10px;\n"
@@ -258,7 +258,7 @@ class Ui_game1(object):
         self.lcod_2.setObjectName("lcod_2")
         self.labelCod_3 = QtWidgets.QLabel(self.refresh)
         self.labelCod_3.setEnabled(True)
-        self.labelCod_3.setGeometry(QtCore.QRect(50, 90, 141, 31))
+        self.labelCod_3.setGeometry(QtCore.QRect(40, 90, 141, 31))
         self.labelCod_3.setStyleSheet("border:none;\n"
 "background-color: rgba(0, 0, 0,0%);")
         self.labelCod_3.setObjectName("labelCod_3")
@@ -325,7 +325,7 @@ class Ui_game1(object):
 "background-color: rgba(0, 0, 0,0%);")
         self.genero_2.setObjectName("genero_2")
         self.bactualizar = QtWidgets.QPushButton(self.refresh)
-        self.bactualizar.setGeometry(QtCore.QRect(210, 360, 61, 61))
+        self.bactualizar.setGeometry(QtCore.QRect(430, 80, 61, 51))
         self.bactualizar.setStyleSheet("image: url(:/recurso/img/elegir.png);\n"
 "background-color: rgba(0, 0, 0,0%);\n"
 "border:none;")
@@ -351,6 +351,14 @@ class Ui_game1(object):
         self.cargando_2.setGeometry(QtCore.QRect(180, 440, 141, 20))
         self.cargando_2.setStyleSheet("background-color: rgba(0, 0, 0,0%);")
         self.cargando_2.setObjectName("cargando_2")
+        self.bactualizar2 = QtWidgets.QPushButton(self.refresh)
+        self.bactualizar2.setGeometry(QtCore.QRect(220, 360, 61, 61))
+        self.bactualizar2.setStyleSheet("image:url(:/recurso/img/actualizar.png);\n"
+"background-color: rgba(0, 0, 0,0%);\n"
+"border:none;")
+        self.bactualizar2.setText("")
+        self.bactualizar2.setAutoDefault(True)
+        self.bactualizar2.setObjectName("bactualizar2")
         self.barGame.addTab(self.refresh, "")
         self.delete_2 = QtWidgets.QWidget()
         self.delete_2.setObjectName("delete_2")

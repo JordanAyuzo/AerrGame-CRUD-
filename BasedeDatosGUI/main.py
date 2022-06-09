@@ -407,6 +407,7 @@ class Plataforma(QMainWindow):
                         self.ui.resultado.setItem(tablerow, 2, QtWidgets.QTableWidgetItem(row[2]))
                         tablerow += 1
                     self.ui.codigo.setText('')
+    ####
     def actualizar(self):
         cod = self.ui.codigo_2.text()
         codigo = str(cod)
@@ -542,19 +543,17 @@ class Juego(QMainWindow):
         self.ui.bCode.clicked.connect(self.buscar)
         self.ui.limpiar.clicked.connect(self.limpio)
         self.ui.bcrear.clicked.connect(self.crear)
-        self.ui.bactualizar.clicked.connect(self.modificar)
+        self.ui.bactualizar .clicked.connect(self.carga_modificar)
+        self.ui.bactualizar2.clicked.connect(self.modificar)
         self.ui.bborrar.clicked.connect(self.borrar)
         self.ui.atras.clicked.connect(self.retroceder)
         self.ui.atras_2.clicked.connect(self.retroceder)
         self.ui.atras_3.clicked.connect(self.retroceder)
         self.ui.atras_4.clicked.connect(self.retroceder)
-
         self.principal = JuegoBase()
         self.con = self.principal.connectDB()
         self.con.autocommit = True
         self.cursor = self.con.cursor()
-
-
     def borrar(self):
         clav = self.ui.lcod_0.text()
         clave = str(clav)
@@ -614,22 +613,29 @@ class Juego(QMainWindow):
                     self.ui.cargando_0.setText('¡Operación Exitosa!')
                     time.sleep(0.2)
                     self.ui.progressBar_0.setValue(0)
-    def modificar(self):
+    def carga_modificar(self):
+
         clav = self.ui.lcod_2.text()
         clave = str(clav)
-
-        ########################
-        """Llama al metodo de busqueda pasandole como parametro la clave primaria
-        MANDA   en:clave <es la clave primaria>     ej:soft
-        REGRESA en:datoB <Es una lista de 1 tupla>  ej:[](llega lista vacia si no hay nada)
-        datoB=self.clase.metodo_buscar(clave) """
-        datoB = self.principal.consultaDatos('juego', clave, self.cursor)
-
-
-        ########################
-        if datoB == []:
-            self.error(2)
-        else:
+        if clave =='':
+            ####
+            datoB = self.principal.consultaDatos('juego', clave, self.cursor)
+            # SE REGRESA LOS DATOS DE LA SIGUIENTE MANERA: nombre,clasificacion descripcion genero
+            ####
+            if datoB == []:
+                self.error(2)
+                self.ui.jnombre_2.setText('')
+                self.ui.jclasif_2.setText('')
+                self.ui.jdesc_2.setText('')
+                self.ui.jgene_2.setText('')
+            else:
+            #caraga los datos en los textos
+                self.ui.jnombre_2.setText(datoB[0][0])
+                self.ui.jclasif_2.setText(datoB[0][1])
+                self.ui.jdesc_2.setText(datoB[0][2])
+                self.ui.jgene_2.setText(datoB[0][3])
+            #datos Cargados en los textos
+    def modificar():
             nom = self.ui.jnombre_2.text()
             nombre = str(nom)
             clas = self.ui.jclasif_2.text()
@@ -638,93 +644,30 @@ class Juego(QMainWindow):
             descripcion = str(desc)
             gen = self.ui.jgene_2.text()
             genero = str(gen)
-            if nombre == '':
-                nombre = datoB[0][0]
-            if clasificacion == '':
-                clasificacion = datoB[0][1]
-            if descripcion == '':
-                descripcion = datoB[0][2]
-            if genero == '':
-                genero = datoB[0][3]
-            ################################
-            """Llama al metodo de actualizar pasandole como parametros:
-                   el nombre,clasificacion,descripcion y el genero
-            MANDA   en:nombre,clasificacion,descripcion,genero
-            REGRESA en:valor true o false
-            valor=self.clase.metodo_actualizar(nombre,clasificacion,descripcion,genero) """
-
-            valor = True
-            ###############################
+            #TODO: manda  a llamar actualizar(nombre,clasificacion,descripcion,genero)
+                    #devuelve true o false
             if valor != True:
                 self.ui.cargando_2.setText('Cargando...')
                 for i in range(0, 50):
                     time.sleep(0.02)
-
-        if clave == '':
-            self.error(1)
-        else:
-            ########################
-            """Llama al metodo de busqueda pasandole como parametro la clave primaria
-            MANDA   en:clave <es la clave primaria>     ej:soft
-            REGRESA en:datoB <Es una lista de 1 tupla>  ej:[](llega lista vacia si no hay nada)
-            datoB=self.clase.metodo_buscar(clave) """
-            datoB = [('Minecraft', 'dat1', 'dat2', 'dat3')]  #cuando ya este enlazado borrar esto
-            ########################
-            if datoB == []:
-                for i in range(0,   41):
-                    time.sleep(0.01)
-
-                    self.ui.progressBar_2.setValue(i)
-                self.error(2)
+                self.ui.progressBar_2.setValue(i)
+                self.ui.cargando_2.setText('')
+                self.error(3)
                 time.sleep(0.2)
                 self.ui.progressBar_2.setValue(0)
             else:
-                nom = self.ui.jnombre_2.text()
-                nombre = str(nom)
-                clas = self.ui.jclasif_2.text()
-                clasificacion = str(clas)
-                desc = self.ui.jdesc_2.text()
-                descripcion = str(desc)
-                gen = self.ui.jgene_2.text()
-                genero = str(gen)
-                if nombre == '':
-                    nombre = datoB[0][0]
-                if clasificacion == '':
-                    clasificacion = datoB[0][1]
-                if descripcion == '':
-                    descripcion = datoB[0][2]
-                if genero == '':
-                    genero = datoB[0][3]
-                ################################
-                """Llama al metodo de actualizar pasandole como parametros:
-                    el nombre,clasificacion,descripcion y el genero
-                MANDA   en:nombre,clasificacion,descripcion,genero
-                REGRESA en:valor true o false
-                valor=self.clase.metodo_actualizar(nombre,clasificacion,descripcion,genero) """
-                valor = True   #cuando ya estee enlazado borrar esto
-                ###############################
-                if valor != True:
-                    self.ui.cargando_2.setText('Cargando...')
-                    for i in range(0, 50):
-                        time.sleep(0.02)
-                        self.ui.progressBar_2.setValue(i)
-                    self.ui.cargando_2.setText('')
-                    self.error(3)
-                    time.sleep(0.2)
-                    self.ui.progressBar_2.setValue(0)
-                else:
-                    self.ui.cargando_2.setText('Cargando...')
-                    for i in range(0, 101):
-                        time.sleep(0.01)
-                        self.ui.progressBar_2.setValue(i)
-                    self.ui.cargando_2.setText('¡Operación Exitosa!')
-                    time.sleep(0.2)
-                    self.ui.progressBar_2.setValue(0)
-                    self.ui.lcod_2.setText('')
-                    self.ui.jnombre_2.setText('')
-                    self.ui.jclasif_2.setText('')
-                    self.ui.jdesc_2.setText('')
-                    self.ui.jgene_2.setText('')
+                self.ui.cargando_2.setText('Cargando...')
+                for i in range(0, 101):
+                    time.sleep(0.01)
+                    self.ui.progressBar_2.setValue(i)
+                self.ui.cargando_2.setText('¡Operación Exitosa!')
+                time.sleep(0.2)
+                self.ui.progressBar_2.setValue(0)
+                self.ui.lcod_2.setText('')
+                self.ui.jnombre_2.setText('')
+                self.ui.jclasif_2.setText('')
+                self.ui.jdesc_2.setText('')
+                self.ui.jgene_2.setText('')
     def crear(self):
         nom = self.ui.jnombre.text()
         nombre = str(nom)

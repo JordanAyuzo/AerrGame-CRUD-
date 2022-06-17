@@ -42,4 +42,5 @@ class JuegoBase(BaseDatos):
             print("datos actualizados")
             return True
         except:
+            print("excepción")
             return False

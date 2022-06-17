@@ -504,8 +504,7 @@ class Plataforma(QMainWindow):
             # hace consulta si existe el dato regresa true o false
             # el dato se va en el parametro (codigo)
 
-            valor = self.principal.consultaDatos('plataforma', codigo,
-                                                 self.cursor)  # puede borrar el true cuando se haga la conexion de BD
+            valor = self.principal.consultaDatos('plataforma', codigo, self.cursor)  # puede borrar el true cuando se haga la conexion de BD
             if valor == []:
                 self.ui.cargando3.setText('Cargando...')
                 for i in range(0, 50):
@@ -664,10 +663,10 @@ class Juego(QMainWindow):
                 self.ui.jgene_2.setText('')
             else:
                 # caraga los datos en los textos
-                self.ui.jnombre_2.setText(datosB[0][0])
-                self.ui.jclasif_2.setText(datosB[0][1])
-                self.ui.jdesc_2.setText(datosB[0][2])
-                self.ui.jgene_2.setText(datosB[0][3])
+                self.ui.jnombre_2.setText(datosB[0])
+                self.ui.jclasif_2.setText(datosB[1])
+                self.ui.jdesc_2.setText(datosB[2])
+                self.ui.jgene_2.setText(datosB[3])
             # datos Cargados en los textos
 
     def modificar(self):
@@ -688,6 +687,7 @@ class Juego(QMainWindow):
         datosCambiados.append(genero)
         datosB = self.principal.consultaDatos('juego', nombre, 'nombre', self.cursor)
 
+        print(datosCambiados, datosB)
         valor = self.principal.actualizarDatos(datosCambiados, datosB, self.cursor)  # TODO: manda  a llamar actualizar(nombre,clasificacion,descripcion,genero)
         # devuelve true o false
         if valor != True:
@@ -774,20 +774,21 @@ class Juego(QMainWindow):
             datoB=self.clase.metodo_buscar(clave) """
             print(type(clave))
             datosB = self.principal.consultaDatos('juego', clave, 'nombre', self.cursor)
-
+            print(datosB)
             # datosB = [('Minecraft', 'dat1', 'dat2', 'dat3'), ('Minecraft2', 'dat1', 'dat2', 'dat3')]
             ############################
             i = len(datosB)
             if i == 0:
                 self.error(2)
             else:
-                self.ui.tableWidget.setRowCount(i)
+                self.ui.tableWidget.setRowCount(1)
                 tablerow = 0
                 for row in datosB:
-                    self.ui.tableWidget.setItem(tablerow, 0, QtWidgets.QTableWidgetItem(row[0]))
-                    self.ui.tableWidget.setItem(tablerow, 1, QtWidgets.QTableWidgetItem(row[1]))
-                    self.ui.tableWidget.setItem(tablerow, 2, QtWidgets.QTableWidgetItem(row[2]))
-                    self.ui.tableWidget.setItem(tablerow, 3, QtWidgets.QTableWidgetItem(row[3]))
+                    print(row)
+                    self.ui.tableWidget.setItem(0, tablerow, QtWidgets.QTableWidgetItem(row))
+                    #self.ui.tableWidget.setItem(tablerow, 1, QtWidgets.QTableWidgetItem(row))
+                    #self.ui.tableWidget.setItem(tablerow, 2, QtWidgets.QTableWidgetItem(row))
+                    #self.ui.tableWidget.setItem(tablerow, 3, QtWidgets.QTableWidgetItem(row))
                     tablerow += 1
                 self.ui.lcod.setText('')
 

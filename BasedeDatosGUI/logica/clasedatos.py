@@ -43,6 +43,7 @@ class BaseDatos():
                 cursor.execute(vista)
                 cursor.execute(sql)
                 datos = cursor.fetchall()
+                return datos
 
             else:
                 sql = "SELECT * FROM " + 'consulta' + " WHERE " + condicion + " = '" + claveDatoBusc + "'"
@@ -65,7 +66,7 @@ class BaseDatos():
             cursor.execute(borrado)
             print("retornado")
             datos = datos[0]
-            print(datos)
+            #print(datos)
             return datos
         except:
             print("La consulta no pudo realizarse")

@@ -325,10 +325,11 @@ class Plataforma(QMainWindow):
             else:
                 self.ui.resultado.setRowCount(i)
                 tablerow = 0
+                print(datosB)
                 for row in datosB:
-                    self.ui.resultado.setItem(tablerow, 0, QtWidgets.QTableWidgetItem(row[0]))
-                    self.ui.resultado.setItem(tablerow, 1, QtWidgets.QTableWidgetItem(row[1]))
-                    self.ui.resultado.setItem(tablerow, 2, QtWidgets.QTableWidgetItem(row[2]))
+                    self.ui.resultado.setItem(tablerow, 0, QtWidgets.QTableWidgetItem(row))
+                    self.ui.resultado.setItem(tablerow, 1, QtWidgets.QTableWidgetItem(row))
+                    self.ui.resultado.setItem(tablerow, 2, QtWidgets.QTableWidgetItem(row))
                     tablerow += 1
                 self.ui.codigo.setText('')
         else:
@@ -346,12 +347,11 @@ class Plataforma(QMainWindow):
                     self.error(2)
                     self.ui.resultado.setRowCount(0)
                 else:
-                    self.ui.resultado.setRowCount(i)
+                    self.ui.resultado.setRowCount(1)
                     tablerow = 0
+                    print(datosB)
                     for row in datosB:
-                        self.ui.resultado.setItem(tablerow, 0, QtWidgets.QTableWidgetItem(row[0]))
-                        self.ui.resultado.setItem(tablerow, 1, QtWidgets.QTableWidgetItem(row[1]))
-                        self.ui.resultado.setItem(tablerow, 2, QtWidgets.QTableWidgetItem(row[2]))
+                        self.ui.resultado.setItem(0, tablerow, QtWidgets.QTableWidgetItem(row))
                         tablerow += 1
                     self.ui.codigo.setText('')
 
@@ -693,21 +693,19 @@ class Juego(QMainWindow):
             datoB=self.clase.metodo_buscar(clave) """
             print(type(clave))
             datosB = self.principal.consultaDatos('juego', clave, 'nombre', self.cursor)
-            print(datosB)
+            #print(datosB)
             # datosB = [('Minecraft', 'dat1', 'dat2', 'dat3'), ('Minecraft2', 'dat1', 'dat2', 'dat3')]
             ############################
             i = len(datosB)
             if i == 0:
                 self.error(2)
             else:
-                self.ui.tableWidget.setRowCount(1)
+                self.ui.tableWidget.setRowCount(10)
                 tablerow = 0
+                print(datosB)
                 for row in datosB:
                     print(row)
                     self.ui.tableWidget.setItem(0, tablerow, QtWidgets.QTableWidgetItem(row))
-                    #self.ui.tableWidget.setItem(tablerow, 1, QtWidgets.QTableWidgetItem(row))
-                    #self.ui.tableWidget.setItem(tablerow, 2, QtWidgets.QTableWidgetItem(row))
-                    #self.ui.tableWidget.setItem(tablerow, 3, QtWidgets.QTableWidgetItem(row))
                     tablerow += 1
                 self.ui.lcod.setText('')
 

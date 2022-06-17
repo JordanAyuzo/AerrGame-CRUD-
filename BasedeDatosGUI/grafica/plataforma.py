@@ -218,7 +218,7 @@ class Ui_plataforma(object):
 "")
         self.logo_3.setObjectName("logo_3")
         self.codigo_2 = QtWidgets.QLineEdit(self.actualizar)
-        self.codigo_2.setGeometry(QtCore.QRect(260, 90, 201, 31))
+        self.codigo_2.setGeometry(QtCore.QRect(220, 110, 201, 31))
         self.codigo_2.setAutoFillBackground(False)
         self.codigo_2.setStyleSheet("background-color: rgb(255, 255, 255);\n"
 "border-radius: 10px;\n"
@@ -227,7 +227,7 @@ class Ui_plataforma(object):
         self.codigo_2.setText("")
         self.codigo_2.setObjectName("codigo_2")
         self.nom_5 = QtWidgets.QLabel(self.actualizar)
-        self.nom_5.setGeometry(QtCore.QRect(60, 90, 201, 31))
+        self.nom_5.setGeometry(QtCore.QRect(20, 110, 201, 31))
         self.nom_5.setStyleSheet("border:none;\n"
 "background-color: rgba(0, 0, 0,0%);")
         self.nom_5.setObjectName("nom_5")
@@ -266,15 +266,6 @@ class Ui_plataforma(object):
 "background-color: rgba(0, 0, 0,0%);\n"
 "")
         self.model_3.setObjectName("model_3")
-        self.fecha_3 = QtWidgets.QDateEdit(self.actualizar)
-        self.fecha_3.setGeometry(QtCore.QRect(190, 250, 241, 31))
-        self.fecha_3.setStyleSheet("background-color: rgb(255, 255, 255);\n"
-"color:rgb(0, 0, 0);\n"
-"border-radius: 5px;\n"
-"border: 1px solid #00007f;")
-        self.fecha_3.setCalendarPopup(True)
-        self.fecha_3.setDate(QtCore.QDate(1900, 1, 1))
-        self.fecha_3.setObjectName("fecha_3")
         self.progreso2 = QtWidgets.QProgressBar(self.actualizar)
         self.progreso2.setGeometry(QtCore.QRect(80, 410, 371, 23))
         self.progreso2.setAutoFillBackground(False)
@@ -283,7 +274,7 @@ class Ui_plataforma(object):
         self.progreso2.setInvertedAppearance(False)
         self.progreso2.setObjectName("progreso2")
         self.aceptar_3 = QtWidgets.QPushButton(self.actualizar)
-        self.aceptar_3.setGeometry(QtCore.QRect(210, 340, 61, 61))
+        self.aceptar_3.setGeometry(QtCore.QRect(430, 100, 61, 61))
         self.aceptar_3.setStyleSheet("image: url(:/recurso/img/elegir.png);\n"
 "background-color: rgba(0, 0, 0,0%);\n"
 "border:none;")
@@ -308,6 +299,24 @@ class Ui_plataforma(object):
         self.indicaciones_2.setStyleSheet("border:none;\n"
 "background-color: rgba(0, 0, 0,0%);")
         self.indicaciones_2.setObjectName("indicaciones_2")
+        self.fecha_3 = QtWidgets.QLineEdit(self.actualizar)
+        self.fecha_3.setGeometry(QtCore.QRect(190, 250, 241, 31))
+        self.fecha_3.setAutoFillBackground(False)
+        self.fecha_3.setStyleSheet("background-color: rgb(255, 255, 255);\n"
+"border-radius: 10px;\n"
+"border: 1px solid #00007f;\n"
+"color:#000000;")
+        self.fecha_3.setText("")
+        self.fecha_3.setPlaceholderText("")
+        self.fecha_3.setObjectName("fecha_3")
+        self.actualizacion = QtWidgets.QPushButton(self.actualizar)
+        self.actualizacion.setGeometry(QtCore.QRect(230, 350, 61, 61))
+        self.actualizacion.setStyleSheet("image: url(:/recurso/img/actualizar.png);\n"
+"background-color: rgba(0, 0, 0,0%);\n"
+"border:none;")
+        self.actualizacion.setText("")
+        self.actualizacion.setAutoDefault(True)
+        self.actualizacion.setObjectName("actualizacion")
         self.tabWidget.addTab(self.actualizar, "")
         self.tab_4 = QtWidgets.QWidget()
         self.tab_4.setObjectName("tab_4")
@@ -394,8 +403,7 @@ class Ui_plataforma(object):
         plataforma.setTabOrder(self.busca, self.atras3)
         plataforma.setTabOrder(self.atras3, self.codigo_2)
         plataforma.setTabOrder(self.codigo_2, self.nombre_3)
-        plataforma.setTabOrder(self.nombre_3, self.fecha_3)
-        plataforma.setTabOrder(self.fecha_3, self.modelo_3)
+        plataforma.setTabOrder(self.nombre_3, self.modelo_3)
         plataforma.setTabOrder(self.modelo_3, self.aceptar_3)
         plataforma.setTabOrder(self.aceptar_3, self.atras4)
         plataforma.setTabOrder(self.atras4, self.codigo_3)
@@ -462,10 +470,13 @@ class Ui_plataforma(object):
 "</style></head><body style=\" font-family:\'Noto Sans\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#474747;\">Ej:Nintendo Switch</span></p></body></html>"))
         self.model_3.setText(_translate("plataforma", "<html><head/><body><p align=\"right\"><span style=\" font-size:11pt; font-weight:600;\">Modelo: </span></p></body></html>"))
-        self.fecha_3.setToolTip(_translate("plataforma", "<html><head/><body><p><span style=\" color:#474747;\">Ej:02/09/2017</span></p></body></html>"))
-        self.fecha_3.setDisplayFormat(_translate("plataforma", "dd/MM/yyyy"))
         self.cargando2.setText(_translate("plataforma", "<html><head/><body><p align=\"center\"><br/></p></body></html>"))
         self.indicaciones_2.setText(_translate("plataforma", "<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">Ingrese Los Datos De La Plataforma. </span></p></body></html>"))
+        self.fecha_3.setToolTip(_translate("plataforma", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Noto Sans\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#474747;\">Ej:Nintendo Switch</span></p></body></html>"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.actualizar), _translate("plataforma", "Actualizar"))
         self.logo_4.setText(_translate("plataforma", "<html><head/><body><p align=\"center\"><img src=\":/recurso/img/01title.png\"/></p></body></html>"))
         self.codigo_3.setToolTip(_translate("plataforma", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"

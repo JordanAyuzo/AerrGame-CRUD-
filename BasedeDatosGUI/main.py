@@ -91,7 +91,8 @@ class Version(QMainWindow):
         self.ui.atras3.clicked.connect(self.retroceder)
         self.ui.atras4.clicked.connect(self.retroceder)
         self.ui.aceptar1.clicked.connect(self.crear)
-        self.ui.aceptar2.clicked.connect(self.actualizar)
+        #self.ui.aceptar_3.clicked.connect(self.carga_modificar)
+        #self.ui.actualizacion.clicked.connect(self.modificar)
         self.ui.aceptar3.clicked.connect(self.borrar)
         self.ui.busca.clicked.connect(self.buscar)
         self.ui.limpiar.clicked.connect(self.limpio)
@@ -185,85 +186,10 @@ class Version(QMainWindow):
                         tablerow += 1
                     self.ui.codigo1.setText('')
 
-    def actualizar(self):
-        cod = self.ui.codigo2.text()
-        codigo = str(cod)
-        jue = self.ui.combojuego2.currentText()
-        juego = str(jue)
-        plata = self.ui.comboplataforma2.currentText()
-        plataforma = str(plata)
-        nom = self.ui.textnombre2.text()
-        nombre = str(cod)
-        fech = self.ui.textfecha2.text()
-        fecha = str(fech)
-        req = self.ui.textrequisitos2.text()
-        requisitos = str(req)
-        if codigo == "":
-            self.error(1)
-            self.ui.codigo2.setText('')
-            self.ui.textnombre2.setText('')
-            self.ui.textrequisitos2.setText('')
-            self.ui.combojuego2.setCurrentIndex(0)
-            self.ui.comboplataforma2.setCurrentIndex(0)
-        else:
-            ######
-            # aqui hace una consulta y trae tupla del elemento a actualizar
-            # parametro (codigo) regresa tupla
-            datoB = [('dat1', 'dat2', 'dat3', 'dato4', 'dato5')]  # TODO:se puede borrar despues de hacer la conexion
-            # el orden que lleva es (juego,plataforma,version,fecha, requsito) si es otra forma avisar
-            if datoB == []:
-                self.ui.cargando2.setText('Cargando...')
-                for i in range(0, 50):
-                    time.sleep(0.01)
-                    self.ui.progreso2.setValue(i)
-                self.ui.cargando2.setText('')
-                self.error(2)
-                time.sleep(0.3)
-                self.ui.progreso2.setValue(0)
-                self.ui.codigo2.setText('')
-                self.ui.textnombre2.setText('')
-                self.ui.textrequisitos2.setText('')
-                self.ui.combojuego2.setCurrentIndex(0)
-                self.ui.comboplataforma2.setCurrentIndex(0)
-            else:
-                if juego == '':
-                    juego = datoB[0][0]
-                if plataforma == '':
-                    plataforma = datoB[0][1]
-                if nombre == '':
-                    nombre = datoB[0][2]
-                if fecha == '01/01/1900':
-                    fecha = datoB[0][3]
-                if requisitos == '':
-                    requisitos = datoB[0][4]
-                ########
-                # TODO: se lleva los datos de la siguiente manera (nombre,fecha,requisitos,juego,plataforma)
-                valor = True  # se puede borrar cuando haga la conexion
-                #######
-                if valor != True:
-                    self.ui.cargando2.setText('Cargando...')
-                    for i in range(0, 50):
-                        time.sleep(0.01)
-                        self.ui.progreso2.setValue(i)
-                    self.ui.cargando2.setText('')
-                    self.error(3)
-                    time.sleep(0.3)
-                    self.ui.progreso2.setValue(0)
-                else:
-                    self.ui.cargando2.setText('Cargando...')
-                    for i in range(0, 101):
-                        time.sleep(0.01)
-                        self.ui.progreso2.setValue(i)
-                    self.ui.cargando2.setText('Operación Exitosa')
-                    time.sleep(0.3)
-                    self.ui.progreso2.setValue(0)
-                self.ui.codigo2.setText('')
-                self.ui.progreso2.setValue(0)
-                self.ui.textnombre2.setText('')
-                self.ui.textrequisitos2.setText('')
-                self.ui.combojuego2.setCurrentIndex(0)
-                self.ui.comboplataforma2.setCurrentIndex(0)
+    #####
 
+
+    ####
     def borrar(self):
         cod = self.ui.codigo3.text()
         codigo = str(cod)
@@ -341,7 +267,8 @@ class Plataforma(QMainWindow):
         self.ui.atras4.clicked.connect(self.retroceder)
         self.ui.busca.clicked.connect(self.buscar)
         self.ui.limpiar.clicked.connect(self.limpio)
-        self.ui.aceptar_3.clicked.connect(self.actualizar)
+        self.ui.aceptar_3.clicked.connect(self.carga_modificar)
+        self.ui.actualizacion.clicked.connect(self.modificar)
         self.ui.aceptar_4.clicked.connect(self.borrar)
 
         self.principal = PlataformaBase()
@@ -429,71 +356,63 @@ class Plataforma(QMainWindow):
                     self.ui.codigo.setText('')
 
     ####
-    def actualizar(self):
-        cod = self.ui.codigo_2.text()
-        codigo = str(cod)
+    def modificar(self):
         nom = self.ui.nombre_3.text()
         nombre = str(nom)
         fech = self.ui.fecha_3.text()
         fecha = str(fech)
         model = self.ui.modelo_3.text()
         modelo = str(model)
-        if codigo == "":
+        valor = True#TODO: manda  a llamar actualizar(nombre,fecha,modelo)
+                    #devuelve true o false
+        if valor != True:
+            self.ui.cargando2.setText('Cargando...')
+            for i in range(0, 50):
+                time.sleep(0.02)
+                self.ui.progreso2.setValue(i)
+            self.ui.cargando2.setText('')
+            self.error(3)
+            time.sleep(0.2)
+            self.ui.progreso2.setValue(0)
+        else:
+            self.ui.cargando2.setText('Cargando...')
+            for i in range(0, 101):
+                time.sleep(0.01)
+                self.ui.progreso2.setValue(i)
+            self.ui.cargando2.setText('¡Operación Exitosa!')
+            time.sleep(0.2)
+            self.ui.progreso2.setValue(0)
+            self.ui.codigo_2.setText('')
+            self.ui.nombre_3.setText('')
+            self.ui.fecha_3.setText('')
+            self.ui.modelo_3.setText('')
+    def carga_modificar(self):
+        cod = self.ui.codigo_2.text()
+        clave = str(cod)
+        if clave =='':
             self.error(1)
             self.ui.nombre_3.setText('')
+            self.ui.fecha_3.setText('')
             self.ui.modelo_3.setText('')
+            ####
         else:
-            ######
-            # aqui hace una consulta y trae tupla del elemento a actualizar
-            # parametro (codigo) regresa tupla
-            datoB = self.principal.consultaDatos('plataforma', codigo,
-                                                 self.cursor)  # se puede borrar despues de hacer la conexion
-            ######
+            datoB = [ 'nombre','f/ec/ha/' ,'modelo']##self.principal.consultaDatos('juego', codigo, self.cursor)
+            # SE REGRESA LOS DATOS DE LA SIGUIENTE MANERA: nombre,fecha, modelo
+            ###
             if datoB == []:
-                self.ui.cargando2.setText('Cargando...')
-                for i in range(0, 50):
-                    time.sleep(0.01)
-                    self.ui.progreso2.setValue(i)
-                self.ui.cargando2.setText('')
                 self.error(2)
-                time.sleep(0.3)
-                self.ui.progreso2.setValue(0)
                 self.ui.codigo_2.setText('')
                 self.ui.nombre_3.setText('')
+                self.ui.fecha_3.setText('')
                 self.ui.modelo_3.setText('')
             else:
-                if nombre == '':
-                    nombre = datoB[0][0]
-                if fecha == '01/01/1900':
-                    fecha = datoB[0][1]
-                if modelo == '':
-                    modelo = datoB[0][2]
-                ########
+                #caraga los datos en los textos
+                self.ui.nombre_3.setText(datoB[0])
+                self.ui.fecha_3.setText(datoB[1])
+                self.ui.modelo_3.setText(datoB[2])
 
-                print(nombre + fecha + modelo)
-                # se llama a la funcion actualizar llevandose (nombre,fecha,modelo) y regresa un true o false
-                valor = True  # se puede borrar cuando haga la conexion
-                #######
-                if valor != True:
-                    self.ui.cargando2.setText('Cargando...')
-                    for i in range(0, 50):
-                        time.sleep(0.01)
-                        self.ui.progreso2.setValue(i)
-                    self.ui.cargando2.setText('')
-                    self.error(3)
-                    time.sleep(0.3)
-                    self.ui.progreso2.setValue(0)
-                else:
-                    self.ui.cargando2.setText('Cargando...')
-                    for i in range(0, 101):
-                        time.sleep(0.01)
-                        self.ui.progreso2.setValue(i)
-                    self.ui.cargando2.setText('Operación Exitosa')
-                    time.sleep(0.3)
-                    self.ui.progreso2.setValue(0)
-                self.ui.codigo_2.setText('')
-                self.ui.nombre_3.setText('')
-                self.ui.modelo_3.setText('')
+
+
 
     def borrar(self):
         cod = self.ui.codigo_3.text()

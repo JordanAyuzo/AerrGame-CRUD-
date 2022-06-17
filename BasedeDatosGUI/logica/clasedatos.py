@@ -64,6 +64,8 @@ class BaseDatos():
                 datos[0] = temp
             cursor.execute(borrado)
             print("retornado")
+            datos = datos[0]
+            print(datos)
             return datos
         except:
             print("La consulta no pudo realizarse")

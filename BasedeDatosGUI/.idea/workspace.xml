@@ -33,7 +33,7 @@
     "WebServerToolWindowFactoryState": "false",
     "database.data.extractors.current.export.id": "Comma-separated (CSV)_id",
     "last_opened_file_path": "/home/regrob261/Documentos/UTM4_SEM/BasesDatos/cprojectdb/Base_De_Datos/BasedeDatosGUI",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+    "settings.editor.selected.configurable": "terminal"
   },
   "keyToStringList": {
     "DatabaseDriversLRU": [
@@ -95,7 +95,7 @@
       <workItem from="1654783666391" duration="3507000" />
       <workItem from="1654795015227" duration="21000" />
       <workItem from="1655052441922" duration="4440000" />
-      <workItem from="1655500397304" duration="247000" />
+      <workItem from="1655500397304" duration="1876000" />
     </task>
     <servers />
   </component>
@@ -103,6 +103,6 @@
     <option name="version" value="3" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/BasedeDatosGUI$main.coverage" NAME="main Coverage Results" MODIFIED="1655063816498" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/BasedeDatosGUI$main.coverage" NAME="main Coverage Results" MODIFIED="1655502260047" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

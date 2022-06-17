@@ -1,5 +1,5 @@
 ##
-#rama nueva
+# rama nueva
 ##
 import sys
 import time
@@ -19,6 +19,8 @@ from grafica.error401 import *
 from grafica.error402 import *
 from grafica.error403 import *
 from PyQt5.QtWidgets import *
+
+
 class MiApp(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -29,19 +31,24 @@ class MiApp(QMainWindow):
         self.ui.bjuego.clicked.connect(self.abrirJuego)
         self.ui.bplatform.clicked.connect(self.abrirPlataforma)
         self.ui.bversion.clicked.connect(self.abrirVersion)
+
     def abrirVersion(self):
         self.hide()
         self.ventana = Version()
         self.ventana.show()
+
     def abrirJuego(self):
         self.hide()
         self.ventana = Juego()
         self.ventana.show()
+
     def abrirPlataforma(self):
         self.hide()
         self.ventana2 = Plataforma()
         self.ventana2.show()
- ####
+
+
+####
 class Version(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -51,7 +58,7 @@ class Version(QMainWindow):
         self.principalJue = JuegoBase()
         self.conJ = self.principalJue.connectDB()
         self.conJ.autocommit = True
-        self.cursorJ= self.conJ.cursor()
+        self.cursorJ = self.conJ.cursor()
 
         self.principalPla = PlataformaBase()
         self.conP = self.principalPla.connectDB()
@@ -63,22 +70,22 @@ class Version(QMainWindow):
         self.conV.autocommit = True
         self.cursorV = self.conV.cursor()
 
-        tuplasJuegos= self.principalJue.consultaDatos('juego', '*', 'nombre', self.cursorJ)
-                           #     el primer atributo será el "nombre"
-        j=0
+        tuplasJuegos = self.principalJue.consultaDatos('juego', '*', 'nombre', self.cursorJ)
+        #     el primer atributo será el "nombre"
+        j = 0
         for i in tuplasJuegos:
-            juego1=tuplasJuegos[j][0]
+            juego1 = tuplasJuegos[j][0]
             self.ui.combojuego.addItem(juego1)
             self.ui.combojuego2.addItem(juego1)
-            j+=1
-        tuplasPlataforma=self.principalPla.consultaTodos('plataforma', '*', self.cursorP)
-                           #     el primer atributo será el "nombre"
-        k=0
+            j += 1
+        tuplasPlataforma = self.principalPla.consultaTodos('plataforma', '*', self.cursorP)
+        #     el primer atributo será el "nombre"
+        k = 0
         for i in tuplasPlataforma:
-            plataforma1=tuplasPlataforma[k][0]
+            plataforma1 = tuplasPlataforma[k][0]
             self.ui.comboplataforma.addItem(plataforma1)
             self.ui.comboplataforma2.addItem(plataforma1)
-            k+=1
+            k += 1
         self.ui.atras1.clicked.connect(self.retroceder)
         self.ui.atras2.clicked.connect(self.retroceder)
         self.ui.atras3.clicked.connect(self.retroceder)
@@ -88,21 +95,23 @@ class Version(QMainWindow):
         self.ui.aceptar3.clicked.connect(self.borrar)
         self.ui.busca.clicked.connect(self.buscar)
         self.ui.limpiar.clicked.connect(self.limpio)
+
     def crear(self):
-        jue=self.ui.combojuego.currentText()
-        juego=str(jue)
-        plata=self.ui.comboplataforma.currentText()
-        plataforma=str(plata)
+        jue = self.ui.combojuego.currentText()
+        juego = str(jue)
+        plata = self.ui.comboplataforma.currentText()
+        plataforma = str(plata)
         nom = self.ui.textnombre.text()
         nombre = str(nom)
         fech = self.ui.textfecha.text()
         fecha = str(fech)
         req = self.ui.textrequisitos.text()
         requisitos = str(req)
-        if plataforma == '' or juego == '' or nombre == '' or requisitos=='':
-                        self.error(1)
+        if plataforma == '' or juego == '' or nombre == '' or requisitos == '':
+            self.error(1)
         else:
-            valor= self.principal.agregar(nombre, requisitos, fecha, plataforma, juego, self.cursorV)#funcion(nombre,fecha,requisitos,juego,plataforma) nombre es nombre de la Version
+            valor = self.principal.agregar(nombre, requisitos, fecha, plataforma, juego,
+                                           self.cursorV)  # funcion(nombre,fecha,requisitos,juego,plataforma) nombre es nombre de la Version
             if valor != True:
                 self.ui.cargando1.setText('Cargando...')
                 for i in range(0, 50):
@@ -127,12 +136,13 @@ class Version(QMainWindow):
                 self.ui.textrequisitos.setText('')
                 self.ui.combojuego.setCurrentIndex(0)
                 self.ui.comboplataforma.setCurrentIndex(0)
+
     def buscar(self):
         cod = self.ui.codigo1.text()
         codigo = str(cod)
         if codigo == '*':
-            datosB=self.principal.consultaTodos('version', codigo, self.cursorV)
-                    #si llega de otra forma avisar
+            datosB = self.principal.consultaTodos('version', codigo, self.cursorV)
+            # si llega de otra forma avisar
             i = len(datosB)
             if i == 0:
                 self.error(2)
@@ -155,8 +165,8 @@ class Version(QMainWindow):
             else:
                 ##########################
                 print(codigo)
-                datosB = self.principal.consultaDatos('version', codigo,'id', self.cursorV)
-                #parametro en : codigo
+                datosB = self.principal.consultaDatos('version', codigo, 'id', self.cursorV)
+                # parametro en : codigo
                 print(datosB)
                 ############################
                 i = len(datosB)
@@ -174,20 +184,21 @@ class Version(QMainWindow):
                         self.ui.resultado.setItem(tablerow, 4, QtWidgets.QTableWidgetItem(row[4]))
                         tablerow += 1
                     self.ui.codigo1.setText('')
+
     def actualizar(self):
         cod = self.ui.codigo2.text()
         codigo = str(cod)
-        jue=self.ui.combojuego2.currentText()
-        juego=str(jue)
-        plata=self.ui.comboplataforma2.currentText()
-        plataforma=str(plata)
+        jue = self.ui.combojuego2.currentText()
+        juego = str(jue)
+        plata = self.ui.comboplataforma2.currentText()
+        plataforma = str(plata)
         nom = self.ui.textnombre2.text()
         nombre = str(cod)
         fech = self.ui.textfecha2.text()
         fecha = str(fech)
         req = self.ui.textrequisitos2.text()
         requisitos = str(req)
-        if codigo =="":
+        if codigo == "":
             self.error(1)
             self.ui.codigo2.setText('')
             self.ui.textnombre2.setText('')
@@ -196,11 +207,11 @@ class Version(QMainWindow):
             self.ui.comboplataforma2.setCurrentIndex(0)
         else:
             ######
-            #aqui hace una consulta y trae tupla del elemento a actualizar
-            #parametro (codigo) regresa tupla
-            datoB=[('dat1','dat2','dat3','dato4','dato5')]#TODO:se puede borrar despues de hacer la conexion
-                                                            #el orden que lleva es (juego,plataforma,version,fecha, requsito) si es otra forma avisar
-            if datoB==[]:
+            # aqui hace una consulta y trae tupla del elemento a actualizar
+            # parametro (codigo) regresa tupla
+            datoB = [('dat1', 'dat2', 'dat3', 'dato4', 'dato5')]  # TODO:se puede borrar despues de hacer la conexion
+            # el orden que lleva es (juego,plataforma,version,fecha, requsito) si es otra forma avisar
+            if datoB == []:
                 self.ui.cargando2.setText('Cargando...')
                 for i in range(0, 50):
                     time.sleep(0.01)
@@ -215,21 +226,21 @@ class Version(QMainWindow):
                 self.ui.combojuego2.setCurrentIndex(0)
                 self.ui.comboplataforma2.setCurrentIndex(0)
             else:
-                if juego == '' :
+                if juego == '':
                     juego = datoB[0][0]
                 if plataforma == '':
-                    plataforma =datoB[0][1]
+                    plataforma = datoB[0][1]
                 if nombre == '':
                     nombre = datoB[0][2]
                 if fecha == '01/01/1900':
                     fecha = datoB[0][3]
                 if requisitos == '':
-                    requisitos=datoB[0][4]
+                    requisitos = datoB[0][4]
                 ########
-                #TODO: se lleva los datos de la siguiente manera (nombre,fecha,requisitos,juego,plataforma)
-                valor= True#se puede borrar cuando haga la conexion
+                # TODO: se lleva los datos de la siguiente manera (nombre,fecha,requisitos,juego,plataforma)
+                valor = True  # se puede borrar cuando haga la conexion
                 #######
-                if valor !=True:
+                if valor != True:
                     self.ui.cargando2.setText('Cargando...')
                     for i in range(0, 50):
                         time.sleep(0.01)
@@ -255,13 +266,14 @@ class Version(QMainWindow):
 
     def borrar(self):
         cod = self.ui.codigo3.text()
-        codigo=str(cod)
-        if codigo=='':
+        codigo = str(cod)
+        if codigo == '':
             self.error(1)
         else:
             #### el dato se va en el parametro (codigo)
-            valor=self.principal.consultaDatos('version', codigo, 'id', self.cursorV) #puede borrar el true cuando se haga la conexion de BD
-            if valor !=True:
+            valor = self.principal.consultaDatos('version', codigo, 'id',
+                                                 self.cursorV)  # puede borrar el true cuando se haga la conexion de BD
+            if valor != True:
                 self.ui.cargando3.setText('Cargando...')
                 for i in range(0, 50):
                     time.sleep(0.01)
@@ -272,9 +284,10 @@ class Version(QMainWindow):
                 self.ui.progreso3.setValue(0)
                 self.ui.codigo3.setText('')
             else:
-                #el dato se va en el parametro (codigo)
-                valor2=self.principal.borrarColumna(codigo, 'version', self.cursorV) #puede borrar el true cuando se haga la conexion de BD
-                if valor2 !=True:
+                # el dato se va en el parametro (codigo)
+                valor2 = self.principal.borrarColumna(codigo, 'version',
+                                                      self.cursorV)  # puede borrar el true cuando se haga la conexion de BD
+                if valor2 != True:
                     self.ui.cargando3.setText('Cargando...')
                     for i in range(0, 50):
                         time.sleep(0.01)
@@ -293,23 +306,28 @@ class Version(QMainWindow):
                     time.sleep(0.3)
                     self.ui.progreso3.setValue(0)
                     self.ui.codigo3.setText('')
+
     def limpio(self):
         self.ui.codigo1.setText('')
         self.ui.resultado.setRowCount(0)
-    def error(self,x):
-        if x==1:
+
+    def error(self, x):
+        if x == 1:
             self.ventana = error401()
             self.ventana.show()
-        elif x==2:
+        elif x == 2:
             self.ventana = error402()
             self.ventana.show()
-        elif x==3:
+        elif x == 3:
             self.ventana = error403()
             self.ventana.show()
+
     def retroceder(self):
         self.hide()
         self.ventana = MiApp()
         self.ventana.show()
+
+
 ####
 class Plataforma(QMainWindow):
     def __init__(self):
@@ -341,11 +359,11 @@ class Plataforma(QMainWindow):
         if nombre == '' or fecha == '' or modelo == '':
             self.error(1)
         else:
-            #SE INSERTA LA TUPLA
-            #valor=llamada(nombre,fecha,modelo)
+            # SE INSERTA LA TUPLA
+            # valor=llamada(nombre,fecha,modelo)
             valor = self.principal.agregar(nombre, fecha, modelo, self.cursor)
             ######
-            if valor !=True:
+            if valor != True:
                 self.ui.cargando.setText('Cargando...')
                 for i in range(0, 50):
                     time.sleep(0.01)
@@ -365,12 +383,13 @@ class Plataforma(QMainWindow):
                 self.ui.progreso1.setValue(0)
                 self.ui.nombre.setText('')
                 self.ui.modelo.setText('')
+
     def buscar(self):
         cod = self.ui.codigo.text()
         codigo = str(cod)
         if codigo == '*':
             ############################
-            datosB = self.principal.consultaTodos('plataforma', codigo, self.cursor)#llamada de base de datos
+            datosB = self.principal.consultaTodos('plataforma', codigo, self.cursor)  # llamada de base de datos
             ############################
             i = len(datosB)
             if i == 0:
@@ -391,8 +410,9 @@ class Plataforma(QMainWindow):
                 self.ui.resultado.setRowCount(0)
             else:
                 ##########################
-                datosB = self.principal.consultaDatos('plataforma', codigo,'nombre', self.cursor) #manda a llamar a la funcion buscar
-                #parametro en : codigo
+                datosB = self.principal.consultaDatos('plataforma', codigo, 'nombre',
+                                                      self.cursor)  # manda a llamar a la funcion buscar
+                # parametro en : codigo
                 ############################
                 i = len(datosB)
                 if i == 0:
@@ -407,6 +427,7 @@ class Plataforma(QMainWindow):
                         self.ui.resultado.setItem(tablerow, 2, QtWidgets.QTableWidgetItem(row[2]))
                         tablerow += 1
                     self.ui.codigo.setText('')
+
     ####
     def actualizar(self):
         cod = self.ui.codigo_2.text()
@@ -417,17 +438,18 @@ class Plataforma(QMainWindow):
         fecha = str(fech)
         model = self.ui.modelo_3.text()
         modelo = str(model)
-        if codigo =="":
+        if codigo == "":
             self.error(1)
             self.ui.nombre_3.setText('')
             self.ui.modelo_3.setText('')
         else:
             ######
-            #aqui hace una consulta y trae tupla del elemento a actualizar
-            #parametro (codigo) regresa tupla
-            datoB=[('dat1','dat2','dat3')]#se puede borrar despues de hacer la conexion
+            # aqui hace una consulta y trae tupla del elemento a actualizar
+            # parametro (codigo) regresa tupla
+            datoB = self.principal.consultaDatos('plataforma', codigo,
+                                                 self.cursor)  # se puede borrar despues de hacer la conexion
             ######
-            if datoB==[]:
+            if datoB == []:
                 self.ui.cargando2.setText('Cargando...')
                 for i in range(0, 50):
                     time.sleep(0.01)
@@ -440,19 +462,19 @@ class Plataforma(QMainWindow):
                 self.ui.nombre_3.setText('')
                 self.ui.modelo_3.setText('')
             else:
-                if nombre== '':
+                if nombre == '':
                     nombre = datoB[0][0]
                 if fecha == '01/01/1900':
                     fecha = datoB[0][1]
-                if modelo== '':
-                    modelo =datoB[0][2]
+                if modelo == '':
+                    modelo = datoB[0][2]
                 ########
 
-                print(nombre + fecha+modelo)
-                #se llama a la funcion actualizar llevandose (nombre,fecha,modelo) y regresa un true o false
-                valor= True#se puede borrar cuando haga la conexion
+                print(nombre + fecha + modelo)
+                # se llama a la funcion actualizar llevandose (nombre,fecha,modelo) y regresa un true o false
+                valor = True  # se puede borrar cuando haga la conexion
                 #######
-                if valor !=True:
+                if valor != True:
                     self.ui.cargando2.setText('Cargando...')
                     for i in range(0, 50):
                         time.sleep(0.01)
@@ -472,16 +494,18 @@ class Plataforma(QMainWindow):
                 self.ui.codigo_2.setText('')
                 self.ui.nombre_3.setText('')
                 self.ui.modelo_3.setText('')
+
     def borrar(self):
         cod = self.ui.codigo_3.text()
-        codigo=str(cod)
-        if codigo=='':
+        codigo = str(cod)
+        if codigo == '':
             self.error(1)
         else:
-            #hace consulta si existe el dato regresa true o false
-            #el dato se va en el parametro (codigo)
+            # hace consulta si existe el dato regresa true o false
+            # el dato se va en el parametro (codigo)
 
-            valor = self.principal.consultaDatos('plataforma', codigo, self.cursor) #puede borrar el true cuando se haga la conexion de BD
+            valor = self.principal.consultaDatos('plataforma', codigo,
+                                                 self.cursor)  # puede borrar el true cuando se haga la conexion de BD
             if valor == []:
                 self.ui.cargando3.setText('Cargando...')
                 for i in range(0, 50):
@@ -493,11 +517,12 @@ class Plataforma(QMainWindow):
                 self.ui.progreso3.setValue(0)
                 self.ui.codigo_3.setText('')
             else:
-                #hace llamada de la funcion borrar elemento
-                #el dato se va en el parametro (codigo)
+                # hace llamada de la funcion borrar elemento
+                # el dato se va en el parametro (codigo)
 
-                valor2= self.principal.borrarColumna(codigo, 'plataforma', self.cursor) #puede borrar el true cuando se haga la conexion de BD
-                if valor2 !=True:
+                valor2 = self.principal.borrarColumna(codigo, 'plataforma',
+                                                      self.cursor)  # puede borrar el true cuando se haga la conexion de BD
+                if valor2 != True:
                     self.ui.cargando3.setText('Cargando...')
                     for i in range(0, 50):
                         time.sleep(0.01)
@@ -520,16 +545,18 @@ class Plataforma(QMainWindow):
     def limpio(self):
         self.ui.codigo.setText('')
         self.ui.resultado.setRowCount(0)
-    def error(self,x):
-        if x==1:
+
+    def error(self, x):
+        if x == 1:
             self.ventana = error401()
             self.ventana.show()
-        elif x==2:
+        elif x == 2:
             self.ventana = error402()
             self.ventana.show()
-        elif x==3:
+        elif x == 3:
             self.ventana = error403()
             self.ventana.show()
+
     def retroceder(self):
         self.hide()
         self.ventana = MiApp()
@@ -554,6 +581,7 @@ class Juego(QMainWindow):
         self.con = self.principal.connectDB()
         self.con.autocommit = True
         self.cursor = self.con.cursor()
+
     def borrar(self):
         clav = self.ui.lcod_0.text()
         clave = str(clav)
@@ -613,10 +641,11 @@ class Juego(QMainWindow):
                     self.ui.cargando_0.setText('¡Operación Exitosa!')
                     time.sleep(0.2)
                     self.ui.progressBar_0.setValue(0)
+
     def carga_modificar(self):
         clav = self.ui.lcod_2.text()
         clave = str(clav)
-        if clave =='':
+        if clave == '':
             self.error(1)
             self.ui.jnombre_2.setText('')
             self.ui.jclasif_2.setText('')
@@ -624,55 +653,67 @@ class Juego(QMainWindow):
             self.ui.jgene_2.setText('')
             ####
         else:
-            datoB = [( 'nombre','clasificacion' ,'descripcion', 'genero')]##self.principal.consultaDatos('juego', clave, self.cursor)
+            datosB = self.principal.consultaDatos('juego', clave, 'nombre', self.cursor)
             # SE REGRESA LOS DATOS DE LA SIGUIENTE MANERA: nombre,clasificacion descripcion genero
             ####
-            if datoB == []:
+            if datosB == []:
                 self.error(2)
                 self.ui.jnombre_2.setText('')
                 self.ui.jclasif_2.setText('')
                 self.ui.jdesc_2.setText('')
                 self.ui.jgene_2.setText('')
             else:
-            #caraga los datos en los textos
-                self.ui.jnombre_2.setText(datoB[0][0])
-                self.ui.jclasif_2.setText(datoB[0][1])
-                self.ui.jdesc_2.setText(datoB[0][2])
-                self.ui.jgene_2.setText(datoB[0][3])
-            #datos Cargados en los textos
+                # caraga los datos en los textos
+                self.ui.jnombre_2.setText(datosB[0][0])
+                self.ui.jclasif_2.setText(datosB[0][1])
+                self.ui.jdesc_2.setText(datosB[0][2])
+                self.ui.jgene_2.setText(datosB[0][3])
+            # datos Cargados en los textos
+
     def modificar(self):
-            nom = self.ui.jnombre_2.text()
-            nombre = str(nom)
-            clas = self.ui.jclasif_2.text()
-            clasificacion = str(clas)
-            desc = self.ui.jdesc_2.text()
-            descripcion = str(desc)
-            gen = self.ui.jgene_2.text()
-            genero = str(gen)
-            valor = True#TODO: manda  a llamar actualizar(nombre,clasificacion,descripcion,genero)
-                    #devuelve true o false
-            if valor != True:
-                self.ui.cargando_2.setText('Cargando...')
-                for i in range(0, 50):
-                    time.sleep(0.02)
+        datosCambiados = []
+
+        nom = self.ui.jnombre_2.text()
+        nombre = str(nom)
+        datosCambiados.append(nombre)
+        clas = self.ui.jclasif_2.text()
+        clasificacion = str(clas)
+        datosCambiados.append(clasificacion)
+
+        desc = self.ui.jdesc_2.text()
+        descripcion = str(desc)
+        datosCambiados.append(descripcion)
+        gen = self.ui.jgene_2.text()
+        genero = str(gen)
+        datosCambiados.append(genero)
+        datosB = self.principal.consultaDatos('juego', nombre, 'nombre', self.cursor)
+
+        valor = self.principal.actualizarDatos(datosCambiados, datosB, self.cursor)  # TODO: manda  a llamar actualizar(nombre,clasificacion,descripcion,genero)
+        # devuelve true o false
+        if valor != True:
+            self.ui.cargando_2.setText('Cargando...')
+            i = 0
+            for i in range(0, 50):
+                time.sleep(0.02)
+            self.ui.progressBar_2.setValue(i)
+            self.ui.cargando_2.setText('')
+            self.error(3)
+            time.sleep(0.2)
+            self.ui.progressBar_2.setValue(0)
+        else:
+            self.ui.cargando_2.setText('Cargando...')
+            for i in range(0, 101):
+                time.sleep(0.01)
                 self.ui.progressBar_2.setValue(i)
-                self.ui.cargando_2.setText('')
-                self.error(3)
-                time.sleep(0.2)
-                self.ui.progressBar_2.setValue(0)
-            else:
-                self.ui.cargando_2.setText('Cargando...')
-                for i in range(0, 101):
-                    time.sleep(0.01)
-                    self.ui.progressBar_2.setValue(i)
-                self.ui.cargando_2.setText('¡Operación Exitosa!')
-                time.sleep(0.2)
-                self.ui.progressBar_2.setValue(0)
-                self.ui.lcod_2.setText('')
-                self.ui.jnombre_2.setText('')
-                self.ui.jclasif_2.setText('')
-                self.ui.jdesc_2.setText('')
-                self.ui.jgene_2.setText('')
+            self.ui.cargando_2.setText('¡Operación Exitosa!')
+            time.sleep(0.2)
+            self.ui.progressBar_2.setValue(0)
+            self.ui.lcod_2.setText('')
+            self.ui.jnombre_2.setText('')
+            self.ui.jclasif_2.setText('')
+            self.ui.jdesc_2.setText('')
+            self.ui.jgene_2.setText('')
+
     def crear(self):
         nom = self.ui.jnombre.text()
         nombre = str(nom)
@@ -715,9 +756,11 @@ class Juego(QMainWindow):
                 self.ui.jclasif.setText('')
                 self.ui.jdesc.setText('')
                 self.ui.jgene.setText('')
+
     def limpio(self):
         self.ui.tableWidget.setRowCount(0)
         self.ui.lcod.setText('')
+
     def buscar(self):
         clav = self.ui.lcod.text()
         clave = str(clav)
@@ -732,7 +775,7 @@ class Juego(QMainWindow):
             print(type(clave))
             datosB = self.principal.consultaDatos('juego', clave, 'nombre', self.cursor)
 
-            #datosB = [('Minecraft', 'dat1', 'dat2', 'dat3'), ('Minecraft2', 'dat1', 'dat2', 'dat3')]
+            # datosB = [('Minecraft', 'dat1', 'dat2', 'dat3'), ('Minecraft2', 'dat1', 'dat2', 'dat3')]
             ############################
             i = len(datosB)
             if i == 0:
@@ -747,6 +790,7 @@ class Juego(QMainWindow):
                     self.ui.tableWidget.setItem(tablerow, 3, QtWidgets.QTableWidgetItem(row[3]))
                     tablerow += 1
                 self.ui.lcod.setText('')
+
     ##NO TOCAR ESTOS ELEMENTOS##
     def retroceder(self):
 

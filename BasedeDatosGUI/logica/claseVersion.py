@@ -26,6 +26,20 @@ class VersionBase(BaseDatos):
             # Consulte tabla de errores
             return False
 
+    def actualizarDatos(self, listaDatosCanv, listaDatosAct, cursor):
+        cursor.execute(
+            """select COLUMN_NAME from INFORMATION_SCHEMA.COLUMNS where TABLE_SCHEMA = 'public' and TABLE_NAME = 'version'""")
+        nameColumn = cursor.fetchall()
+        i = 0
+
+        for dato in listaDatosCanv:
+            cursor.execute("UPDATE version SET " + nameColumn[i] + "=" + dato + "WHERE " + nameColumn[i]+ "=" + listaDatosAct[i])
+            i = i + 1
+
+        print("datos actualizados")
+
+
+
     def consultaTodos(self, tablaConsultar, claveDatoBusc, cursor):
         print(cursor)
         borrado = "DROP VIEW IF EXISTS consulta;"

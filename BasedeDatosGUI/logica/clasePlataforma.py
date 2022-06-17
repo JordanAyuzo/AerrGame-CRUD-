@@ -17,15 +17,27 @@ class PlataformaBase(BaseDatos):
 
             if cursor:
                 print("Añadida plataforma con éxito")
+                return True
             else:
                 print("Error al añadir datos intente de nuevo")
                 # Consulte tabla de errores
-                return -1426
+                return False
         else:
             print("Error, la clave primaria dada es null")
             # Consulte tabla de errores
-            return -51
-        return 1
+            return False
+
+    def actualizarDatos(self, listaDatosCanv, listaDatosAct, cursor):
+        cursor.execute( """select COLUMN_NAME from INFORMATION_SCHEMA.COLUMNS where TABLE_SCHEMA = 'public' and TABLE_NAME = 'plataforma'""")
+        nameColumn = cursor.fetchall()
+        i = 0
+
+        for dato in listaDatosCanv:
+            cursor.execute(
+                "UPDATE version SET " + nameColumn[i] + "=" + dato + "WHERE " + nameColumn[i] + "=" + listaDatosAct[i])
+            i = i + 1
+
+        print("datos actualizados")
 
     def consultaTodos(self, tablaConsultar, claveDatoBusc, cursor):
         print(cursor)

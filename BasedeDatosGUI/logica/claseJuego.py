@@ -27,17 +27,19 @@ class JuegoBase(BaseDatos):
             print("Error, la clave primaria dada es null")
             # Consulte tabla de errores
             return False
-        return True
 
-    def modificarJuego(self,nombreK, nombreG, clasificacionG, descripcionG, generoG, cursor):
+    def actualizarDatos(self, listaDatosCanv, listaDatosAct, cursor):
         try:
-            datos = self.consultaDatos('juego', nombreK, cursor)
-            if  datos != []:
-                print(datos)
-                return True
-            else:
-                print("Clave no existe")
-                return False
+            cursor.execute("""select COLUMN_NAME from INFORMATION_SCHEMA.COLUMNS where TABLE_SCHEMA = 'public' and TABLE_NAME = 'juego'""")
+            nameColumn = cursor.fetchall()
+            i = 0
 
+            for dato in listaDatosCanv:
+                cursor.execute(
+                    "UPDATE version SET " + nameColumn[i] + "=" + dato + "WHERE " + nameColumn[i] + "=" + listaDatosAct[i])
+                i = i + 1
+
+            print("datos actualizados")
+            return True
         except:
             return False

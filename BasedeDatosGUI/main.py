@@ -1178,7 +1178,7 @@ class Juego(QMainWindow):
                 self.ui.jgene.setText('')
 
     def limpio(self):
-        self.ui.tableWidget.setRowCount(0)
+        self.ui.resultado.setRowCount(0)
         self.ui.lcod.setText('')
 
     def buscar(self):
@@ -1201,11 +1201,11 @@ class Juego(QMainWindow):
                     self.ui.resultado.setItem(tablerow, 2, QtWidgets.QTableWidgetItem(row[2]))
                     self.ui.resultado.setItem(tablerow, 3, QtWidgets.QTableWidgetItem(row[3]))
                     tablerow += 1
-                self.ui.codigo.setText('')
+                self.ui.lcod.setText('')
         else:
              if clave == '':
                 self.error(1)
-            else:
+             else:
                 ##########################
                 """Llama al metodo de busqueda pasandole como parametro la clave primaria
                 MANDA   en:clave <es la clave primaria>     ej:soft
@@ -1217,39 +1217,14 @@ class Juego(QMainWindow):
                 i = len(datosB)
                 if i == 0:
                     self.error(2)
-                    self.ui.tableWidget.setRowCount(0)
+                    self.ui.resultado.setRowCount(0)
                 else:
-                    self.ui.tableWidget.setRowCount(1)
+                    self.ui.resultado.setRowCount(1)
                     tablerow = 0
                     for row in datosB:
-                        self.ui.tableWidget.setItem(0, tablerow, QtWidgets.QTableWidgetItem(row))
+                        self.ui.resultado.setItem(0, tablerow, QtWidgets.QTableWidgetItem(row))
                         tablerow += 1
                     self.ui.lcod.setText('')
-    def buscar(self):
-        clav = self.ui.lcod.text()
-        clave = str(clav)
-        if clave == '':
-            self.error(1)
-        else:
-            ##########################
-            """Llama al metodo de busqueda pasandole como parametro la clave primaria
-            MANDA   en:clave <es la clave primaria>     ej:soft
-            REGRESA en:datoB <Es una lista de 1 tupla>  ej:[](llega lista vacia si no hay nada)
-            datoB=self.clase.metodo_buscar(clave) """
-            datosB = self.principal.consultaDatos('juego', clave, 'nombre', self.cursor)
-            # datosB = [('Minecraft', 'dat1', 'dat2', 'dat3'), ('Minecraft2', 'dat1', 'dat2', 'dat3')]
-            ############################
-            i = len(datosB)
-            if i == 0:
-                self.error(2)
-            else:
-                self.ui.tableWidget.setRowCount(10)
-                tablerow = 0
-                for row in datosB:
-                    self.ui.tableWidget.setItem(0, tablerow, QtWidgets.QTableWidgetItem(row))
-                    tablerow += 1
-                self.ui.lcod.setText('')
-
     ##NO TOCAR ESTOS ELEMENTOS##
     def retroceder(self):
 

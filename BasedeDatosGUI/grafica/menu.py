@@ -114,17 +114,17 @@ class Ui_MainWindow(object):
         self.ljuego_2.setStyleSheet("background-color: rgba(0, 0, 0,0%);\n"
 "border :none;")
         self.ljuego_2.setObjectName("ljuego_2")
-        self.bjuego_2 = QtWidgets.QPushButton(self.frame)
-        self.bjuego_2.setGeometry(QtCore.QRect(50, 230, 91, 71))
-        self.bjuego_2.setFocusPolicy(QtCore.Qt.StrongFocus)
-        self.bjuego_2.setStyleSheet("background-color: rgba(0, 0, 0,0%);\n"
+        self.busuario = QtWidgets.QPushButton(self.frame)
+        self.busuario.setGeometry(QtCore.QRect(50, 230, 91, 71))
+        self.busuario.setFocusPolicy(QtCore.Qt.StrongFocus)
+        self.busuario.setStyleSheet("background-color: rgba(0, 0, 0,0%);\n"
 "image: url(:/recurso/img/usuario.png);\n"
 "border:none;\n"
 "")
-        self.bjuego_2.setText("")
-        self.bjuego_2.setAutoDefault(True)
-        self.bjuego_2.setDefault(False)
-        self.bjuego_2.setObjectName("bjuego_2")
+        self.busuario.setText("")
+        self.busuario.setAutoDefault(True)
+        self.busuario.setDefault(False)
+        self.busuario.setObjectName("busuario")
         self.bjuego_3 = QtWidgets.QPushButton(self.frame)
         self.bjuego_3.setGeometry(QtCore.QRect(270, 230, 91, 71))
         self.bjuego_3.setFocusPolicy(QtCore.Qt.StrongFocus)

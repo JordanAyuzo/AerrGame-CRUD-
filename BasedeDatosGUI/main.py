@@ -14,6 +14,7 @@ from logica.claseVersion import *
 from grafica.menu import *
 from grafica.game import *
 from grafica.plataforma import *
+from grafica.usuario import *
 from grafica.version import *
 from grafica.error401 import *
 from grafica.error402 import *
@@ -31,6 +32,12 @@ class MiApp(QMainWindow):
         self.ui.bjuego.clicked.connect(self.abrirJuego)
         self.ui.bplatform.clicked.connect(self.abrirPlataforma)
         self.ui.bversion.clicked.connect(self.abrirVersion)
+        self.ui.busuario.clicked.connect(self.abrirUsuario)
+        self.ui.busuario.clicked.connect(self.abrirUsuario)
+    def abrirUsuario(self):
+        self.hide()
+        self.ventana = Usuario()
+        self.ventana.show()
 
     def abrirVersion(self):
         self.hide()
@@ -46,6 +53,223 @@ class MiApp(QMainWindow):
         self.hide()
         self.ventana2 = Plataforma()
         self.ventana2.show()
+
+
+####
+class Usuario(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.ui =Ui_usuario()
+        self.ui.setupUi(self)
+        self.ui.atras1.clicked.connect(self.retroceder)
+        self.ui.atras2.clicked.connect(self.retroceder)
+        self.ui.atras3.clicked.connect(self.retroceder)
+        self.ui.atras4.clicked.connect(self.retroceder)
+        self.ui.aceptar1.clicked.connect(self.crear)
+        self.ui.acp.clicked.connect(self.carga_modificar)
+        self.ui.act.clicked.connect(self.modificar)
+        self.ui.aceptar_4.clicked.connect(self.borrar)
+        self.ui.busca.clicked.connect(self.buscar)
+        self.ui.limpiar.clicked.connect(self.limpio)
+    def borrar(self):
+        cod = self.ui.codigo3.text()
+        codigo = str(cod)
+        if codigo == '':
+            self.error(1)
+        else:
+            # hace consulta si existe el dato regresa true o false
+            # el dato se va en el parametro (codigo)
+
+            valor =["hola mundo"] #TODO funcion (codigo)
+            if valor == []:
+                self.ui.cargando3.setText('Cargando...')
+                for i in range(0, 50):
+                    time.sleep(0.01)
+                    self.ui.progreso3.setValue(i)
+                self.ui.cargando3.setText('')
+                self.error(2)
+                time.sleep(0.3)
+                self.ui.progreso3.setValue(0)
+                self.ui.codigo3.setText('')
+            else:
+                # hace llamada de la funcion borrar elemento
+                # el dato se va en el parametro (codigo)
+
+                valor2 = True #TODO
+                if valor2 != True:
+                    self.ui.cargando3.setText('Cargando...')
+                    for i in range(0, 50):
+                        time.sleep(0.01)
+                        self.ui.progreso3.setValue(i)
+                    self.ui.cargando3.setText('')
+                    self.error(3)
+                    time.sleep(0.3)
+                    self.ui.progreso3.setValue(0)
+                    self.ui.codigo3.setText('')
+                else:
+                    self.ui.cargando3.setText('Cargando...')
+                    for i in range(0, 101):
+                        time.sleep(0.01)
+                        self.ui.progreso3.setValue(i)
+                    self.ui.cargando3.setText('¡Operación Exitosa!')
+                    time.sleep(0.3)
+                    self.ui.progreso3.setValue(0)
+                    self.ui.codigo3.setText('')
+    def modificar(self):
+        nom = self.ui.textnombre_2.text()
+        nombre = str(nom)
+        al = self.ui.textalias_2.text()
+        nickname = str(al)
+        fech =  self.ui.textfecha_2.text()
+        fecha = str(fech)
+        cor =  self.ui.textcorreo.text()
+        correo = str(cor)
+
+        valor = True#TODO: trae funcion(nickname,nombre,fecha,correo)
+        if valor != True:
+            self.ui.cargando2.setText('Cargando...')
+            for i in range(0, 50):
+                time.sleep(0.02)
+                self.ui.progreso2.setValue(i)
+            self.ui.cargando2.setText('')
+            self.error(3)
+            time.sleep(0.2)
+            self.ui.progreso2.setValue(0)
+        else:
+            self.ui.cargando2.setText('Cargando...')
+            for i in range(0, 101):
+                time.sleep(0.01)
+                self.ui.progreso2.setValue(i)
+            self.ui.cargando2.setText('¡Operación Exitosa!')
+            time.sleep(0.2)
+            self.ui.progreso2.setValue(0)
+            self.ui.codigo_2.setText('')
+            self.ui.textnombre_2.setText('')
+            self.ui.textalias_2.setText('')
+            self.ui.textfecha_2.setText('')
+            self.ui.textcorreo.setText('')
+    def carga_modificar(self):
+        cod = self.ui.codigo_2.text()
+        clave = str(cod)
+        if clave =='':
+            self.error(1)
+            self.ui.textnombre_2.setText('')
+            self.ui.textalias_2.setText('')
+            self.ui.textfecha_2.setText('')
+            self.ui.textcorreo.setText('')
+            ####
+        else:
+            datoB = [ 'alias','nombre' ,'fecha','correo']#TODO
+            if datoB == []:
+                self.error(2)
+                self.ui.codigo_2.setText('')
+                self.ui.textnombre_2.setText('')
+                self.ui.textalias_2.setText('')
+                self.ui.textfecha_2.setText('')
+                self.ui.textcorreo.setText('')
+            else:
+                #caraga los datos en los textos
+                self.ui.textnombre_2.setText(datoB[1])
+                self.ui.textalias_2.setText(datoB[0])
+                self.ui.textfecha_2.setText(datoB[2])
+                self.ui.textcorreo.setText(datoB[3])
+    def buscar(self):
+        cod = self.ui.codigo.text()
+        codigo = str(cod)
+        if codigo == '*':
+            datosB =[]
+            # si llega de otra forma avisar
+            i = len(datosB)
+            if i == 0:
+                self.error(2)
+                self.ui.resultado.setRowCount(0)
+            else:
+                self.ui.resultado.setRowCount(i)
+                tablerow = 0
+                for row in datosB:
+                    self.ui.resultado.setItem(tablerow, 0, QtWidgets.QTableWidgetItem(row[0]))
+                    self.ui.resultado.setItem(tablerow, 1, QtWidgets.QTableWidgetItem(row[1]))
+                    self.ui.resultado.setItem(tablerow, 2, QtWidgets.QTableWidgetItem(row[2]))
+                    self.ui.resultado.setItem(tablerow, 3, QtWidgets.QTableWidgetItem(row[3]))
+                    tablerow += 1
+                self.ui.codigo.setText('')
+        else:
+            if codigo == '':
+                self.error(1)
+                self.ui.resultado.setRowCount(0)
+            else:
+                ##########################
+                datosB = ['alias','nombre','fecha','correo']# TODO: FUNCION
+                # parametro en : codigo
+                ############################
+                i = len(datosB)
+                if i == 0:
+                    self.error(2)
+                    self.ui.resultado.setRowCount(0)
+                else:
+                    self.ui.resultado.setRowCount(1)
+                    tablerow = 0
+                    for row in datosB:
+                        self.ui.resultado.setItem(0, tablerow, QtWidgets.QTableWidgetItem(row))
+                        tablerow += 1
+                    self.ui.codigo.setText('')
+    def crear(self):
+        nom = self.ui.textnombre.text()
+        nombre = str(nom)
+        ali = self.ui.textalias.text()
+        nickname = str(ali)
+        fech = self.ui.textfecha.text()
+        fecha = str(fech)
+        cor = self.ui.textcorreo_2.text()
+        correo = str(cor)
+        if nombre == '' or nickname == '' or correo == '':
+            self.error(1)
+        else:
+            valor =True#TODO:fun(nickname,nombre,fecha,correo)
+            if valor != True:
+                self.ui.cargando1.setText('Cargando...')
+                for i in range(0, 50):
+                    time.sleep(0.01)
+                    self.ui.progreso1.setValue(i)
+                self.ui.cargando1.setText('')
+                self.error(3)
+                time.sleep(0.2)
+                self.ui.progreso1.setValue(0)
+
+                self.ui.textnombre.setText('')
+                self.ui.textalias.setText('')
+                self.ui.textcorreo_2.setText('')
+            else:
+                self.ui.cargando1.setText('Cargando...')
+                for i in range(0, 101):
+                    time.sleep(0.01)
+                    self.ui.progreso1.setValue(i)
+                self.ui.cargando1.setText('¡Operación Exitosa!')
+                self.ui.progreso1.setValue(0)
+                self.ui.textnombre.setText('')
+                self.ui.textalias.setText('')
+                self.ui.textcorreo_2.setText('')
+    def error(self, x):
+        if x == 1:
+            self.ventana = error401()
+            self.ventana.show()
+        elif x == 2:
+            self.ventana = error402()
+            self.ventana.show()
+        elif x == 3:
+            self.ventana = error403()
+            self.ventana.show()
+
+    def retroceder(self):
+        self.hide()
+        self.ventana = MiApp()
+        self.ventana.show()
+    def limpio(self):
+        self.ui.codigo1.setText('')
+        self.ui.resultado.setRowCount(0)
+
+
+
 
 
 ####
@@ -178,9 +402,9 @@ class Version(QMainWindow):
                     self.ui.resultado.setRowCount(1)
                     tablerow = 0
                     for row in datosB:
-                        self.ui.tableWidget.setItem(0, tablerow, QtWidgets.QTableWidgetItem(row))
+                        self.ui.resultado.setItem(0, tablerow, QtWidgets.QTableWidgetItem(row))
                         tablerow += 1
-                    self.ui.lcod.setText('')
+                    self.ui.codigo1.setText('')
 
     #####
     def carga_modificar(self):
@@ -473,9 +697,6 @@ class Plataforma(QMainWindow):
                 self.ui.nombre_3.setText(datoB[0])
                 self.ui.fecha_3.setText(datoB[1])
                 self.ui.modelo_3.setText(datoB[2])
-
-
-
 
     def borrar(self):
         cod = self.ui.codigo_3.text()

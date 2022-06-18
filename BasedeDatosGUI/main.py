@@ -91,8 +91,8 @@ class Version(QMainWindow):
         self.ui.atras3.clicked.connect(self.retroceder)
         self.ui.atras4.clicked.connect(self.retroceder)
         self.ui.aceptar1.clicked.connect(self.crear)
-        #self.ui.aceptar_3.clicked.connect(self.carga_modificar)
-        #self.ui.actualizacion.clicked.connect(self.modificar)
+        self.ui.aceptar2.clicked.connect(self.carga_modificar)
+        self.ui.actualizacion.clicked.connect(self.modificar)
         self.ui.aceptar3.clicked.connect(self.borrar)
         self.ui.busca.clicked.connect(self.buscar)
         self.ui.limpiar.clicked.connect(self.limpio)
@@ -187,7 +187,74 @@ class Version(QMainWindow):
                     self.ui.codigo1.setText('')
 
     #####
-
+    def carga_modificar(self):
+        cod = self.ui.codigo2.text()
+        clave = str(cod)
+        if clave =='':
+            self.error(1)
+            self.ui.textnombre2.setText('')
+            self.ui.textrequisitos2.setText('')
+            self.ui.textfecha2.setText('')
+            self.ui.combojuego2.setCurrentIndex(0)
+            self.ui.comboplataforma2.setCurrentIndex(0)
+            ####
+        else:
+            datoB = ['nombre','requisitos','f/ec/ha' ,'plataforma','juego']##self.principal.consultaDatos('juego', codigo, self.cursor)
+            # SE REGRESA LOS DATOS DE LA SIGUIENTE MANERA: nombre,fecha, modelo
+            ###
+            if datoB == []:
+                self.error(2)
+                self.ui.codigo2.setText('')
+                self.ui.textnombre2.setText('')
+                self.ui.textrequisitos2.setText('')
+                self.ui.textfecha2.setText('')
+                self.ui.combojuego2.setCurrentIndex(0)
+                self.ui.comboplataforma2.setCurrentIndex(0)
+            else:
+                #caraga los datos en los textos
+                self.ui.textnombre2.setText(datoB[0])
+                self.ui.textrequisitos2.setText(datoB[1])
+                self.ui.textfecha2.setText(datoB[2])
+                index = self.ui.combojuego2.findText(datoB[4])
+                self.ui.combojuego2.setCurrentIndex(index)
+                index = self.ui.comboplataforma2.findText(datoB[3])
+                self.ui.comboplataforma2.setCurrentIndex(index)
+    def modificar(self):
+        jue=self.ui.combojuego2.currentText()
+        juego=str(jue)
+        plata=self.ui.comboplataforma2.currentText()
+        plataforma=str(plata)
+        nom = self.ui.textnombre2.text()
+        nombre = str(nom)
+        fech = self.ui.textfecha2.text()
+        fecha = str(fech)
+        req = self.ui.textrequisitos2.text()
+        requisitos = str(req)
+        valor = True#TODO: manda  a llamar actualizar(nombre,fecha,modelo)
+                    #devuelve true o false
+        if valor != True:
+            self.ui.cargando2.setText('Cargando...')
+            for i in range(0, 50):
+                time.sleep(0.02)
+                self.ui.progreso2.setValue(i)
+            self.ui.cargando2.setText('')
+            self.error(3)
+            time.sleep(0.2)
+            self.ui.progreso2.setValue(0)
+        else:
+            self.ui.cargando2.setText('Cargando...')
+            for i in range(0, 101):
+                time.sleep(0.01)
+                self.ui.progreso2.setValue(i)
+            self.ui.cargando2.setText('¡Operación Exitosa!')
+            time.sleep(0.2)
+            self.ui.progreso2.setValue(0)
+            self.ui.codigo2.setText('')
+            self.ui.textnombre2.setText('')
+            self.ui.textrequisitos2.setText('')
+            self.ui.textfecha2.setText('')
+            self.ui.combojuego2.setCurrentIndex(0)
+            self.ui.comboplataforma2.setCurrentIndex(0)
 
     ####
     def borrar(self):
@@ -506,7 +573,7 @@ class Juego(QMainWindow):
         #########################
         """Llama al metodo de busqueda pasandole como parametro la clave primaria
         MANDA   en:clave <es la clave primaria>     ej:soft
-        REGRESA en:datoB <Es una lista de 1 tupla>  ej:[(soft,dato2,dat3,dato4)](llega lista vacia 
+        REGRESA en:datoB <Es una lista de 1 tupla>  ej:[(soft,dato2,dat3,dato4)](llega lista vacia
         si no hay nada)
         datoB=self.clase.metodo_buscar(clave) """
 
@@ -520,7 +587,7 @@ class Juego(QMainWindow):
             #########################
             """Llama al metodo de busqueda pasandole como parametro la clave primaria
             MANDA   en:clave <es la clave primaria>     ej:soft
-            REGRESA en:datoB <Es una lista de 1 tupla>  ej:[(soft,dato2,dat3,dato4)](llega lista vacia 
+            REGRESA en:datoB <Es una lista de 1 tupla>  ej:[(soft,dato2,dat3,dato4)](llega lista vacia
             si no hay nada)
             datoB=self.clase.metodo_buscar(clave) """
 

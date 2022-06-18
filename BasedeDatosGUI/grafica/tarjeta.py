@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'usuario.ui'
+# Form implementation generated from reading ui file 'tarjeta.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.6
 #
@@ -11,15 +11,17 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_usuario(object):
-    def setupUi(self, usuario):
-        usuario.setObjectName("usuario")
-        usuario.resize(523, 518)
+class Ui_tarjeta(object):
+    def setupUi(self, tarjeta):
+        tarjeta.setObjectName("tarjeta")
+        tarjeta.resize(523, 518)
+        tarjeta.setMinimumSize(QtCore.QSize(523, 518))
+        tarjeta.setMaximumSize(QtCore.QSize(523, 518))
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(":/recurso/img/usuario.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        usuario.setWindowIcon(icon)
-        usuario.setStyleSheet("background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:1, y2:1, stop:0 rgba(90, 0, 182, 255), stop:0.289216 rgba(150, 155, 255, 255), stop:0.921569 rgba(74, 206, 205, 255));")
-        self.centralwidget = QtWidgets.QWidget(usuario)
+        icon.addPixmap(QtGui.QPixmap(":/recurso/img/tarjeta.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        tarjeta.setWindowIcon(icon)
+        tarjeta.setStyleSheet("background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:1, y2:1, stop:0 rgba(90, 0, 182, 255), stop:0.289216 rgba(150, 155, 255, 255), stop:0.921569 rgba(74, 206, 205, 255));")
+        self.centralwidget = QtWidgets.QWidget(tarjeta)
         self.centralwidget.setObjectName("centralwidget")
         self.tabWidget = QtWidgets.QTabWidget(self.centralwidget)
         self.tabWidget.setEnabled(True)
@@ -39,48 +41,48 @@ class Ui_usuario(object):
 "")
         self.logo_1.setObjectName("logo_1")
         self.nom = QtWidgets.QLabel(self.crear)
-        self.nom.setGeometry(QtCore.QRect(90, 120, 71, 31))
+        self.nom.setGeometry(QtCore.QRect(90, 240, 71, 31))
         self.nom.setStyleSheet("border:none;\n"
 "background-color: rgba(0, 0, 0,0%);")
         self.nom.setObjectName("nom")
         self.model = QtWidgets.QLabel(self.crear)
-        self.model.setGeometry(QtCore.QRect(70, 300, 91, 31))
+        self.model.setGeometry(QtCore.QRect(70, 180, 91, 31))
         self.model.setStyleSheet("border:none;\n"
 "background-color: rgba(0, 0, 0,0%);\n"
 "")
         self.model.setObjectName("model")
-        self.textnombre = QtWidgets.QLineEdit(self.crear)
-        self.textnombre.setGeometry(QtCore.QRect(180, 120, 241, 31))
-        self.textnombre.setAutoFillBackground(False)
-        self.textnombre.setStyleSheet("background-color: rgb(255, 255, 255);\n"
+        self.textclave1 = QtWidgets.QLineEdit(self.crear)
+        self.textclave1.setGeometry(QtCore.QRect(180, 240, 241, 31))
+        self.textclave1.setAutoFillBackground(False)
+        self.textclave1.setStyleSheet("background-color: rgb(255, 255, 255);\n"
 "border-radius: 10px;\n"
 "border: 1px solid #00007f;\n"
 "color:#000000;")
-        self.textnombre.setText("")
-        self.textnombre.setPlaceholderText("")
-        self.textnombre.setObjectName("textnombre")
-        self.textcorreo_2 = QtWidgets.QLineEdit(self.crear)
-        self.textcorreo_2.setGeometry(QtCore.QRect(180, 300, 241, 31))
-        self.textcorreo_2.setAutoFillBackground(False)
-        self.textcorreo_2.setStyleSheet("background-color: rgb(255, 255, 255);\n"
+        self.textclave1.setText("")
+        self.textclave1.setPlaceholderText("")
+        self.textclave1.setObjectName("textclave1")
+        self.textbanco1 = QtWidgets.QLineEdit(self.crear)
+        self.textbanco1.setGeometry(QtCore.QRect(180, 180, 241, 31))
+        self.textbanco1.setAutoFillBackground(False)
+        self.textbanco1.setStyleSheet("background-color: rgb(255, 255, 255);\n"
 "border-radius: 10px;\n"
 "border: 1px solid #00007f;\n"
 "color:#000000;")
-        self.textcorreo_2.setText("")
-        self.textcorreo_2.setObjectName("textcorreo_2")
+        self.textbanco1.setText("")
+        self.textbanco1.setObjectName("textbanco1")
         self.fech = QtWidgets.QLabel(self.crear)
-        self.fech.setGeometry(QtCore.QRect(110, 240, 51, 31))
+        self.fech.setGeometry(QtCore.QRect(60, 300, 101, 31))
         self.fech.setStyleSheet("border:none;\n"
 "background-color: rgba(0, 0, 0,0%);")
         self.fech.setObjectName("fech")
-        self.textfecha = QtWidgets.QDateEdit(self.crear)
-        self.textfecha.setGeometry(QtCore.QRect(180, 240, 241, 31))
-        self.textfecha.setStyleSheet("background-color: rgb(255, 255, 255);\n"
+        self.textfecha1 = QtWidgets.QDateEdit(self.crear)
+        self.textfecha1.setGeometry(QtCore.QRect(180, 300, 241, 31))
+        self.textfecha1.setStyleSheet("background-color: rgb(255, 255, 255);\n"
 "color:rgb(0, 0, 0);\n"
 "border-radius: 5px;\n"
 "border: 1px solid #00007f;")
-        self.textfecha.setCalendarPopup(True)
-        self.textfecha.setObjectName("textfecha")
+        self.textfecha1.setCalendarPopup(True)
+        self.textfecha1.setObjectName("textfecha1")
         self.progreso1 = QtWidgets.QProgressBar(self.crear)
         self.progreso1.setGeometry(QtCore.QRect(90, 430, 371, 23))
         self.progreso1.setAutoFillBackground(False)
@@ -110,25 +112,23 @@ class Ui_usuario(object):
         self.cargando1.setObjectName("cargando1")
         self.indicaciones_2 = QtWidgets.QLabel(self.crear)
         self.indicaciones_2.setEnabled(True)
-        self.indicaciones_2.setGeometry(QtCore.QRect(0, 70, 511, 31))
+        self.indicaciones_2.setGeometry(QtCore.QRect(0, 80, 511, 31))
         self.indicaciones_2.setStyleSheet("border:none;\n"
 "background-color: rgba(0, 0, 0,0%);")
         self.indicaciones_2.setObjectName("indicaciones_2")
-        self.nom_15 = QtWidgets.QLabel(self.crear)
-        self.nom_15.setGeometry(QtCore.QRect(90, 180, 71, 31))
-        self.nom_15.setStyleSheet("border:none;\n"
+        self.combousuario = QtWidgets.QComboBox(self.crear)
+        self.combousuario.setGeometry(QtCore.QRect(180, 120, 241, 32))
+        self.combousuario.setStyleSheet("background-color: rgb(255, 255, 255);\n"
+"color:rgb(0,0,0)")
+        self.combousuario.setEditable(True)
+        self.combousuario.setObjectName("combousuario")
+        self.combousuario.addItem("")
+        self.combousuario.setItemText(0, "")
+        self.nom_3 = QtWidgets.QLabel(self.crear)
+        self.nom_3.setGeometry(QtCore.QRect(100, 120, 61, 31))
+        self.nom_3.setStyleSheet("border:none;\n"
 "background-color: rgba(0, 0, 0,0%);")
-        self.nom_15.setObjectName("nom_15")
-        self.textalias = QtWidgets.QLineEdit(self.crear)
-        self.textalias.setGeometry(QtCore.QRect(180, 180, 241, 31))
-        self.textalias.setAutoFillBackground(False)
-        self.textalias.setStyleSheet("background-color: rgb(255, 255, 255);\n"
-"border-radius: 10px;\n"
-"border: 1px solid #00007f;\n"
-"color:#000000;")
-        self.textalias.setText("")
-        self.textalias.setPlaceholderText("")
-        self.textalias.setObjectName("textalias")
+        self.nom_3.setObjectName("nom_3")
         self.tabWidget.addTab(self.crear, "")
         self.buscar = QtWidgets.QWidget()
         self.buscar.setObjectName("buscar")
@@ -189,15 +189,15 @@ class Ui_usuario(object):
         self.frame.setStyleSheet("background-color: rgba(0, 0, 0,0%);\n"
 "border:none;")
         self.frame.setObjectName("frame")
-        self.codigo = QtWidgets.QLineEdit(self.buscar)
-        self.codigo.setGeometry(QtCore.QRect(210, 100, 201, 31))
-        self.codigo.setAutoFillBackground(False)
-        self.codigo.setStyleSheet("background-color: rgb(255, 255, 255);\n"
+        self.codigo1 = QtWidgets.QLineEdit(self.buscar)
+        self.codigo1.setGeometry(QtCore.QRect(210, 100, 201, 31))
+        self.codigo1.setAutoFillBackground(False)
+        self.codigo1.setStyleSheet("background-color: rgb(255, 255, 255);\n"
 "border-radius: 10px;\n"
 "border: 1px solid #00007f;\n"
 "color:#000000;")
-        self.codigo.setText("")
-        self.codigo.setObjectName("codigo")
+        self.codigo1.setText("")
+        self.codigo1.setObjectName("codigo1")
         self.busca = QtWidgets.QPushButton(self.buscar)
         self.busca.setGeometry(QtCore.QRect(420, 90, 61, 51))
         self.busca.setStyleSheet("background-color: rgba(0, 0, 0,0%);\n"
@@ -219,14 +219,20 @@ class Ui_usuario(object):
         self.limpiar.setText("")
         self.limpiar.setAutoDefault(True)
         self.limpiar.setObjectName("limpiar")
+        self.nom_4 = QtWidgets.QLabel(self.buscar)
+        self.nom_4.setGeometry(QtCore.QRect(220, 160, 71, 31))
+        self.nom_4.setStyleSheet("border:none;\n"
+"background-color: rgba(0, 0, 0,0%);")
+        self.nom_4.setObjectName("nom_4")
         self.frame.raise_()
         self.logo_2.raise_()
         self.resultado.raise_()
         self.atras2.raise_()
-        self.codigo.raise_()
+        self.codigo1.raise_()
         self.busca.raise_()
         self.nom_2.raise_()
         self.limpiar.raise_()
+        self.nom_4.raise_()
         self.tabWidget.addTab(self.buscar, "")
         self.actualizar = QtWidgets.QWidget()
         self.actualizar.setObjectName("actualizar")
@@ -236,15 +242,15 @@ class Ui_usuario(object):
 "border:none;\n"
 "")
         self.logo_3.setObjectName("logo_3")
-        self.codigo_2 = QtWidgets.QLineEdit(self.actualizar)
-        self.codigo_2.setGeometry(QtCore.QRect(210, 90, 201, 31))
-        self.codigo_2.setAutoFillBackground(False)
-        self.codigo_2.setStyleSheet("background-color: rgb(255, 255, 255);\n"
+        self.codigo2 = QtWidgets.QLineEdit(self.actualizar)
+        self.codigo2.setGeometry(QtCore.QRect(210, 90, 201, 31))
+        self.codigo2.setAutoFillBackground(False)
+        self.codigo2.setStyleSheet("background-color: rgb(255, 255, 255);\n"
 "border-radius: 10px;\n"
 "border: 1px solid #00007f;\n"
 "color:#000000;")
-        self.codigo_2.setText("")
-        self.codigo_2.setObjectName("codigo_2")
+        self.codigo2.setText("")
+        self.codigo2.setObjectName("codigo2")
         self.nom_5 = QtWidgets.QLabel(self.actualizar)
         self.nom_5.setGeometry(QtCore.QRect(40, 90, 171, 31))
         self.nom_5.setStyleSheet("border:none;\n"
@@ -256,7 +262,7 @@ class Ui_usuario(object):
 "background-color: rgba(0, 0, 0,0%);")
         self.nom_7.setObjectName("nom_7")
         self.progreso2 = QtWidgets.QProgressBar(self.actualizar)
-        self.progreso2.setGeometry(QtCore.QRect(80, 430, 371, 23))
+        self.progreso2.setGeometry(QtCore.QRect(110, 440, 371, 23))
         self.progreso2.setAutoFillBackground(False)
         self.progreso2.setStyleSheet("")
         self.progreso2.setProperty("value", 0)
@@ -274,43 +280,8 @@ class Ui_usuario(object):
         self.cargando2.setGeometry(QtCore.QRect(180, 450, 141, 20))
         self.cargando2.setStyleSheet("background-color: rgba(0, 0, 0,0%);")
         self.cargando2.setObjectName("cargando2")
-        self.nom_9 = QtWidgets.QLabel(self.actualizar)
-        self.nom_9.setGeometry(QtCore.QRect(110, 180, 71, 31))
-        self.nom_9.setStyleSheet("border:none;\n"
-"background-color: rgba(0, 0, 0,0%);")
-        self.nom_9.setObjectName("nom_9")
-        self.textnombre_2 = QtWidgets.QLineEdit(self.actualizar)
-        self.textnombre_2.setGeometry(QtCore.QRect(200, 180, 241, 31))
-        self.textnombre_2.setAutoFillBackground(False)
-        self.textnombre_2.setStyleSheet("background-color: rgb(255, 255, 255);\n"
-"border-radius: 10px;\n"
-"border: 1px solid #00007f;\n"
-"color:#000000;")
-        self.textnombre_2.setText("")
-        self.textnombre_2.setPlaceholderText("")
-        self.textnombre_2.setObjectName("textnombre_2")
-        self.textcorreo = QtWidgets.QLineEdit(self.actualizar)
-        self.textcorreo.setGeometry(QtCore.QRect(200, 330, 241, 31))
-        self.textcorreo.setAutoFillBackground(False)
-        self.textcorreo.setStyleSheet("background-color: rgb(255, 255, 255);\n"
-"border-radius: 10px;\n"
-"border: 1px solid #00007f;\n"
-"color:#000000;")
-        self.textcorreo.setText("")
-        self.textcorreo.setObjectName("textcorreo")
-        self.fech_2 = QtWidgets.QLabel(self.actualizar)
-        self.fech_2.setGeometry(QtCore.QRect(130, 280, 51, 31))
-        self.fech_2.setStyleSheet("border:none;\n"
-"background-color: rgba(0, 0, 0,0%);")
-        self.fech_2.setObjectName("fech_2")
-        self.model_2 = QtWidgets.QLabel(self.actualizar)
-        self.model_2.setGeometry(QtCore.QRect(90, 330, 91, 31))
-        self.model_2.setStyleSheet("border:none;\n"
-"background-color: rgba(0, 0, 0,0%);\n"
-"")
-        self.model_2.setObjectName("model_2")
         self.act = QtWidgets.QPushButton(self.actualizar)
-        self.act.setGeometry(QtCore.QRect(220, 370, 61, 61))
+        self.act.setGeometry(QtCore.QRect(250, 380, 61, 61))
         self.act.setStyleSheet("image:url(:/recurso/img/actualizar.png);\n"
 "background-color: rgba(0, 0, 0,0%);\n"
 "border:none;")
@@ -325,48 +296,66 @@ class Ui_usuario(object):
         self.acp.setText("")
         self.acp.setAutoDefault(True)
         self.acp.setObjectName("acp")
-        self.textfecha_2 = QtWidgets.QLineEdit(self.actualizar)
-        self.textfecha_2.setGeometry(QtCore.QRect(200, 280, 241, 31))
-        self.textfecha_2.setAutoFillBackground(False)
-        self.textfecha_2.setStyleSheet("background-color: rgb(255, 255, 255);\n"
+        self.textclave2 = QtWidgets.QLineEdit(self.actualizar)
+        self.textclave2.setGeometry(QtCore.QRect(170, 250, 241, 31))
+        self.textclave2.setAutoFillBackground(False)
+        self.textclave2.setStyleSheet("background-color: rgb(255, 255, 255);\n"
 "border-radius: 10px;\n"
 "border: 1px solid #00007f;\n"
 "color:#000000;")
-        self.textfecha_2.setText("")
-        self.textfecha_2.setPlaceholderText("")
-        self.textfecha_2.setObjectName("textfecha_2")
-        self.nom_16 = QtWidgets.QLabel(self.actualizar)
-        self.nom_16.setGeometry(QtCore.QRect(110, 230, 71, 31))
-        self.nom_16.setStyleSheet("border:none;\n"
+        self.textclave2.setText("")
+        self.textclave2.setPlaceholderText("")
+        self.textclave2.setObjectName("textclave2")
+        self.model_4 = QtWidgets.QLabel(self.actualizar)
+        self.model_4.setGeometry(QtCore.QRect(60, 190, 91, 31))
+        self.model_4.setStyleSheet("border:none;\n"
+"background-color: rgba(0, 0, 0,0%);\n"
+"")
+        self.model_4.setObjectName("model_4")
+        self.textbanco2 = QtWidgets.QLineEdit(self.actualizar)
+        self.textbanco2.setGeometry(QtCore.QRect(170, 190, 241, 31))
+        self.textbanco2.setAutoFillBackground(False)
+        self.textbanco2.setStyleSheet("background-color: rgb(255, 255, 255);\n"
+"border-radius: 10px;\n"
+"border: 1px solid #00007f;\n"
+"color:#000000;")
+        self.textbanco2.setText("")
+        self.textbanco2.setObjectName("textbanco2")
+        self.nom_15 = QtWidgets.QLabel(self.actualizar)
+        self.nom_15.setGeometry(QtCore.QRect(80, 250, 71, 31))
+        self.nom_15.setStyleSheet("border:none;\n"
 "background-color: rgba(0, 0, 0,0%);")
-        self.nom_16.setObjectName("nom_16")
-        self.textalias_2 = QtWidgets.QLineEdit(self.actualizar)
-        self.textalias_2.setGeometry(QtCore.QRect(200, 230, 241, 31))
-        self.textalias_2.setAutoFillBackground(False)
-        self.textalias_2.setStyleSheet("background-color: rgb(255, 255, 255);\n"
+        self.nom_15.setObjectName("nom_15")
+        self.fech_4 = QtWidgets.QLabel(self.actualizar)
+        self.fech_4.setGeometry(QtCore.QRect(40, 310, 111, 31))
+        self.fech_4.setStyleSheet("border:none;\n"
+"background-color: rgba(0, 0, 0,0%);")
+        self.fech_4.setObjectName("fech_4")
+        self.textfecha2 = QtWidgets.QLineEdit(self.actualizar)
+        self.textfecha2.setGeometry(QtCore.QRect(170, 310, 241, 31))
+        self.textfecha2.setAutoFillBackground(False)
+        self.textfecha2.setStyleSheet("background-color: rgb(255, 255, 255);\n"
 "border-radius: 10px;\n"
 "border: 1px solid #00007f;\n"
 "color:#000000;")
-        self.textalias_2.setText("")
-        self.textalias_2.setPlaceholderText("")
-        self.textalias_2.setObjectName("textalias_2")
+        self.textfecha2.setText("")
+        self.textfecha2.setPlaceholderText("")
+        self.textfecha2.setObjectName("textfecha2")
         self.act.raise_()
         self.logo_3.raise_()
-        self.codigo_2.raise_()
+        self.codigo2.raise_()
         self.nom_5.raise_()
         self.nom_7.raise_()
         self.progreso2.raise_()
         self.atras3.raise_()
         self.cargando2.raise_()
-        self.nom_9.raise_()
-        self.textnombre_2.raise_()
-        self.textcorreo.raise_()
-        self.fech_2.raise_()
-        self.model_2.raise_()
         self.acp.raise_()
-        self.textfecha_2.raise_()
-        self.nom_16.raise_()
-        self.textalias_2.raise_()
+        self.textclave2.raise_()
+        self.model_4.raise_()
+        self.textbanco2.raise_()
+        self.nom_15.raise_()
+        self.fech_4.raise_()
+        self.textfecha2.raise_()
         self.tabWidget.addTab(self.actualizar, "")
         self.tab_4 = QtWidgets.QWidget()
         self.tab_4.setObjectName("tab_4")
@@ -436,107 +425,98 @@ class Ui_usuario(object):
 "color:rgb(170, 0, 0)")
         self.checkBox.setObjectName("checkBox")
         self.tabWidget.addTab(self.tab_4, "")
-        usuario.setCentralWidget(self.centralwidget)
+        tarjeta.setCentralWidget(self.centralwidget)
 
-        self.retranslateUi(usuario)
+        self.retranslateUi(tarjeta)
         self.tabWidget.setCurrentIndex(0)
-        QtCore.QMetaObject.connectSlotsByName(usuario)
+        QtCore.QMetaObject.connectSlotsByName(tarjeta)
 
-    def retranslateUi(self, usuario):
+    def retranslateUi(self, tarjeta):
         _translate = QtCore.QCoreApplication.translate
-        usuario.setWindowTitle(_translate("usuario", "Usuario"))
-        self.logo_1.setText(_translate("usuario", "<html><head/><body><p align=\"center\"><img src=\":/recurso/img/01title.png\"/></p></body></html>"))
-        self.nom.setText(_translate("usuario", "<html><head/><body><p align=\"right\"><span style=\" font-size:11pt; font-weight:600;\">Nombre:</span></p></body></html>"))
-        self.model.setText(_translate("usuario", "<html><head/><body><p align=\"right\"><span style=\" font-size:11pt; font-weight:600;\">Correo: </span></p></body></html>"))
-        self.textnombre.setToolTip(_translate("usuario", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+        tarjeta.setWindowTitle(_translate("tarjeta", "Tarjeta"))
+        self.logo_1.setText(_translate("tarjeta", "<html><head/><body><p align=\"center\"><img src=\":/recurso/img/01title.png\"/></p></body></html>"))
+        self.nom.setText(_translate("tarjeta", "<html><head/><body><p align=\"right\"><span style=\" font-size:11pt; font-weight:600;\">Clave:</span></p></body></html>"))
+        self.model.setText(_translate("tarjeta", "<html><head/><body><p align=\"right\"><span style=\" font-size:11pt; font-weight:600;\">Banco: </span></p></body></html>"))
+        self.textclave1.setToolTip(_translate("tarjeta", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'Noto Sans\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#474747;\">Ej:Juan Hernandez Ventura</span></p></body></html>"))
-        self.textcorreo_2.setToolTip(_translate("usuario", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#474747;\">Ej:124567825789425</span></p></body></html>"))
+        self.textbanco1.setToolTip(_translate("tarjeta", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'Noto Sans\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#474747;\">Ej: rgtling@hotmail.com</span></p></body></html>"))
-        self.fech.setText(_translate("usuario", "<html><head/><body><p align=\"right\"><span style=\" font-size:11pt; font-weight:600;\">Fecha:</span></p></body></html>"))
-        self.textfecha.setToolTip(_translate("usuario", "<html><head/><body><p><span style=\" color:#474747;\">Ej:02/09/2017</span></p></body></html>"))
-        self.textfecha.setWhatsThis(_translate("usuario", "<html><head/><body><p><br/></p></body></html>"))
-        self.textfecha.setDisplayFormat(_translate("usuario", "dd/MM/yyyy"))
-        self.cargando1.setText(_translate("usuario", "<html><head/><body><p align=\"center\"><br/></p></body></html>"))
-        self.indicaciones_2.setText(_translate("usuario", "<html><head/><body><p align=\"center\"><span style=\" font-size:11pt; font-weight:600;\">Ingrese Los Datos Del Usuario:</span></p></body></html>"))
-        self.nom_15.setText(_translate("usuario", "<html><head/><body><p align=\"right\"><span style=\" font-size:11pt; font-weight:600;\">Alias:</span></p></body></html>"))
-        self.textalias.setToolTip(_translate("usuario", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Noto Sans\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#474747;\">Ej:MasterCrack</span></p></body></html>"))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.crear), _translate("usuario", "Crear"))
-        self.logo_2.setText(_translate("usuario", "<html><head/><body><p align=\"center\"><img src=\":/recurso/img/01title.png\"/></p></body></html>"))
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#474747;\">Ej: Banamex</span></p></body></html>"))
+        self.fech.setText(_translate("tarjeta", "<html><head/><body><p align=\"right\"><span style=\" font-size:11pt; font-weight:600;\">Vencimiento:</span></p></body></html>"))
+        self.textfecha1.setToolTip(_translate("tarjeta", "<html><head/><body><p><span style=\" color:#474747;\">Ej:02/09/2017</span></p></body></html>"))
+        self.textfecha1.setWhatsThis(_translate("tarjeta", "<html><head/><body><p><br/></p></body></html>"))
+        self.textfecha1.setDisplayFormat(_translate("tarjeta", "dd/MM/yyyy"))
+        self.cargando1.setText(_translate("tarjeta", "<html><head/><body><p align=\"center\"><br/></p></body></html>"))
+        self.indicaciones_2.setText(_translate("tarjeta", "<html><head/><body><p align=\"center\"><span style=\" font-size:11pt; font-weight:600;\">Ingrese Los Datos Del Usuario:</span></p></body></html>"))
+        self.combousuario.setToolTip(_translate("tarjeta", "<html><head/><body><p><span style=\" color:#474747;\">Puede Suscar o Selecionar.</span></p></body></html>"))
+        self.nom_3.setText(_translate("tarjeta", "<html><head/><body><p align=\"right\"><span style=\" font-size:11pt; font-weight:600;\">Usuario:</span></p></body></html>"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.crear), _translate("tarjeta", "Crear o Añadir"))
+        self.logo_2.setText(_translate("tarjeta", "<html><head/><body><p align=\"center\"><img src=\":/recurso/img/01title.png\"/></p></body></html>"))
         item = self.resultado.horizontalHeaderItem(0)
-        item.setText(_translate("usuario", "Alias"))
+        item.setText(_translate("tarjeta", "Usuario"))
         item = self.resultado.horizontalHeaderItem(1)
-        item.setText(_translate("usuario", "Nombre"))
+        item.setText(_translate("tarjeta", "Tarjeta"))
         item = self.resultado.horizontalHeaderItem(2)
-        item.setText(_translate("usuario", "Fecha"))
+        item.setText(_translate("tarjeta", "Banco"))
         item = self.resultado.horizontalHeaderItem(3)
-        item.setText(_translate("usuario", "Correo"))
-        self.frame.setText(_translate("usuario", "<html><head/><body><p><img src=\":/recurso/img/cuadro1.png\"/></p></body></html>"))
-        self.codigo.setToolTip(_translate("usuario", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+        item.setText(_translate("tarjeta", "Vencimiento"))
+        self.frame.setText(_translate("tarjeta", "<html><head/><body><p><img src=\":/recurso/img/cuadro1.png\"/></p></body></html>"))
+        self.codigo1.setToolTip(_translate("tarjeta", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'Noto Sans\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#747474;\">Ej:Juan</span></p></body></html>"))
-        self.nom_2.setText(_translate("usuario", "<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">Nombre de la Usuario: </span></p></body></html>"))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.buscar), _translate("usuario", "Buscar"))
-        self.logo_3.setText(_translate("usuario", "<html><head/><body><p align=\"center\"><img src=\":/recurso/img/01title.png\"/></p></body></html>"))
-        self.codigo_2.setToolTip(_translate("usuario", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#747474;\">Ej:Nintendo </span></p></body></html>"))
+        self.nom_2.setText(_translate("tarjeta", "<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">Nombre de la Usuario: </span></p></body></html>"))
+        self.nom_4.setText(_translate("tarjeta", "<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">Tarjetas: </span></p></body></html>"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.buscar), _translate("tarjeta", "Buscar"))
+        self.logo_3.setText(_translate("tarjeta", "<html><head/><body><p align=\"center\"><img src=\":/recurso/img/01title.png\"/></p></body></html>"))
+        self.codigo2.setToolTip(_translate("tarjeta", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'Noto Sans\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#747474;\">Ej:Nintendo</span></p></body></html>"))
-        self.nom_5.setText(_translate("usuario", "<html><head/><body><p align=\"right\"><span style=\" font-size:11pt; font-weight:600;\">Nombre de la usuario: </span></p></body></html>"))
-        self.nom_7.setText(_translate("usuario", "<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">Ingrese Los Datos A Modificar:</span></p></body></html>"))
-        self.cargando2.setText(_translate("usuario", "<html><head/><body><p align=\"center\"><br/></p></body></html>"))
-        self.nom_9.setText(_translate("usuario", "<html><head/><body><p align=\"right\"><span style=\" font-size:11pt; font-weight:600;\">Nombre:</span></p></body></html>"))
-        self.textnombre_2.setToolTip(_translate("usuario", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#747474;\">Ej:1235848451316415</span></p></body></html>"))
+        self.nom_5.setText(_translate("tarjeta", "<html><head/><body><p align=\"right\"><span style=\" font-size:11pt; font-weight:600;\">Clave de la Tarjeta: </span></p></body></html>"))
+        self.nom_7.setText(_translate("tarjeta", "<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">Ingrese Los Datos A Modificar:</span></p></body></html>"))
+        self.cargando2.setText(_translate("tarjeta", "<html><head/><body><p align=\"center\"><br/></p></body></html>"))
+        self.textclave2.setToolTip(_translate("tarjeta", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'Noto Sans\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#474747;\">Ej:Juan Alberto</span></p></body></html>"))
-        self.textcorreo.setToolTip(_translate("usuario", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#474747;\">Ej:25156514812512512545</span></p></body></html>"))
+        self.model_4.setText(_translate("tarjeta", "<html><head/><body><p align=\"right\"><span style=\" font-size:11pt; font-weight:600;\">Banco: </span></p></body></html>"))
+        self.textbanco2.setToolTip(_translate("tarjeta", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'Noto Sans\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#474747;\">Ej: nombre@dominio.com</span></p></body></html>"))
-        self.fech_2.setText(_translate("usuario", "<html><head/><body><p align=\"right\"><span style=\" font-size:11pt; font-weight:600;\">Fecha:</span></p></body></html>"))
-        self.model_2.setText(_translate("usuario", "<html><head/><body><p align=\"right\"><span style=\" font-size:11pt; font-weight:600;\">Correo: </span></p></body></html>"))
-        self.textfecha_2.setToolTip(_translate("usuario", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#474747;\">Ej: Banamex</span></p></body></html>"))
+        self.nom_15.setText(_translate("tarjeta", "<html><head/><body><p align=\"right\"><span style=\" font-size:11pt; font-weight:600;\">Clave:</span></p></body></html>"))
+        self.fech_4.setText(_translate("tarjeta", "<html><head/><body><p align=\"right\"><span style=\" font-size:11pt; font-weight:600;\">Vencimiento:</span></p></body></html>"))
+        self.textfecha2.setToolTip(_translate("tarjeta", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'Noto Sans\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#474747;\">Ej:05/05/05</span></p></body></html>"))
-        self.nom_16.setText(_translate("usuario", "<html><head/><body><p align=\"right\"><span style=\" font-size:11pt; font-weight:600;\">Alias:</span></p></body></html>"))
-        self.textalias_2.setToolTip(_translate("usuario", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.actualizar), _translate("tarjeta", "Actualizar"))
+        self.logo_4.setText(_translate("tarjeta", "<html><head/><body><p align=\"center\"><img src=\":/recurso/img/01title.png\"/></p></body></html>"))
+        self.codigo3.setToolTip(_translate("tarjeta", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'Noto Sans\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#474747;\">Ej:Bobicraft</span></p></body></html>"))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.actualizar), _translate("usuario", "Actualizar"))
-        self.logo_4.setText(_translate("usuario", "<html><head/><body><p align=\"center\"><img src=\":/recurso/img/01title.png\"/></p></body></html>"))
-        self.codigo3.setToolTip(_translate("usuario", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Noto Sans\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#747474;\">Ej:Juan</span></p></body></html>"))
-        self.textnom.setText(_translate("usuario", "<html><head/><body><p align=\"right\"><span style=\" font-size:11pt; font-weight:600;\">Nombre Del Usuario: </span></p></body></html>"))
-        self.texto.setText(_translate("usuario", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#747474;\">Ej:15975368426</span></p></body></html>"))
+        self.textnom.setText(_translate("tarjeta", "<html><head/><body><p align=\"right\"><span style=\" font-size:11pt; font-weight:600;\">Nombre De la Tarjeta: </span></p></body></html>"))
+        self.texto.setText(_translate("tarjeta", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'Noto Sans\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
 "<p align=\"justify\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600; color:#aa0000;\">En cuanto usted elimine el elemento nombrado, éste dejara de </span></p>\n"
 "<p align=\"justify\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600; color:#aa0000;\">existir y no habrá forma de recuperarlo, si usted está seguro </span></p>\n"
 "<p align=\"justify\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600; color:#aa0000;\">de esto continue.</span></p></body></html>"))
-        self.cargando3.setText(_translate("usuario", "<html><head/><body><p align=\"center\"><br/></p></body></html>"))
-        self.checkBox.setText(_translate("usuario", "ADVERTENCIA:"))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_4), _translate("usuario", "Borrar"))
+        self.cargando3.setText(_translate("tarjeta", "<html><head/><body><p align=\"center\"><br/></p></body></html>"))
+        self.checkBox.setText(_translate("tarjeta", "ADVERTENCIA:"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_4), _translate("tarjeta", "Borrar"))
 import recurso_rc

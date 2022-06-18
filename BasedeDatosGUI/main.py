@@ -10,11 +10,11 @@ from logica.clasedatos import *
 from logica.claseJuego import *
 from logica.clasePlataforma import *
 from logica.claseVersion import *
-
 from grafica.menu import *
 from grafica.game import *
 from grafica.plataforma import *
 from grafica.usuario import *
+from grafica.tarjeta import *
 from grafica.version import *
 from grafica.error401 import *
 from grafica.error402 import *
@@ -33,7 +33,11 @@ class MiApp(QMainWindow):
         self.ui.bplatform.clicked.connect(self.abrirPlataforma)
         self.ui.bversion.clicked.connect(self.abrirVersion)
         self.ui.busuario.clicked.connect(self.abrirUsuario)
-        self.ui.busuario.clicked.connect(self.abrirUsuario)
+        self.ui.btarjeta.clicked.connect(self.abrirTarjeta)
+    def abrirTarjeta(self):
+        self.hide()
+        self.ventana = Tarjeta()
+        self.ventana.show()
     def abrirUsuario(self):
         self.hide()
         self.ventana = Usuario()
@@ -54,6 +58,224 @@ class MiApp(QMainWindow):
         self.ventana2 = Plataforma()
         self.ventana2.show()
 
+
+####
+class Tarjeta(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.ui =Ui_tarjeta()
+        self.ui.setupUi(self)
+        listausuario = [['juego','mundo','adios'],['hola2','mundo','adios'],['hola3','mundo','adios']]
+        #     el primer atributo será el "nombre"
+        j = 0
+        for i in listausuario:
+            user = listausuario[j][0]
+            self.ui.combousuario.addItem(user)
+            j += 1
+        self.ui.atras1.clicked.connect(self.retroceder)
+        self.ui.atras2.clicked.connect(self.retroceder)
+        self.ui.atras3.clicked.connect(self.retroceder)
+        self.ui.atras4.clicked.connect(self.retroceder)
+
+        self.ui.aceptar1.clicked.connect(self.crear)
+        self.ui.acp.clicked.connect(self.carga_modificar)
+        self.ui.act.clicked.connect(self.modificar)
+        self.ui.aceptar_4.clicked.connect(self.borrar)
+        self.ui.busca.clicked.connect(self.buscar)
+        self.ui.limpiar.clicked.connect(self.limpio)
+    def crear(self):
+        user = self.ui.combousuario.currentText()
+        usuario = str(user)
+        nom = self.ui.textbanco1.text()
+        nombre = str(nom)
+        cla = self.ui.textclave1.text()
+        clabe = str(cla)
+        fech = self.ui.textfecha1.text()
+        fecha = str(fech)
+
+        if usuario == '' or nombre == '' or clabe == '':
+            self.error(1)
+        else:
+            valorA = True #TODO creartarjeta(nombre clabe fecha)
+            valorB = True#funcion enlaceusuario-tarjeta(usuario,nombre,clave,fecha)
+            if valorA != True or valorB!=True:
+                self.ui.cargando1.setText('Cargando...')
+                for i in range(0, 50):
+                    time.sleep(0.01)
+                    self.ui.progreso1.setValue(i)
+                self.ui.cargando1.setText('')
+                self.error(3)
+                time.sleep(0.2)
+                self.ui.progreso1.setValue(0)
+                self.ui.textclave1.setText('')
+                self.ui.textbanco1.setText('')
+                self.ui.combousuario.setCurrentIndex(0)
+            else:
+                self.ui.cargando1.setText('Cargando...')
+                for i in range(0, 101):
+                    time.sleep(0.01)
+                    self.ui.progreso1.setValue(i)
+                self.ui.cargando1.setText('¡Operación Exitosa!')
+                self.ui.progreso1.setValue(0)
+                self.ui.textclave1.setText('')
+                self.ui.textbanco1.setText('')
+                self.ui.combousuario.setCurrentIndex(0)
+
+    def buscar(self):
+        cod = self.ui.codigo1.text()
+        codigo = str(cod)
+        if codigo == '*':
+            datosB = []#TODO lista de listas de consulta FROM usuario,tarjeta
+                       #select usuario, tarjeta,banco,vencimiento
+            i = len(datosB)
+            if i == 0:
+                self.error(2)
+                self.ui.resultado.setRowCount(0)
+            else:
+                self.ui.resultado.setRowCount(i)
+                tablerow = 0
+                for row in datosB:
+                    self.ui.resultado.setItem(tablerow, 0, QtWidgets.QTableWidgetItem(row[0]))
+                    self.ui.resultado.setItem(tablerow, 1, QtWidgets.QTableWidgetItem(row[1]))
+                    self.ui.resultado.setItem(tablerow, 2, QtWidgets.QTableWidgetItem(row[2]))
+                    self.ui.resultado.setItem(tablerow, 3, QtWidgets.QTableWidgetItem(row[3]))
+                    self.ui.resultado.setItem(tablerow, 4, QtWidgets.QTableWidgetItem(row[4]))
+                    tablerow += 1
+                self.ui.codigo1.setText('')
+        else:
+            if codigo == '':
+                self.error(1)
+                self.ui.resultado.setRowCount(0)
+            else:
+                ##########################
+                datosB = ['usuario','tarjeta','banco','vencimiento'] #TODO:funcion(codigo)
+                # parametro en : codigo
+                ############################
+                i = len(datosB)
+                if i == 0:
+                    self.error(2)
+                    self.ui.resultado.setRowCount(0)
+                else:
+                    self.ui.resultado.setRowCount(1)
+                    tablerow = 0
+                    for row in datosB:
+                        self.ui.resultado.setItem(0, tablerow, QtWidgets.QTableWidgetItem(row))
+                        tablerow += 1
+                    self.ui.codigo1.setText('')
+    def carga_modificar(self):
+        cod = self.ui.codigo2.text()
+        clave = str(cod)
+        if clave =='':
+            self.error(1)
+            self.ui.textclave2.setText('')
+            self.ui.textbanco2.setText('')
+            self.ui.textfecha2.setText('')
+            ####
+        else:
+            datoB = ['numero','fecha','nombre']##self.principal.consultaDatos('juego', codigo, self.cursor)
+            # SE REGRESA LOS DATOS DE LA SIGUIENTE MANERA: nombre,fecha, modelo
+            ###
+            if datoB == []:
+                self.error(2)
+                self.ui.codigo2.setText('')
+                self.ui.textclave2.setText('')
+                self.ui.textbanco2.setText('')
+                self.ui.textfecha2.setText('')
+            else:
+                #caraga los datos en los textos
+                self.ui.textclave2.setText(datoB[0])
+                self.ui.textbanco2.setText(datoB[2])
+                self.ui.textfecha2.setText(datoB[1])
+
+    def modificar(self):
+        num=self.ui.textclave2.text()
+        numero=str(num)
+        nom =self.ui.textbanco2.text()
+        nombre = str(nom)
+        fech = self.ui.textfecha2.text()
+        fecha = str(fech)
+        valor = True#TODO modificatarjeta(numero,nombre,fecha)
+        if valor != True:
+            self.ui.cargando2.setText('Cargando...')
+            for i in range(0, 50):
+                time.sleep(0.02)
+                self.ui.progreso2.setValue(i)
+            self.ui.cargando2.setText('')
+            self.error(3)
+            time.sleep(0.2)
+            self.ui.progreso2.setValue(0)
+        else:
+            self.ui.cargando2.setText('Cargando...')
+            for i in range(0, 101):
+                time.sleep(0.01)
+                self.ui.progreso2.setValue(i)
+            self.ui.cargando2.setText('¡Operación Exitosa!')
+            time.sleep(0.2)
+            self.ui.progreso2.setValue(0)
+            self.ui.codigo2.setText('')
+            self.ui.textclave2.setText('')
+            self.ui.textbanco2.setText('')
+            self.ui.textfecha2.setText('')
+    def borrar(self):
+        cod = self.ui.codigo3.text()
+        codigo = str(cod)
+        if codigo == '':
+            self.error(1)
+        else:
+            #### el dato se va en el parametro (codigo)
+            valor = ['DATO'] #TODO:
+            if valor == []:
+                self.ui.cargando3.setText('Cargando...')
+                for i in range(0, 50):
+                    time.sleep(0.01)
+                    self.ui.progreso3.setValue(i)
+                self.ui.cargando3.setText('')
+                self.error(2)
+                time.sleep(0.3)
+                self.ui.progreso3.setValue(0)
+                self.ui.codigo3.setText('')
+            else:
+                # el dato se va en el parametro (codigo)
+                valor2 = True
+                if valor2 != True:
+                    self.ui.cargando3.setText('Cargando...')
+                    for i in range(0, 50):
+                        time.sleep(0.01)
+                        self.ui.progreso3.setValue(i)
+                    self.ui.cargando3.setText('')
+                    self.error(3)
+                    time.sleep(0.3)
+                    self.ui.progreso3.setValue(0)
+                    self.ui.codigo3.setText('')
+                else:
+                    self.ui.cargando3.setText('Cargando...')
+                    for i in range(0, 101):
+                        time.sleep(0.01)
+                        self.ui.progreso3.setValue(i)
+                    self.ui.cargando3.setText('¡Operación Exitosa!')
+                    time.sleep(0.3)
+                    self.ui.progreso3.setValue(0)
+                    self.ui.codigo3.setText('')
+
+    def limpio(self):
+        self.ui.codigo1.setText('')
+        self.ui.resultado.setRowCount(0)
+
+    def error(self, x):
+        if x == 1:
+            self.ventana = error401()
+            self.ventana.show()
+        elif x == 2:
+            self.ventana = error402()
+            self.ventana.show()
+        elif x == 3:
+            self.ventana = error403()
+            self.ventana.show()
+
+    def retroceder(self):
+        self.hide()
+        self.ventana = MiApp()
+        self.ventana.show()
 
 ####
 class Usuario(QMainWindow):
@@ -389,10 +611,8 @@ class Version(QMainWindow):
                 self.ui.resultado.setRowCount(0)
             else:
                 ##########################
-                print(codigo)
                 datosB = self.principal.consultaDatos('version', codigo, 'id', self.cursorV)
                 # parametro en : codigo
-                print(datosB)
                 ############################
                 i = len(datosB)
                 if i == 0:
@@ -486,7 +706,7 @@ class Version(QMainWindow):
             #### el dato se va en el parametro (codigo)
             valor = self.principal.consultaDatos('version', codigo, 'id',
                                                  self.cursorV)  # puede borrar el true cuando se haga la conexion de BD
-            if valor != True:
+            if valor == []:
                 self.ui.cargando3.setText('Cargando...')
                 for i in range(0, 50):
                     time.sleep(0.01)
@@ -612,7 +832,6 @@ class Plataforma(QMainWindow):
             else:
                 self.ui.resultado.setRowCount(i)
                 tablerow = 0
-                print(datosB)
                 for row in datosB:
                     self.ui.resultado.setItem(tablerow, 0, QtWidgets.QTableWidgetItem(row))
                     self.ui.resultado.setItem(tablerow, 1, QtWidgets.QTableWidgetItem(row))
@@ -636,7 +855,6 @@ class Plataforma(QMainWindow):
                 else:
                     self.ui.resultado.setRowCount(1)
                     tablerow = 0
-                    print(datosB)
                     for row in datosB:
                         self.ui.resultado.setItem(0, tablerow, QtWidgets.QTableWidgetItem(row))
                         tablerow += 1
@@ -890,7 +1108,6 @@ class Juego(QMainWindow):
         datosCambiados.append(genero)
         datosB = self.principal.consultaDatos('juego', nombre, 'nombre', self.cursor)
 
-        print(datosCambiados, datosB)
         valor = self.principal.actualizarDatos(datosCambiados, datosB, self.cursor)  # TODO: manda  a llamar actualizar(nombre,clasificacion,descripcion,genero)
         # devuelve true o false
         if valor != True:
@@ -994,9 +1211,7 @@ class Juego(QMainWindow):
                 MANDA   en:clave <es la clave primaria>     ej:soft
                 REGRESA en:datoB <Es una lista de 1 tupla>  ej:[](llega lista vacia si no hay nada)
                 datoB=self.clase.metodo_buscar(clave) """
-                print(type(clave))
                 datosB = self.principal.consultaDatos('juego', clave, 'nombre', self.cursor)
-                #print(datosB)
                 # datosB = [te regresa una lista]
                 ############################
                 i = len(datosB)
@@ -1021,9 +1236,7 @@ class Juego(QMainWindow):
             MANDA   en:clave <es la clave primaria>     ej:soft
             REGRESA en:datoB <Es una lista de 1 tupla>  ej:[](llega lista vacia si no hay nada)
             datoB=self.clase.metodo_buscar(clave) """
-            print(type(clave))
             datosB = self.principal.consultaDatos('juego', clave, 'nombre', self.cursor)
-            #print(datosB)
             # datosB = [('Minecraft', 'dat1', 'dat2', 'dat3'), ('Minecraft2', 'dat1', 'dat2', 'dat3')]
             ############################
             i = len(datosB)
@@ -1032,9 +1245,7 @@ class Juego(QMainWindow):
             else:
                 self.ui.tableWidget.setRowCount(10)
                 tablerow = 0
-                print(datosB)
                 for row in datosB:
-                    print(row)
                     self.ui.tableWidget.setItem(0, tablerow, QtWidgets.QTableWidgetItem(row))
                     tablerow += 1
                 self.ui.lcod.setText('')

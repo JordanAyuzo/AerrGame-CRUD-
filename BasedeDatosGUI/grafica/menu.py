@@ -125,17 +125,17 @@ class Ui_MainWindow(object):
         self.busuario.setAutoDefault(True)
         self.busuario.setDefault(False)
         self.busuario.setObjectName("busuario")
-        self.bjuego_3 = QtWidgets.QPushButton(self.frame)
-        self.bjuego_3.setGeometry(QtCore.QRect(270, 230, 91, 71))
-        self.bjuego_3.setFocusPolicy(QtCore.Qt.StrongFocus)
-        self.bjuego_3.setStyleSheet("background-color: rgba(0, 0, 0,0%);\n"
+        self.btarjeta = QtWidgets.QPushButton(self.frame)
+        self.btarjeta.setGeometry(QtCore.QRect(270, 230, 91, 71))
+        self.btarjeta.setFocusPolicy(QtCore.Qt.StrongFocus)
+        self.btarjeta.setStyleSheet("background-color: rgba(0, 0, 0,0%);\n"
 "image: url(:/recurso/img/tarjeta.png);\n"
 "border:none;\n"
 "")
-        self.bjuego_3.setText("")
-        self.bjuego_3.setAutoDefault(True)
-        self.bjuego_3.setDefault(False)
-        self.bjuego_3.setObjectName("bjuego_3")
+        self.btarjeta.setText("")
+        self.btarjeta.setAutoDefault(True)
+        self.btarjeta.setDefault(False)
+        self.btarjeta.setObjectName("btarjeta")
         self.ljuego_3 = QtWidgets.QLabel(self.frame)
         self.ljuego_3.setEnabled(True)
         self.ljuego_3.setGeometry(QtCore.QRect(270, 300, 91, 21))

@@ -175,16 +175,12 @@ class Version(QMainWindow):
                     self.error(2)
                     self.ui.resultado.setRowCount(0)
                 else:
-                    self.ui.resultado.setRowCount(i)
+                    self.ui.resultado.setRowCount(1)
                     tablerow = 0
                     for row in datosB:
-                        self.ui.resultado.setItem(tablerow, 0, QtWidgets.QTableWidgetItem(row[0]))
-                        self.ui.resultado.setItem(tablerow, 1, QtWidgets.QTableWidgetItem(row[1]))
-                        self.ui.resultado.setItem(tablerow, 2, QtWidgets.QTableWidgetItem(row[2]))
-                        self.ui.resultado.setItem(tablerow, 3, QtWidgets.QTableWidgetItem(row[3]))
-                        self.ui.resultado.setItem(tablerow, 4, QtWidgets.QTableWidgetItem(row[4]))
+                        self.ui.tableWidget.setItem(0, tablerow, QtWidgets.QTableWidgetItem(row))
                         tablerow += 1
-                    self.ui.codigo1.setText('')
+                    self.ui.lcod.setText('')
 
     #####
     def carga_modificar(self):
@@ -747,6 +743,52 @@ class Juego(QMainWindow):
         self.ui.tableWidget.setRowCount(0)
         self.ui.lcod.setText('')
 
+    def buscar(self):
+        clav = self.ui.lcod.text()
+        clave = str(clav)
+        if clave == '*':
+            ############################
+            datosB =  # TODO aqui llega tu pinche lista de listas xD
+            ############################
+            i = len(datosB)
+            if i == 0:
+                self.error(2)
+                self.ui.resultado.setRowCount(0)
+            else:
+                self.ui.resultado.setRowCount(i)
+                tablerow = 0
+                for row in datosB:
+                    self.ui.resultado.setItem(tablerow, 0, QtWidgets.QTableWidgetItem(row[0]))
+                    self.ui.resultado.setItem(tablerow, 1, QtWidgets.QTableWidgetItem(row[1]))
+                    self.ui.resultado.setItem(tablerow, 2, QtWidgets.QTableWidgetItem(row[2]))
+                    self.ui.resultado.setItem(tablerow, 3, QtWidgets.QTableWidgetItem(row[3]))
+                    tablerow += 1
+                self.ui.codigo.setText('')
+        else:
+             if clave == '':
+                self.error(1)
+            else:
+                ##########################
+                """Llama al metodo de busqueda pasandole como parametro la clave primaria
+                MANDA   en:clave <es la clave primaria>     ej:soft
+                REGRESA en:datoB <Es una lista de 1 tupla>  ej:[](llega lista vacia si no hay nada)
+                datoB=self.clase.metodo_buscar(clave) """
+                print(type(clave))
+                datosB = self.principal.consultaDatos('juego', clave, 'nombre', self.cursor)
+                #print(datosB)
+                # datosB = [te regresa una lista]
+                ############################
+                i = len(datosB)
+                if i == 0:
+                    self.error(2)
+                    self.ui.tableWidget.setRowCount(0)
+                else:
+                    self.ui.tableWidget.setRowCount(1)
+                    tablerow = 0
+                    for row in datosB:
+                        self.ui.tableWidget.setItem(0, tablerow, QtWidgets.QTableWidgetItem(row))
+                        tablerow += 1
+                    self.ui.lcod.setText('')
     def buscar(self):
         clav = self.ui.lcod.text()
         clave = str(clav)

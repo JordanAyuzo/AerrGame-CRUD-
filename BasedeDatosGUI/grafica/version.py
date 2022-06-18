@@ -262,7 +262,7 @@ class Ui_version(object):
 "")
         self.logo_3.setObjectName("logo_3")
         self.codigo2 = QtWidgets.QLineEdit(self.actualizar)
-        self.codigo2.setGeometry(QtCore.QRect(260, 90, 201, 31))
+        self.codigo2.setGeometry(QtCore.QRect(210, 90, 201, 31))
         self.codigo2.setAutoFillBackground(False)
         self.codigo2.setStyleSheet("background-color: rgb(255, 255, 255);\n"
 "border-radius: 10px;\n"
@@ -271,7 +271,7 @@ class Ui_version(object):
         self.codigo2.setText("")
         self.codigo2.setObjectName("codigo2")
         self.nom_5 = QtWidgets.QLabel(self.actualizar)
-        self.nom_5.setGeometry(QtCore.QRect(90, 90, 171, 31))
+        self.nom_5.setGeometry(QtCore.QRect(40, 90, 171, 31))
         self.nom_5.setStyleSheet("border:none;\n"
 "background-color: rgba(0, 0, 0,0%);")
         self.nom_5.setObjectName("nom_5")
@@ -288,7 +288,7 @@ class Ui_version(object):
         self.progreso2.setInvertedAppearance(False)
         self.progreso2.setObjectName("progreso2")
         self.aceptar2 = QtWidgets.QPushButton(self.actualizar)
-        self.aceptar2.setGeometry(QtCore.QRect(210, 370, 61, 61))
+        self.aceptar2.setGeometry(QtCore.QRect(420, 80, 61, 51))
         self.aceptar2.setStyleSheet("image: url(:/recurso/img/elegir.png);\n"
 "background-color: rgba(0, 0, 0,0%);\n"
 "border:none;")
@@ -307,15 +307,6 @@ class Ui_version(object):
         self.cargando2.setGeometry(QtCore.QRect(180, 450, 141, 20))
         self.cargando2.setStyleSheet("background-color: rgba(0, 0, 0,0%);")
         self.cargando2.setObjectName("cargando2")
-        self.textfecha2 = QtWidgets.QDateEdit(self.actualizar)
-        self.textfecha2.setGeometry(QtCore.QRect(200, 280, 241, 31))
-        self.textfecha2.setStyleSheet("background-color: rgb(255, 255, 255);\n"
-"color:rgb(0, 0, 0);\n"
-"border-radius: 5px;\n"
-"border: 1px solid #00007f;")
-        self.textfecha2.setCalendarPopup(True)
-        self.textfecha2.setDate(QtCore.QDate(1900, 1, 1))
-        self.textfecha2.setObjectName("textfecha2")
         self.nom_9 = QtWidgets.QLabel(self.actualizar)
         self.nom_9.setGeometry(QtCore.QRect(110, 230, 71, 31))
         self.nom_9.setStyleSheet("border:none;\n"
@@ -377,6 +368,24 @@ class Ui_version(object):
 "background-color: rgba(0, 0, 0,0%);\n"
 "")
         self.model_2.setObjectName("model_2")
+        self.textfecha2 = QtWidgets.QLineEdit(self.actualizar)
+        self.textfecha2.setGeometry(QtCore.QRect(200, 280, 241, 31))
+        self.textfecha2.setAutoFillBackground(False)
+        self.textfecha2.setStyleSheet("background-color: rgb(255, 255, 255);\n"
+"border-radius: 10px;\n"
+"border: 1px solid #00007f;\n"
+"color:#000000;")
+        self.textfecha2.setText("")
+        self.textfecha2.setPlaceholderText("")
+        self.textfecha2.setObjectName("textfecha2")
+        self.actualizacion = QtWidgets.QPushButton(self.actualizar)
+        self.actualizacion.setGeometry(QtCore.QRect(200, 370, 61, 61))
+        self.actualizacion.setStyleSheet("image:url(:/recurso/img/actualizar.png);\n"
+"background-color: rgba(0, 0, 0,0%);\n"
+"border:none;")
+        self.actualizacion.setText("")
+        self.actualizacion.setAutoDefault(True)
+        self.actualizacion.setObjectName("actualizacion")
         self.tabWidget.addTab(self.actualizar, "")
         self.tab_4 = QtWidgets.QWidget()
         self.tab_4.setObjectName("tab_4")
@@ -468,8 +477,7 @@ class Ui_version(object):
         version.setTabOrder(self.codigo2, self.combojuego2)
         version.setTabOrder(self.combojuego2, self.comboplataforma2)
         version.setTabOrder(self.comboplataforma2, self.textnombre2)
-        version.setTabOrder(self.textnombre2, self.textfecha2)
-        version.setTabOrder(self.textfecha2, self.textrequisitos2)
+        version.setTabOrder(self.textnombre2, self.textrequisitos2)
         version.setTabOrder(self.textrequisitos2, self.aceptar2)
         version.setTabOrder(self.aceptar2, self.atras4)
         version.setTabOrder(self.atras4, self.codigo3)
@@ -532,9 +540,6 @@ class Ui_version(object):
         self.nom_5.setText(_translate("version", "<html><head/><body><p align=\"right\"><span style=\" font-size:11pt; font-weight:600;\">Nombre de la versión: </span></p></body></html>"))
         self.nom_7.setText(_translate("version", "<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">Ingrese Los Datos A Modificar:</span></p></body></html>"))
         self.cargando2.setText(_translate("version", "<html><head/><body><p align=\"center\"><br/></p></body></html>"))
-        self.textfecha2.setToolTip(_translate("version", "<html><head/><body><p><span style=\" color:#474747;\">Ej:02/09/2017</span></p></body></html>"))
-        self.textfecha2.setWhatsThis(_translate("version", "<html><head/><body><p><br/></p></body></html>"))
-        self.textfecha2.setDisplayFormat(_translate("version", "dd/MM/yyyy"))
         self.nom_9.setText(_translate("version", "<html><head/><body><p align=\"right\"><span style=\" font-size:11pt; font-weight:600;\">Nombre:</span></p></body></html>"))
         self.textnombre2.setToolTip(_translate("version", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
@@ -552,6 +557,11 @@ class Ui_version(object):
         self.combojuego2.setToolTip(_translate("version", "<html><head/><body><p><span style=\" color:#474747;\">Puede Buscar o Selecionar.</span></p></body></html>"))
         self.fech_2.setText(_translate("version", "<html><head/><body><p align=\"right\"><span style=\" font-size:11pt; font-weight:600;\">Fecha:</span></p></body></html>"))
         self.model_2.setText(_translate("version", "<html><head/><body><p align=\"right\"><span style=\" font-size:11pt; font-weight:600;\">Reuquisitos: </span></p></body></html>"))
+        self.textfecha2.setToolTip(_translate("version", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Noto Sans\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#474747;\">Ej:V2132A</span></p></body></html>"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.actualizar), _translate("version", "Actualizar"))
         self.logo_4.setText(_translate("version", "<html><head/><body><p align=\"center\"><img src=\":/recurso/img/01title.png\"/></p></body></html>"))
         self.codigo3.setToolTip(_translate("version", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"

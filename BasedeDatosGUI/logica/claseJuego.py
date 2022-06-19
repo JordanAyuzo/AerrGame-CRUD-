@@ -36,7 +36,7 @@ class JuegoBase(BaseDatos):
 
             for dato in listaDatosCanv:
                 cursor.execute(
-                    "UPDATE version SET " + nameColumn[i] + "=" + dato + "WHERE " + nameColumn[i] + "=" + listaDatosAct[i])
+                    "UPDATE version SET " + nameColumn[i][i] + "=" + dato + "WHERE " + nameColumn[i] + "=" + listaDatosAct[i])
                 i = i + 1
 
             print("datos actualizados")

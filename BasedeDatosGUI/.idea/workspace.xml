@@ -102,6 +102,8 @@
       <workItem from="1655052441922" duration="4440000" />
       <workItem from="1655500397304" duration="1957000" />
       <workItem from="1655505261521" duration="3057000" />
+      <workItem from="1655598964640" duration="10634000" />
+      <workItem from="1655690913035" duration="844000" />
     </task>
     <servers />
   </component>
@@ -113,28 +115,28 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main.py</url>
-          <line>327</line>
+          <line>834</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main.py</url>
-          <line>170</line>
+          <line>615</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/main.py</url>
-          <line>609</line>
-          <option name="timeStamp" value="3" />
+          <url>file://$PROJECT_DIR$/logica/claseJuego.py</url>
+          <line>4</line>
+          <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/logica/claseJuego.py</url>
           <line>36</line>
-          <option name="timeStamp" value="5" />
+          <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/BasedeDatosGUI$main.coverage" NAME="main Coverage Results" MODIFIED="1655507777903" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/BasedeDatosGUI$main.coverage" NAME="main Coverage Results" MODIFIED="1655691658014" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

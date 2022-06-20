@@ -72,8 +72,8 @@ class BaseDatos():
             print("La consulta no pudo realizarse")
             return []
 
-    def borrarColumna(self, clavePrimaria,tablaConsultar, cursor):
-        sql = "DELETE FROM " + tablaConsultar + " WHERE nombre = " + "'" + clavePrimaria + "'"
+    def borrarColumna(self, clavePrimaria, tablaConsultar, condicion, cursor):
+        sql = "DELETE FROM " + tablaConsultar + " WHERE " + condicion +" = '" + clavePrimaria + "'"
         print(sql)
         try:
             cursor.execute(sql)

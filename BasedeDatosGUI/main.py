@@ -552,6 +552,9 @@ class Version(QMainWindow):
         nombre = str(nom)
         fech = self.ui.textfecha.text()
         fecha = str(fech)
+        fecha = fecha.split('/')
+        fecha.reverse()
+        fecha = '/'.join(fecha)
         req = self.ui.textrequisitos.text()
         requisitos = str(req)
         if plataforma == '' or juego == '' or nombre == '' or requisitos == '':
@@ -639,7 +642,7 @@ class Version(QMainWindow):
             self.ui.comboplataforma2.setCurrentIndex(0)
             ####
         else:
-            datoB = ['nombre','requisitos','f/ec/ha' ,'plataforma','juego']##self.principal.consultaDatos('juego', codigo, self.cursor)
+            datoB = self.principal.consultaDatos('version', clave, 'id', self.cursorV) ##self.principal.consultaDatos('juego', codigo, self.cursor)
             # SE REGRESA LOS DATOS DE LA SIGUIENTE MANERA: nombre,fecha, modelo
             ###
             if datoB == []:
@@ -660,17 +663,36 @@ class Version(QMainWindow):
                 index = self.ui.comboplataforma2.findText(datoB[3])
                 self.ui.comboplataforma2.setCurrentIndex(index)
     def modificar(self):
-        jue=self.ui.combojuego2.currentText()
-        juego=str(jue)
-        plata=self.ui.comboplataforma2.currentText()
-        plataforma=str(plata)
+        datosCambiados = []
+
         nom = self.ui.textnombre2.text()
         nombre = str(nom)
-        fech = self.ui.textfecha2.text()
-        fecha = str(fech)
+        datosCambiados.append(nombre)
+
         req = self.ui.textrequisitos2.text()
         requisitos = str(req)
-        valor = True#TODO: manda  a llamar actualizar(nombre,fecha,modelo)
+        datosCambiados.append(requisitos)
+
+        fech = self.ui.textfecha2.text()
+        fecha = str(fech)
+
+        fecha = fecha.split('/')
+        fecha.reverse()
+        fecha = '/'.join(fecha)
+
+        datosCambiados.append(fecha)
+
+        plata=self.ui.comboplataforma2.currentText()
+        plataforma=str(plata)
+        datosCambiados.append(plataforma)
+
+        jue = self.ui.combojuego2.currentText()
+        juego = str(jue)
+        datosCambiados.append(juego)
+
+
+        datosActuales = self.principal.consultaDatos('version', nombre, 'id', self.cursorV)
+        valor = self.principal.actualizarDatos(datosCambiados, datosActuales, self.cursorV)    #TODO: manda  a llamar actualizar(nombre,fecha,modelo)
                     #devuelve true o false
         if valor != True:
             self.ui.cargando2.setText('Cargando...')
@@ -704,8 +726,7 @@ class Version(QMainWindow):
             self.error(1)
         else:
             #### el dato se va en el parametro (codigo)
-            valor = self.principal.consultaDatos('version', codigo, 'id',
-                                                 self.cursorV)  # puede borrar el true cuando se haga la conexion de BD
+            valor = self.principal.consultaDatos('version', codigo, 'id', self.cursorV)  # puede borrar el true cuando se haga la conexion de BD
             if valor == []:
                 self.ui.cargando3.setText('Cargando...')
                 for i in range(0, 50):
@@ -718,8 +739,7 @@ class Version(QMainWindow):
                 self.ui.codigo3.setText('')
             else:
                 # el dato se va en el parametro (codigo)
-                valor2 = self.principal.borrarColumna(codigo, 'version',
-                                                      self.cursorV)  # puede borrar el true cuando se haga la conexion de BD
+                valor2 = self.principal.borrarColumna(codigo, 'version', 'id', self.cursorV)  # puede borrar el true cuando se haga la conexion de BD
                 if valor2 != True:
                     self.ui.cargando3.setText('Cargando...')
                     for i in range(0, 50):
@@ -762,6 +782,9 @@ class Version(QMainWindow):
 
 
 ####
+def invertir_cadena(cadena):
+    return cadena[::-1]
+
 class Plataforma(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -783,6 +806,7 @@ class Plataforma(QMainWindow):
         self.con.autocommit = True
         self.cursor = self.con.cursor()
 
+
     def crear(self):
         nom = self.ui.nombre.text()
         nombre = str(nom)
@@ -795,6 +819,11 @@ class Plataforma(QMainWindow):
         else:
             # SE INSERTA LA TUPLA
             # valor=llamada(nombre,fecha,modelo)
+            #fecha = invertir_cadena(fecha)
+
+            fecha = fecha.split('/')
+            fecha.reverse()
+            fecha = '/'.join(fecha)
             valor = self.principal.agregar(nombre, fecha, modelo, self.cursor)
             ######
             if valor != True:
@@ -817,6 +846,7 @@ class Plataforma(QMainWindow):
                 self.ui.progreso1.setValue(0)
                 self.ui.nombre.setText('')
                 self.ui.modelo.setText('')
+
 
     def buscar(self):
         cod = self.ui.codigo.text()
@@ -933,7 +963,7 @@ class Plataforma(QMainWindow):
             # hace consulta si existe el dato regresa true o false
             # el dato se va en el parametro (codigo)
 
-            valor = self.principal.consultaDatos('plataforma', codigo, self.cursor)  # puede borrar el true cuando se haga la conexion de BD
+            valor = self.principal.consultaDatos('plataforma', codigo, 'nombre', self.cursor)  # puede borrar el true cuando se haga la conexion de BD
             if valor == []:
                 self.ui.cargando3.setText('Cargando...')
                 for i in range(0, 50):
@@ -948,8 +978,7 @@ class Plataforma(QMainWindow):
                 # hace llamada de la funcion borrar elemento
                 # el dato se va en el parametro (codigo)
 
-                valor2 = self.principal.borrarColumna(codigo, 'plataforma',
-                                                      self.cursor)  # puede borrar el true cuando se haga la conexion de BD
+                valor2 = self.principal.borrarColumna(codigo, 'plataforma', 'nombre', self.cursor)  # puede borrar el true cuando se haga la conexion de BD
                 if valor2 != True:
                     self.ui.cargando3.setText('Cargando...')
                     for i in range(0, 50):
@@ -1050,7 +1079,7 @@ class Juego(QMainWindow):
                 MANDA   en:clave <es la clave primaria>     ej:soft
                 REGRESA en:valor <boleano>                  ej:True
                 valor=self.clase.metodo_borrar(clave) """
-                valor = self.principal.borrarColumna(clave, 'juego', self.cursor)
+                valor = self.principal.borrarColumna(clave, 'juego', 'nombre', self.cursor)
                 #########################
                 if valor != True:
                     self.ui.cargando_0.setText('Cargando...')

@@ -10,17 +10,14 @@ class PlataformaBase(BaseDatos):
                 verifica si la clave primaria no es nula para poder añadir los datos"""
             print("Hasta aquí")
             print(anioG)
-            cursor.execute("""INSERT INTO plataforma(
-                                   nombre,anio, modelo)
-                                   VALUES (%s,%s,%s)""",
-                           (nombreG, anioG, modeloG))
+            try:
+                cursor.execute("""INSERT INTO plataforma(nombre,anio, modelo)
+                                       VALUES (%s,%s,%s)""", (nombreG, anioG, modeloG))
 
-            if cursor:
-                print("Añadida plataforma con éxito")
                 return True
-            else:
+            except:
                 print("Error al añadir datos intente de nuevo")
-                # Consulte tabla de errores
+                    # Consulte tabla de errores
                 return False
         else:
             print("Error, la clave primaria dada es null")

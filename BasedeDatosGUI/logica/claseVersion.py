@@ -27,16 +27,24 @@ class VersionBase(BaseDatos):
             return False
 
     def actualizarDatos(self, listaDatosCanv, listaDatosAct, cursor):
-        cursor.execute(
-            """select COLUMN_NAME from INFORMATION_SCHEMA.COLUMNS where TABLE_SCHEMA = 'public' and TABLE_NAME = 'version'""")
-        nameColumn = cursor.fetchall()
-        i = 0
+        try:
+            cursor.execute(
+                """select COLUMN_NAME from INFORMATION_SCHEMA.COLUMNS where TABLE_SCHEMA = 'public' and TABLE_NAME = 'version'""")
+            nameColumn = cursor.fetchall()
+            i = 0
 
-        for dato in listaDatosCanv:
-            cursor.execute("UPDATE version SET " + nameColumn[i] + "=" + dato + "WHERE " + nameColumn[i]+ "=" + listaDatosAct[i])
-            i = i + 1
+            for dato in listaDatosCanv:
+                a = str("'" + listaDatosAct[i] + "'")
+                ext = nameColumn[i][0]
+                cursor.execute(
+                    "UPDATE version SET " + nameColumn[i][0] + "= '" + dato + "' WHERE " + nameColumn[i][0] + "= " + str(a))
+                i = i + 1
 
-        print("datos actualizados")
+            print("datos actualizados")
+            return True
+        except:
+            print("excepción")
+            return False
 
 
 

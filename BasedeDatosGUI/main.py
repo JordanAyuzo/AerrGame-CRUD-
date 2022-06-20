@@ -833,9 +833,9 @@ class Plataforma(QMainWindow):
                 self.ui.resultado.setRowCount(i)
                 tablerow = 0
                 for row in datosB:
-                    self.ui.resultado.setItem(tablerow, 0, QtWidgets.QTableWidgetItem(row))
-                    self.ui.resultado.setItem(tablerow, 1, QtWidgets.QTableWidgetItem(row))
-                    self.ui.resultado.setItem(tablerow, 2, QtWidgets.QTableWidgetItem(row))
+                    self.ui.resultado.setItem(tablerow, 0, QtWidgets.QTableWidgetItem(row[0]))
+                    self.ui.resultado.setItem(tablerow, 1, QtWidgets.QTableWidgetItem(row[1]))
+                    self.ui.resultado.setItem(tablerow, 2, QtWidgets.QTableWidgetItem(row[2]))
                     tablerow += 1
                 self.ui.codigo.setText('')
         else:
@@ -862,13 +862,20 @@ class Plataforma(QMainWindow):
 
     ####
     def modificar(self):
+        datosCambiados = []
         nom = self.ui.nombre_3.text()
         nombre = str(nom)
+        datosCambiados.append(nombre)
         fech = self.ui.fecha_3.text()
         fecha = str(fech)
+        datosCambiados.append(fecha)
         model = self.ui.modelo_3.text()
         modelo = str(model)
-        valor = True#TODO: manda  a llamar actualizar(nombre,fecha,modelo)
+        datosCambiados.append(modelo)
+
+        datosActuales = self.principal.consultaDatos('plataforma', nombre, 'nombre', self.cursor)
+
+        valor =  self.principal.actualizarDatos(datosCambiados, datosActuales, self.cursor) #TODO: manda  a llamar actualizar(nombre,fecha,modelo)
                     #devuelve true o false
         if valor != True:
             self.ui.cargando2.setText('Cargando...')
@@ -891,6 +898,7 @@ class Plataforma(QMainWindow):
             self.ui.nombre_3.setText('')
             self.ui.fecha_3.setText('')
             self.ui.modelo_3.setText('')
+
     def carga_modificar(self):
         cod = self.ui.codigo_2.text()
         clave = str(cod)
@@ -901,7 +909,7 @@ class Plataforma(QMainWindow):
             self.ui.modelo_3.setText('')
             ####
         else:
-            datoB = [ 'nombre','f/ec/ha/' ,'modelo']##self.principal.consultaDatos('juego', codigo, self.cursor)
+            datoB = self.principal.consultaDatos('plataforma', clave, 'nombre', self.cursor) ##self.principal.consultaDatos('juego', codigo, self.cursor)
             # SE REGRESA LOS DATOS DE LA SIGUIENTE MANERA: nombre,fecha, modelo
             ###
             if datoB == []:

@@ -28,17 +28,24 @@ class PlataformaBase(BaseDatos):
             return False
 
     def actualizarDatos(self, listaDatosCanv, listaDatosAct, cursor):
-        cursor.execute( """select COLUMN_NAME from INFORMATION_SCHEMA.COLUMNS where TABLE_SCHEMA = 'public' and TABLE_NAME = 'plataforma'""")
-        nameColumn = cursor.fetchall()
-        i = 0
-
-        for dato in listaDatosCanv:
+        try:
             cursor.execute(
-                "UPDATE version SET " + nameColumn[i] + "=" + dato + "WHERE " + nameColumn[i] + "=" + listaDatosAct[i])
-            i = i + 1
+                """select COLUMN_NAME from INFORMATION_SCHEMA.COLUMNS where TABLE_SCHEMA = 'public' and TABLE_NAME = 'plataforma'""")
+            nameColumn = cursor.fetchall()
+            i = 0
 
-        print("datos actualizados")
+            for dato in listaDatosCanv:
+                a = str("'" + listaDatosAct[i] + "'")
+                ext = nameColumn[i][0]
+                cursor.execute(
+                    "UPDATE plataforma SET " + nameColumn[i][0] + "= '" + dato + "' WHERE " + nameColumn[i][0] + "= " + str(a))
+                i = i + 1
 
+            print("datos actualizados")
+            return True
+        except:
+            print("excepción")
+            return False
     def consultaTodos(self, tablaConsultar, claveDatoBusc, cursor):
         print(cursor)
         borrado = "DROP VIEW IF EXISTS consulta;"

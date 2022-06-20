@@ -9,7 +9,7 @@ class JuegoBase(BaseDatos):
                 que la conexión fue correcta desde el inicio y que no falta ningún dato, solamente se 
                 verifica si la clave primaria no es nula para poder añadir los datos"""
 
-            if self.consultaDatos('juego', nombreG, cursor):
+            if self.consultaDatos('juego', nombreG, 'nombre', cursor):
                 print("El dato ya existe")
                 return False
             else:
@@ -35,8 +35,10 @@ class JuegoBase(BaseDatos):
             i = 0
 
             for dato in listaDatosCanv:
+                a =str( "'" + listaDatosAct[i] + "'")
+                ext = nameColumn[i][0]
                 cursor.execute(
-                    "UPDATE version SET " + nameColumn[i][i] + "=" + dato + "WHERE " + nameColumn[i] + "=" + listaDatosAct[i])
+                    "UPDATE juego SET " + nameColumn[i][0] + "= '" + dato + "' WHERE " + nameColumn[i][0] + "= " + str(a))
                 i = i + 1
 
             print("datos actualizados")

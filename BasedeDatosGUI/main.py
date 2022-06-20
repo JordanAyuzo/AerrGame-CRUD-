@@ -1107,7 +1107,7 @@ class Juego(QMainWindow):
         genero = str(gen)
         datosCambiados.append(genero)
         datosB = self.principal.consultaDatos('juego', nombre, 'nombre', self.cursor)
-
+        print("lista actual", datosB)
         valor = self.principal.actualizarDatos(datosCambiados, datosB, self.cursor)  # TODO: manda  a llamar actualizar(nombre,clasificacion,descripcion,genero)
         # devuelve true o false
         if valor != True:
@@ -1186,7 +1186,7 @@ class Juego(QMainWindow):
         clave = str(clav)
         if clave == '*':
             ############################
-            datosB =  # TODO aqui llega tu pinche lista de listas xD
+            datosB =  self.principal.consultaDatos('juego', clave, 'nombre', self.cursor) # TODO aqui llega tu pinche lista de listas xD
             ############################
             i = len(datosB)
             if i == 0:

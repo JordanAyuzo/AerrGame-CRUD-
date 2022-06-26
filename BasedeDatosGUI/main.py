@@ -293,6 +293,12 @@ class Usuario(QMainWindow):
         self.ui.aceptar_4.clicked.connect(self.borrar)
         self.ui.busca.clicked.connect(self.buscar)
         self.ui.limpiar.clicked.connect(self.limpio)
+
+        self.principal = VersionBase()
+        self.con = self.principal.connectDB()
+        self.con.autocommit = True
+        self.cursor = self.con.cursor()
+
     def borrar(self):
         cod = self.ui.codigo3.text()
         codigo = str(cod)
@@ -398,6 +404,9 @@ class Usuario(QMainWindow):
     def buscar(self):
         cod = self.ui.codigo.text()
         codigo = str(cod)
+
+        datosB = self.principal.consultaDatos('usuario', )
+
         if codigo == '*':
             datosB =[]
             # si llega de otra forma avisar

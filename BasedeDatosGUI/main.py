@@ -10,6 +10,7 @@ from logica.clasedatos import *
 from logica.claseJuego import *
 from logica.clasePlataforma import *
 from logica.claseVersion import *
+from logica.claseUsuario import *
 from grafica.menu import *
 from grafica.game import *
 from grafica.plataforma import *
@@ -294,7 +295,7 @@ class Usuario(QMainWindow):
         self.ui.busca.clicked.connect(self.buscar)
         self.ui.limpiar.clicked.connect(self.limpio)
 
-        self.principal = VersionBase()
+        self.principal = usuarioBase()
         self.con = self.principal.connectDB()
         self.con.autocommit = True
         self.cursor = self.con.cursor()
@@ -405,10 +406,9 @@ class Usuario(QMainWindow):
         cod = self.ui.codigo.text()
         codigo = str(cod)
 
-        datosB = self.principal.consultaDatos('usuario', )
 
         if codigo == '*':
-            datosB =[]
+            datosB = self.principal.consultaTodos('usuario', codigo, self.cursor)
             # si llega de otra forma avisar
             i = len(datosB)
             if i == 0:
@@ -430,7 +430,7 @@ class Usuario(QMainWindow):
                 self.ui.resultado.setRowCount(0)
             else:
                 ##########################
-                datosB = ['alias','nombre','fecha','correo']# TODO: FUNCION
+                datosB = self.principal.consultaDatos('usuario', codigo, 'nickname', self.cursor)
                 # parametro en : codigo
                 ############################
                 i = len(datosB)
@@ -451,12 +451,15 @@ class Usuario(QMainWindow):
         nickname = str(ali)
         fech = self.ui.textfecha.text()
         fecha = str(fech)
+        fecha = fecha.split('/')
+        fecha.reverse()
+        fecha = '/'.join(fecha)
         cor = self.ui.textcorreo_2.text()
         correo = str(cor)
         if nombre == '' or nickname == '' or correo == '':
             self.error(1)
         else:
-            valor =True#TODO:fun(nickname,nombre,fecha,correo)
+            valor =self.principal.agregar(nickname, nombre, fecha, correo, self.cursor) #TODO:fun(nickname,nombre,fecha,correo)
             if valor != True:
                 self.ui.cargando1.setText('Cargando...')
                 for i in range(0, 50):

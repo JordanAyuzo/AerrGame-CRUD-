@@ -1,17 +1,17 @@
 from logica.clasedatos import *
 
-class claseUsuario(BaseDatos):
+class usuarioBase(BaseDatos):
 
-    def agregar(self, nickname, nombre, fecha_vencimiento, correo, cursor):
+    def agregar(self, nickname, nombre, fecha_nacimiento, correo, cursor):
+        self.cursor = cursor
         if nickname != None:
             """Necesitamos hacer una consulta sobre la base de datos para saber si
                 el juego dado y la plataforma existen dentro de la base de datos
                 para evitar errores al añadir estos"""
             try:
-                cursor.execute("""INSERT INTO usuario(
-                                             nickname, nombre, fecha_vencimiento, correo)
-                                             VALUES (%s,%s,%s,%s)""",
-                               (nickname, nombre, fecha_vencimiento, correo))
+                cursor.execute("""INSERT INTO usuario(nickname, nombre, fecha_nacimiento, correo)
+                                                      VALUES (%s,%s,%s,%s)""",
+                               (nickname, nombre, fecha_nacimiento, correo))
                 if cursor:
                     print("Añadido con éxito")
                     return True
@@ -23,3 +23,35 @@ class claseUsuario(BaseDatos):
             print("Error, la clave primaria dada es null")
             # Consulte tabla de errores
             return False
+
+    def consultaTodos(self, tablaConsultar, claveDatoBusc, cursor):
+        print(cursor)
+        borrado = "DROP VIEW IF EXISTS consulta;"
+        cursor.execute(borrado)
+        vista = "CREATE VIEW consulta AS SELECT * FROM " + tablaConsultar
+        print(vista)
+        try:
+            if claveDatoBusc == '*':
+                sql = "SELECT * FROM " + 'consulta'
+                borrado = "DROP VIEW " + "consulta"
+                cursor.execute(vista)
+                cursor.execute(sql)
+                datos = cursor.fetchall()
+                i = 0
+                for dato in datos:
+                    temp = list(dato)
+                    print(dato)
+                    if isinstance(temp[2], datetime.date):
+                        temp[2] = str(temp[2])
+                        print(temp)
+                        dato = temp
+                        datos[i] = dato
+                        print(datos)
+                        i = i + 1
+                cursor.execute(borrado)
+                print("Consulta realizada")
+                return datos
+
+        except:
+            print("Consulta no se pudo realizar")
+            return []

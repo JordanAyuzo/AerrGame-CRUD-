@@ -309,7 +309,7 @@ class Usuario(QMainWindow):
             # hace consulta si existe el dato regresa true o false
             # el dato se va en el parametro (codigo)
 
-            valor =["hola mundo"] #TODO funcion (codigo)
+            valor =  datosB = self.principal.consultaDatos('usuario', codigo, 'nickname', self.cursor)
             if valor == []:
                 self.ui.cargando3.setText('Cargando...')
                 for i in range(0, 50):
@@ -324,7 +324,8 @@ class Usuario(QMainWindow):
                 # hace llamada de la funcion borrar elemento
                 # el dato se va en el parametro (codigo)
 
-                valor2 = True #TODO
+                valor2 = self.principal.borrarColumna(codigo, 'usuario', 'nickname', self.cursor)
+                valor2 = self.principal.borrarColumna(codigo, 'usuario', 'nickname', self.cursor)
                 if valor2 != True:
                     self.ui.cargando3.setText('Cargando...')
                     for i in range(0, 50):

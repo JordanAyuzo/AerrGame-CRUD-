@@ -1,5 +1,6 @@
 from logica.clasedatos import *
 
+
 class usuarioBase(BaseDatos):
 
     def agregar(self, nickname, nombre, fecha_nacimiento, correo, cursor):
@@ -55,3 +56,22 @@ class usuarioBase(BaseDatos):
         except:
             print("Consulta no se pudo realizar")
             return []
+
+    def actualizarDatos(self, listaDatosCanv, listaDatosAct, cursor):
+        try:
+            cursor.execute("""select COLUMN_NAME from INFORMATION_SCHEMA.COLUMNS where TABLE_SCHEMA = 'public' and TABLE_NAME = 'usuario'""")
+            nameColumn = cursor.fetchall()
+            i = 0
+
+            for dato in listaDatosCanv:
+                a =str( "'" + listaDatosAct[i] + "'")
+                ext = nameColumn[i][0]
+                cursor.execute(
+                    "UPDATE usuario SET " + nameColumn[i][0] + "= '" + dato + "' WHERE " + nameColumn[i][0] + "= " + str(a))
+                i = i + 1
+
+            print("datos actualizados")
+            return True
+        except:
+            print("excepción")
+            return False

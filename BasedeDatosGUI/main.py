@@ -345,16 +345,22 @@ class Usuario(QMainWindow):
                     self.ui.progreso3.setValue(0)
                     self.ui.codigo3.setText('')
     def modificar(self):
+        datosCambiados = []
         nom = self.ui.textnombre_2.text()
         nombre = str(nom)
         al = self.ui.textalias_2.text()
         nickname = str(al)
+        datosCambiados.append(nickname)
+        datosCambiados.append(nombre)
         fech =  self.ui.textfecha_2.text()
         fecha = str(fech)
+        datosCambiados.append(fecha)
         cor =  self.ui.textcorreo.text()
         correo = str(cor)
+        datosCambiados.append(correo)
 
-        valor = True#TODO: trae funcion(nickname,nombre,fecha,correo)
+        datosActuales = self.principal.consultaDatos('usuario', nickname, 'nickname', self.cursor)  # TODO: trae funcion(nickname,nombre,fecha,correo)
+        valor = self.principal.actualizarDatos(datosCambiados, datosActuales, self.cursor)    #TODO: trae funcion(nickname,nombre,fecha,correo)
         if valor != True:
             self.ui.cargando2.setText('Cargando...')
             for i in range(0, 50):
@@ -388,7 +394,7 @@ class Usuario(QMainWindow):
             self.ui.textcorreo.setText('')
             ####
         else:
-            datoB = [ 'alias','nombre' ,'fecha','correo']#TODO
+            datoB = self.principal.consultaDatos('usuario', clave, 'nickname', self.cursor)  # TODO: trae funcion(nickname,nombre,fecha,correo)
             if datoB == []:
                 self.error(2)
                 self.ui.codigo_2.setText('')

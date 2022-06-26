@@ -4,6 +4,7 @@
     <file url="file://$APPLICATION_CONFIG_DIR$/consoles/db/f140f430-ab2a-449b-a5e0-acf4de2307a2/console.sql" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/logica/claseJuego.py" dialect="GenericSQL" />
     <file url="file://$PROJECT_DIR$/logica/clasePlataforma.py" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/logica/claseUsuario.py" dialect="GenericSQL" />
     <file url="file://$PROJECT_DIR$/logica/claseVersion.py" dialect="GenericSQL" />
     <file url="file://$PROJECT_DIR$/logica/clasedatos.py" dialect="GenericSQL" />
   </component>

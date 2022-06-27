@@ -439,7 +439,7 @@ class Ui_usuario(object):
         usuario.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(usuario)
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(2)
         QtCore.QMetaObject.connectSlotsByName(usuario)
 
     def retranslateUi(self, usuario):
@@ -494,7 +494,7 @@ class Ui_usuario(object):
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'Noto Sans\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#747474;\">Ej:Nintendo</span></p></body></html>"))
-        self.nom_5.setText(_translate("usuario", "<html><head/><body><p align=\"right\"><span style=\" font-size:11pt; font-weight:600;\">Nombre de la usuario: </span></p></body></html>"))
+        self.nom_5.setText(_translate("usuario", "<html><head/><body><p align=\"right\"><span style=\" font-size:11pt; font-weight:600;\">Alias (Nickname):</span></p></body></html>"))
         self.nom_7.setText(_translate("usuario", "<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">Ingrese Los Datos A Modificar:</span></p></body></html>"))
         self.cargando2.setText(_translate("usuario", "<html><head/><body><p align=\"center\"><br/></p></body></html>"))
         self.nom_9.setText(_translate("usuario", "<html><head/><body><p align=\"right\"><span style=\" font-size:11pt; font-weight:600;\">Nombre:</span></p></body></html>"))

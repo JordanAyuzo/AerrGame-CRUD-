@@ -4,7 +4,7 @@ from logica.clasedatos import *
 class usuarioBase(BaseDatos):
 
     def agregar(self, nickname, nombre, fecha_nacimiento, correo, cursor):
-        self.cursor = cursor
+        #self.cursor = cursor
         if nickname != None:
             """Necesitamos hacer una consulta sobre la base de datos para saber si
                 el juego dado y la plataforma existen dentro de la base de datos

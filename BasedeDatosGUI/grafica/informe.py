@@ -115,7 +115,7 @@ class Ui_Informe(object):
         self.limpiar1.setAutoDefault(True)
         self.limpiar1.setObjectName("limpiar1")
         self.a2 = QtWidgets.QLabel(self.tab1)
-        self.a2.setGeometry(QtCore.QRect(130, 80, 251, 31))
+        self.a2.setGeometry(QtCore.QRect(120, 80, 271, 31))
         self.a2.setStyleSheet("border:none;\n"
 "background-color: rgba(0, 0, 0,0%);")
         self.a2.setObjectName("a2")
@@ -144,7 +144,7 @@ class Ui_Informe(object):
         self.actualizar2.setAutoDefault(True)
         self.actualizar2.setObjectName("actualizar2")
         self.b3 = QtWidgets.QLabel(self.tab2)
-        self.b3.setGeometry(QtCore.QRect(-50, 40, 571, 481))
+        self.b3.setGeometry(QtCore.QRect(-50, 30, 571, 481))
         self.b3.setStyleSheet("background-color: rgba(0, 0, 0,0%);\n"
 "border:none;")
         self.b3.setObjectName("b3")
@@ -193,7 +193,7 @@ class Ui_Informe(object):
         item.setFont(font)
         self.resultado2.setHorizontalHeaderItem(4, item)
         self.b2 = QtWidgets.QLabel(self.tab2)
-        self.b2.setGeometry(QtCore.QRect(130, 90, 251, 31))
+        self.b2.setGeometry(QtCore.QRect(120, 90, 271, 31))
         self.b2.setStyleSheet("border:none;\n"
 "background-color: rgba(0, 0, 0,0%);")
         self.b2.setObjectName("b2")
@@ -224,7 +224,7 @@ class Ui_Informe(object):
         Informe.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(Informe)
-        self.barinforme.setCurrentIndex(1)
+        self.barinforme.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(Informe)
 
     def retranslateUi(self, Informe):
@@ -240,7 +240,7 @@ class Ui_Informe(object):
         item.setText(_translate("Informe", "Monto"))
         self.a3.setText(_translate("Informe", "<html><head/><body><p><img src=\":/recurso/img/cuadro1.png\"/></p></body></html>"))
         self.a1.setText(_translate("Informe", "<html><head/><body><p align=\"center\"><img src=\":/recurso/img/01title.png\"/></p></body></html>"))
-        self.a2.setText(_translate("Informe", "<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">Presiona El Botón Para Actualizar</span></p></body></html>"))
+        self.a2.setText(_translate("Informe", "<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">Presiona El Botón Para Ver Informe</span></p></body></html>"))
         self.barinforme.setTabText(self.barinforme.indexOf(self.tab1), _translate("Informe", "Mejor Usuario"))
         self.b1.setText(_translate("Informe", "<html><head/><body><p align=\"center\"><img src=\":/recurso/img/01title.png\"/></p></body></html>"))
         self.b3.setText(_translate("Informe", "<html><head/><body><p><img src=\":/recurso/img/cuadro1.png\"/></p></body></html>"))
@@ -254,6 +254,6 @@ class Ui_Informe(object):
         item.setText(_translate("Informe", "Modelo"))
         item = self.resultado2.horizontalHeaderItem(4)
         item.setText(_translate("Informe", "Monto"))
-        self.b2.setText(_translate("Informe", "<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">Presiona El Botón Para Actualizar</span></p></body></html>"))
+        self.b2.setText(_translate("Informe", "<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">Presiona El Botón Para  Ver Informe</span></p></body></html>"))
         self.barinforme.setTabText(self.barinforme.indexOf(self.tab2), _translate("Informe", "Mejor Versión del Juego"))
 import recurso_rc

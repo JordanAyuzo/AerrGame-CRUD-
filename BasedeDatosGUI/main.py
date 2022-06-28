@@ -11,6 +11,8 @@ from logica.claseJuego import *
 from logica.clasePlataforma import *
 from logica.claseVersion import *
 from logica.claseUsuario import *
+from logica.clasetarjeta import *
+from logica.claseTarjetaUsuario import *
 from grafica.menu import *
 from grafica.game import *
 from grafica.plataforma import *
@@ -135,9 +137,27 @@ class Tarjeta(QMainWindow):
         super().__init__()
         self.ui =Ui_tarjeta()
         self.ui.setupUi(self)
-        listausuario = [['juego','mundo','adios'],['hola2','mundo','adios'],['hola3','mundo','adios']]
-        #     el primer atributo será el "nombre"
-        j = 0
+
+        self.principal = TarjetaBase()
+        self.con = self.principal.connectDB()
+        self.con.autocommit = True
+        self.cursor = self.con.cursor()
+
+        self.puente = UsuarioTarjetaBase()
+        self.conUT = self.puente.connectDB()
+        self.conUT.autocommit = True
+        self.cursorUT = self.conUT.cursor()
+
+        self.user = usuarioBase()
+        self.conU = self.user.connectDB()
+        self.conU.autocommit = True
+        self.cursorU = self.conU.cursor()
+
+
+        listausuario = self.user.consultaTodos('usuario', '*', self.cursorU)
+
+        j = 0               #!TODO el primer dato no es el nombre, es el nickname del usuario.
+                            #!Ojito con eso
         for i in listausuario:
             user = listausuario[j][0]
             self.ui.combousuario.addItem(user)
@@ -153,21 +173,27 @@ class Tarjeta(QMainWindow):
         self.ui.aceptar_4.clicked.connect(self.borrar)
         self.ui.busca.clicked.connect(self.buscar)
         self.ui.limpiar.clicked.connect(self.limpio)
+
     def crear(self):
         user = self.ui.combousuario.currentText()
         usuario = str(user)
         nom = self.ui.textbanco1.text()
         nombre = str(nom)
         cla = self.ui.textclave1.text()
-        clabe = str(cla)
+        clabe = int(cla)
         fech = self.ui.textfecha1.text()
         fecha = str(fech)
+        fecha = fecha.split('/')
+        fecha.reverse()
+        fecha = '/'.join(fecha)
 
+        print(self.principal)
+        print(self.puente)
         if usuario == '' or nombre == '' or clabe == '':
             self.error(1)
         else:
-            valorA = True #TODO creartarjeta(nombre clabe fecha)
-            valorB = True#funcion enlaceusuario-tarjeta(usuario,nombre,clave,fecha)
+            valorA = self.principal.agregar(clabe, fecha, nombre, self.cursor)
+            valorB = self.puente.agregar(usuario, clabe, self.cursorUT) #funcion enlaceusuario-tarjeta(usuario,nombre,clave,fecha)
             if valorA != True or valorB!=True:
                 self.ui.cargando1.setText('Cargando...')
                 for i in range(0, 50):
@@ -195,7 +221,8 @@ class Tarjeta(QMainWindow):
         cod = self.ui.codigo1.text()
         codigo = str(cod)
         if codigo == '*':
-            datosB = []#TODO lista de listas de consulta FROM usuario,tarjeta
+
+            datosB = self.principal.consultaTodos('tarjeta', '*', self.cursor)#TODO lista de listas de consulta FROM usuario,tarjeta
                        #select usuario, tarjeta,banco,vencimiento
             i = len(datosB)
             if i == 0:
@@ -217,7 +244,7 @@ class Tarjeta(QMainWindow):
                 self.ui.resultado.setRowCount(0)
             else:
                 ##########################
-                datosB = ['usuario','tarjeta','banco','vencimiento'] #TODO:funcion(codigo)
+                datosB =self.principal.consultaDatos('tarjeta', codigo, 'usr_nickname', self.cursor) #TODO:funcion(codigo)
                 # parametro en : codigo
                 ############################
                 i = len(datosB)
@@ -345,6 +372,9 @@ class Tarjeta(QMainWindow):
             self.ventana.show()
 
     def retroceder(self):
+        self.cursor.close()
+        self.con.close()
+
         self.hide()
         self.ventana = MiApp()
         self.ventana.show()
@@ -395,7 +425,6 @@ class Usuario(QMainWindow):
                 # hace llamada de la funcion borrar elemento
                 # el dato se va en el parametro (codigo)
 
-                valor2 = self.principal.borrarColumna(codigo, 'usuario', 'nickname', self.cursor)
                 valor2 = self.principal.borrarColumna(codigo, 'usuario', 'nickname', self.cursor)
                 if valor2 != True:
                     self.ui.cargando3.setText('Cargando...')

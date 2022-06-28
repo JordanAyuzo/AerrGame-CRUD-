@@ -7,5 +7,6 @@
     <file url="file://$PROJECT_DIR$/logica/claseUsuario.py" dialect="GenericSQL" />
     <file url="file://$PROJECT_DIR$/logica/claseVersion.py" dialect="GenericSQL" />
     <file url="file://$PROJECT_DIR$/logica/clasedatos.py" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/logica/clasetarjeta.py" dialect="GenericSQL" />
   </component>
 </project>

@@ -126,7 +126,7 @@ class Ui_MainWindow(object):
         self.busuario.setDefault(False)
         self.busuario.setObjectName("busuario")
         self.btarjeta = QtWidgets.QPushButton(self.frame)
-        self.btarjeta.setGeometry(QtCore.QRect(270, 230, 91, 71))
+        self.btarjeta.setGeometry(QtCore.QRect(280, 230, 91, 71))
         self.btarjeta.setFocusPolicy(QtCore.Qt.StrongFocus)
         self.btarjeta.setStyleSheet("background-color: rgba(0, 0, 0,0%);\n"
 "image: url(:/recurso/img/tarjeta.png);\n"
@@ -138,7 +138,7 @@ class Ui_MainWindow(object):
         self.btarjeta.setObjectName("btarjeta")
         self.ljuego_3 = QtWidgets.QLabel(self.frame)
         self.ljuego_3.setEnabled(True)
-        self.ljuego_3.setGeometry(QtCore.QRect(270, 300, 91, 21))
+        self.ljuego_3.setGeometry(QtCore.QRect(280, 300, 91, 21))
         font = QtGui.QFont()
         font.setFamily("xos4 Terminus")
         font.setPointSize(18)
@@ -173,6 +173,30 @@ class Ui_MainWindow(object):
         self.ljuego_7.setStyleSheet("background-color: rgba(0, 0, 0,0%);\n"
 "border :none;")
         self.ljuego_7.setObjectName("ljuego_7")
+        self.ljuego_4 = QtWidgets.QLabel(self.frame)
+        self.ljuego_4.setEnabled(True)
+        self.ljuego_4.setGeometry(QtCore.QRect(170, 370, 91, 21))
+        font = QtGui.QFont()
+        font.setFamily("xos4 Terminus")
+        font.setPointSize(18)
+        font.setBold(False)
+        font.setWeight(50)
+        self.ljuego_4.setFont(font)
+        self.ljuego_4.setMouseTracking(True)
+        self.ljuego_4.setStyleSheet("background-color: rgba(0, 0, 0,0%);\n"
+"border :none;")
+        self.ljuego_4.setObjectName("ljuego_4")
+        self.binforme = QtWidgets.QPushButton(self.frame)
+        self.binforme.setGeometry(QtCore.QRect(170, 300, 91, 71))
+        self.binforme.setFocusPolicy(QtCore.Qt.StrongFocus)
+        self.binforme.setStyleSheet("background-color: rgba(0, 0, 0,0%);\n"
+"image:url(:/recurso/img/reporte.png);\n"
+"border:none;\n"
+"")
+        self.binforme.setText("")
+        self.binforme.setAutoDefault(True)
+        self.binforme.setDefault(False)
+        self.binforme.setObjectName("binforme")
         self.verticalLayout.addWidget(self.frame)
         MainWindow.setCentralWidget(self.centralwidget)
 
@@ -189,4 +213,5 @@ class Ui_MainWindow(object):
         self.ljuego_2.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-weight:600; color:#ffffff;\">USUARIO</span></p></body></html>"))
         self.ljuego_3.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-weight:600; color:#ffffff;\">TARJETA</span></p></body></html>"))
         self.ljuego_7.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-weight:600; color:#ffffff;\">VERSIÓN</span></p></body></html>"))
+        self.ljuego_4.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-weight:600; color:#ffffff;\">INFORME</span></p></body></html>"))
 import recurso_rc

@@ -17,6 +17,7 @@ from grafica.plataforma import *
 from grafica.usuario import *
 from grafica.tarjeta import *
 from grafica.version import *
+from grafica.informe import *
 from grafica.error401 import *
 from grafica.error402 import *
 from grafica.error403 import *
@@ -35,10 +36,17 @@ class MiApp(QMainWindow):
         self.ui.bversion.clicked.connect(self.abrirVersion)
         self.ui.busuario.clicked.connect(self.abrirUsuario)
         self.ui.btarjeta.clicked.connect(self.abrirTarjeta)
+        self.ui.binforme.clicked.connect(self.abrirInforme)
+    def abrirInforme(self):
+        self.hide()
+        self.ventana = Informe()
+        self.ventana.show()
+
     def abrirTarjeta(self):
         self.hide()
         self.ventana = Tarjeta()
         self.ventana.show()
+
     def abrirUsuario(self):
         self.hide()
         self.ventana = Usuario()
@@ -59,6 +67,67 @@ class MiApp(QMainWindow):
         self.ventana2 = Plataforma()
         self.ventana2.show()
 
+
+
+class Informe(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.ui =Ui_Informe()
+        self.ui.setupUi(self)
+        self.ui.atras1.clicked.connect(self.retroceder)
+        self.ui.atras2.clicked.connect(self.retroceder)
+        self.ui.limpiar1.clicked.connect(self.retroceder)
+        self.ui.limpiar2.clicked.connect(self.retroceder)
+        self.ui.actualizar1.clicked.connect(self.informe1)
+        self.ui.actualizar2.clicked.connect(self.informe2)
+    def retroceder(self):
+        self.hide()
+        self.ventana = MiApp()
+        self.ventana.show()
+    def limpio(self):
+        self.ui.resultado1.setRowCount(0)
+        self.ui.resultado2.setRowCount(0)
+    def informe1(self):
+        datosB = []#se hace la consulta de algebra relacional
+        i = len(datosB)
+        if i == 0:
+            self.error(2)
+            self.ui.resultado1.setRowCount(0)
+        else:
+            self.ui.resultado1.setRowCount(i)
+            tablerow = 0
+            for row in datosB:
+                self.ui.resultado1.setItem(tablerow, 0, QtWidgets.QTableWidgetItem(row[0]))#nickname
+                self.ui.resultado1.setItem(tablerow, 1, QtWidgets.QTableWidgetItem(row[1]))#nombre
+                self.ui.resultado1.setItem(tablerow, 2, QtWidgets.QTableWidgetItem(row[2]))#correo
+                self.ui.resultado1.setItem(tablerow, 3, QtWidgets.QTableWidgetItem(row[3]))#monto
+                tablerow+=1
+    def informe2(self):
+        datosB = [['version1','juego1','plataforma1','modelo1','monto1'],['version2','juego2','plataforma2','modelo2','monto2'],['version3','juego3','plataforma3','modelo3','monto3']]#se hace la consulta de algebra relacional
+        i = len(datosB)
+        if i == 0:
+            self.error(2)
+            self.ui.resultado2.setRowCount(0)
+        else:
+            self.ui.resultado2.setRowCount(i)
+            tablerow = 0
+            for row in datosB:
+                self.ui.resultado2.setItem(tablerow, 0, QtWidgets.QTableWidgetItem(row[0]))#version
+                self.ui.resultado2.setItem(tablerow, 1, QtWidgets.QTableWidgetItem(row[1]))#juego
+                self.ui.resultado2.setItem(tablerow, 2, QtWidgets.QTableWidgetItem(row[2]))#plataforma
+                self.ui.resultado2.setItem(tablerow, 3, QtWidgets.QTableWidgetItem(row[3]))#modelo
+                self.ui.resultado2.setItem(tablerow, 4, QtWidgets.QTableWidgetItem(row[4]))#monto
+                tablerow+=1
+    def error(self, x):
+        if x == 1:
+            self.ventana = error401()
+            self.ventana.show()
+        elif x == 2:
+            self.ventana = error402()
+            self.ventana.show()
+        elif x == 3:
+            self.ventana = error403()
+            self.ventana.show()
 
 ####
 class Tarjeta(QMainWindow):
@@ -140,7 +209,6 @@ class Tarjeta(QMainWindow):
                     self.ui.resultado.setItem(tablerow, 1, QtWidgets.QTableWidgetItem(row[1]))
                     self.ui.resultado.setItem(tablerow, 2, QtWidgets.QTableWidgetItem(row[2]))
                     self.ui.resultado.setItem(tablerow, 3, QtWidgets.QTableWidgetItem(row[3]))
-                    self.ui.resultado.setItem(tablerow, 4, QtWidgets.QTableWidgetItem(row[4]))
                     tablerow += 1
                 self.ui.codigo1.setText('')
         else:
@@ -157,10 +225,13 @@ class Tarjeta(QMainWindow):
                     self.error(2)
                     self.ui.resultado.setRowCount(0)
                 else:
-                    self.ui.resultado.setRowCount(1)
+                    self.ui.resultado.setRowCount(i)
                     tablerow = 0
                     for row in datosB:
-                        self.ui.resultado.setItem(0, tablerow, QtWidgets.QTableWidgetItem(row))
+                        self.ui.resultado.setItem(tablerow, 0, QtWidgets.QTableWidgetItem(row[0]))#(uduario)se ve obvio pero se tiene que añadir
+                        self.ui.resultado.setItem(tablerow, 1, QtWidgets.QTableWidgetItem(row[1]))#tarjeta
+                        self.ui.resultado.setItem(tablerow, 2, QtWidgets.QTableWidgetItem(row[2]))#banco
+                        self.ui.resultado.setItem(tablerow, 3, QtWidgets.QTableWidgetItem(row[3]))#vencimiento
                         tablerow += 1
                     self.ui.codigo1.setText('')
     def carga_modificar(self):

@@ -65,30 +65,23 @@ class TarjetaBase(BaseDatos):
 
 
     def consultaTodos(self, tablaConsultar, claveDatoBusc, cursor):
-        print(cursor)
-        borrado = "DROP VIEW IF EXISTS consulta;"
-        cursor.execute(borrado)
-        vista = "CREATE VIEW consulta AS SELECT * FROM " + tablaConsultar
-        print(vista)
+
         try:
             if claveDatoBusc == '*':
-                sql = "SELECT * FROM " + 'consulta'
-                borrado = "DROP VIEW " + "consulta"
-                cursor.execute(vista)
+                sql = "SELECT DISTINCT * FROM usuario_tarjeta JOIN tarjeta ON tarjeta.numero  = usuario_tarjeta.trt_numero "
                 cursor.execute(sql)
                 datos = cursor.fetchall()
                 i = 0
                 for dato in datos:
                     temp = list(dato)
                     print(dato)
-                    if isinstance(temp[1], datetime.date):
-                        temp[1] = str(temp[1])
+                    if isinstance(temp[3], datetime.date):
+                        temp[3] = str(temp[3])
                         print(temp)
                         dato = temp
                         datos[i] = dato
                         print(datos)
                         i = i + 1
-                cursor.execute(borrado)
                 print("Consulta realizada")
                 return datos
 

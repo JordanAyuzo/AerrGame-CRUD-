@@ -13,6 +13,7 @@ from logica.claseVersion import *
 from logica.claseUsuario import *
 from logica.clasetarjeta import *
 from logica.claseTarjetaUsuario import *
+from logica.claseInforme import *
 from grafica.menu import *
 from grafica.game import *
 from grafica.plataforma import *
@@ -39,6 +40,9 @@ class MiApp(QMainWindow):
         self.ui.busuario.clicked.connect(self.abrirUsuario)
         self.ui.btarjeta.clicked.connect(self.abrirTarjeta)
         self.ui.binforme.clicked.connect(self.abrirInforme)
+
+
+
     def abrirInforme(self):
         self.hide()
         self.ventana = Informe()
@@ -82,6 +86,13 @@ class Informe(QMainWindow):
         self.ui.limpiar2.clicked.connect(self.retroceder)
         self.ui.actualizar1.clicked.connect(self.informe1)
         self.ui.actualizar2.clicked.connect(self.informe2)
+
+        self.puente = informeBase()
+        self.conUT = self.puente.connectDB()
+        self.conUT.autocommit = True
+        self.cursorUT = self.conUT.cursor()
+
+
     def retroceder(self):
         self.hide()
         self.ventana = MiApp()
@@ -90,7 +101,7 @@ class Informe(QMainWindow):
         self.ui.resultado1.setRowCount(0)
         self.ui.resultado2.setRowCount(0)
     def informe1(self):
-        datosB = []#se hace la consulta de algebra relacional
+        datosB = self.puente.informeUsuario(self.cursorUT) #se hace la consulta de algebra relacional
         i = len(datosB)
         if i == 0:
             self.error(2)
@@ -105,7 +116,7 @@ class Informe(QMainWindow):
                 self.ui.resultado1.setItem(tablerow, 3, QtWidgets.QTableWidgetItem(row[3]))#monto
                 tablerow+=1
     def informe2(self):
-        datosB = [['version1','juego1','plataforma1','modelo1','monto1'],['version2','juego2','plataforma2','modelo2','monto2'],['version3','juego3','plataforma3','modelo3','monto3']]#se hace la consulta de algebra relacional
+        datosB = datosB = self.puente.informeJuego(self.cursorUT)   #se hace la consulta de algebra relacional
         i = len(datosB)
         if i == 0:
             self.error(2)
@@ -233,9 +244,9 @@ class Tarjeta(QMainWindow):
                 tablerow = 0
                 for row in datosB:
                     self.ui.resultado.setItem(tablerow, 0, QtWidgets.QTableWidgetItem(row[0]))
-                    self.ui.resultado.setItem(tablerow, 1, QtWidgets.QTableWidgetItem(row[1]))
-                    self.ui.resultado.setItem(tablerow, 2, QtWidgets.QTableWidgetItem(row[2]))
-                    self.ui.resultado.setItem(tablerow, 3, QtWidgets.QTableWidgetItem(row[3]))
+                    self.ui.resultado.setItem(tablerow, 1, QtWidgets.QTableWidgetItem(str(row[1])))
+                    self.ui.resultado.setItem(tablerow, 2, QtWidgets.QTableWidgetItem(str(row[4])))
+                    self.ui.resultado.setItem(tablerow, 3, QtWidgets.QTableWidgetItem(str(row[3])))
                     tablerow += 1
                 self.ui.codigo1.setText('')
         else:
@@ -255,10 +266,10 @@ class Tarjeta(QMainWindow):
                     self.ui.resultado.setRowCount(i)
                     tablerow = 0
                     for row in datosB:
-                        self.ui.resultado.setItem(tablerow, 0, QtWidgets.QTableWidgetItem(row[0]))#(uduario)se ve obvio pero se tiene que añadir
-                        self.ui.resultado.setItem(tablerow, 1, QtWidgets.QTableWidgetItem(row[1]))#tarjeta
-                        self.ui.resultado.setItem(tablerow, 2, QtWidgets.QTableWidgetItem(row[2]))#banco
-                        self.ui.resultado.setItem(tablerow, 3, QtWidgets.QTableWidgetItem(row[3]))#vencimiento
+                        self.ui.resultado.setItem(tablerow, 0, QtWidgets.QTableWidgetItem(row[0]))
+                        self.ui.resultado.setItem(tablerow, 1, QtWidgets.QTableWidgetItem(str(row[1])))
+                        self.ui.resultado.setItem(tablerow, 2, QtWidgets.QTableWidgetItem(str(row[4])))
+                        self.ui.resultado.setItem(tablerow, 3, QtWidgets.QTableWidgetItem(str(row[3])))
                         tablerow += 1
                     self.ui.codigo1.setText('')
     def carga_modificar(self):

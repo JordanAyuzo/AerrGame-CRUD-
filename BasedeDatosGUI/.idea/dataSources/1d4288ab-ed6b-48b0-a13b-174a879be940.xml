@@ -3,9 +3,17 @@
   <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.40">
     <root id="1">
       <DateStyle>mdy</DateStyle>
-      <IntrospectionStateNumber>2372</IntrospectionStateNumber>
+      <Grants>1||-9223372036854775808|c|G
+1||10|c|G
+1||10|C|G
+1||10|T|G
+13772||-9223372036854775808|c|G
+13772||10|c|G
+13772||10|C|G
+13772||10|T|G</Grants>
+      <IntrospectionStateNumber>2445</IntrospectionStateNumber>
       <ServerVersion>14.3</ServerVersion>
-      <StartupTime>1656215993</StartupTime>
+      <StartupTime>1656353203</StartupTime>
       <TimeZones>true ACDT
 true ACSST
 false ACST
@@ -1404,7 +1412,7 @@ true posixrules
 13407||10|C|G
 13407||-9223372036854775808|U|G
 13407||10|U|G</Grants>
-      <IntrospectionStateNumber>2372</IntrospectionStateNumber>
+      <IntrospectionStateNumber>2445</IntrospectionStateNumber>
       <ObjectId>25101</ObjectId>
       <OwnerName>postgres</OwnerName>
     </database>
@@ -4861,7 +4869,7 @@ true posixrules
     <schema id="271" parent="4" name="public">
       <Comment>standard public schema</Comment>
       <Current>1</Current>
-      <IntrospectionStateNumber>2372</IntrospectionStateNumber>
+      <IntrospectionStateNumber>2445</IntrospectionStateNumber>
       <ObjectId>2200</ObjectId>
       <StateNumber>526</StateNumber>
       <OwnerName>postgres</OwnerName>
@@ -4902,7 +4910,7 @@ true posixrules
     </table>
     <table id="277" parent="271" name="transaccion">
       <ObjectId>25130</ObjectId>
-      <StateNumber>952</StateNumber>
+      <StateNumber>2444</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>regrob261</OwnerName>
     </table>
@@ -4924,48 +4932,42 @@ true posixrules
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>regrob261</OwnerName>
     </table>
-    <view id="281" parent="271" name="consulta">
-      <ObjectId>43059</ObjectId>
-      <SourceTextLength>109</SourceTextLength>
-      <StateNumber>2349</StateNumber>
-      <OwnerName>regrob261</OwnerName>
-    </view>
-    <view id="282" parent="271" name="datos">
+    <view id="281" parent="271" name="datos">
       <ObjectId>25212</ObjectId>
       <SourceTextLength>99</SourceTextLength>
       <StateNumber>986</StateNumber>
       <OwnerName>regrob261</OwnerName>
     </view>
-    <argument id="283" parent="272">
+    <argument id="282" parent="272">
       <ArgumentDirection>R</ArgumentDirection>
       <DataType>trigger|0s</DataType>
     </argument>
-    <column id="284" parent="273" name="nombre">
+    <column id="283" parent="273" name="nombre">
       <DataType>varchar|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StateNumber>943</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="285" parent="273" name="clasificacion">
+    <column id="284" parent="273" name="clasificacion">
       <DataType>varchar|0s</DataType>
       <Position>2</Position>
       <StateNumber>943</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="286" parent="273" name="descripcion">
+    <column id="285" parent="273" name="descripcion">
       <DataType>text|0s</DataType>
       <Position>3</Position>
       <StateNumber>943</StateNumber>
       <TypeId>25</TypeId>
     </column>
-    <column id="287" parent="273" name="genero">
+    <column id="286" parent="273" name="genero">
       <DataType>varchar|0s</DataType>
       <Position>4</Position>
       <StateNumber>943</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <index id="288" parent="273" name="juego_pkey">
+    <index id="287" parent="273" name="juego_pkey">
       <ColNames>nombre</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>25107</ObjectId>
@@ -4977,46 +4979,46 @@ true posixrules
       <CollationIds>100</CollationIds>
       <CollationParentNames>pg_catalog</CollationParentNames>
     </index>
-    <key id="289" parent="273" name="juego_pkey">
+    <key id="288" parent="273" name="juego_pkey">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>25108</ObjectId>
       <Primary>1</Primary>
       <StateNumber>943</StateNumber>
       <UnderlyingIndexId>25107</UnderlyingIndexId>
     </key>
-    <trigger id="290" parent="273" name="xcmayus">
+    <trigger id="289" parent="273" name="xcmayus">
       <Events>IU</Events>
       <ObjectId>26498</ObjectId>
       <StateNumber>1848</StateNumber>
       <Turn>before-row</Turn>
       <CallRoutineId>26497</CallRoutineId>
     </trigger>
-    <column id="291" parent="274" name="nombre">
+    <column id="290" parent="274" name="nombre">
       <DataType>varchar|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StateNumber>944</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="292" parent="274" name="periodo">
+    <column id="291" parent="274" name="periodo">
       <DataType>date|0s</DataType>
       <Position>2</Position>
       <StateNumber>944</StateNumber>
       <TypeId>1082</TypeId>
     </column>
-    <column id="293" parent="274" name="precio">
+    <column id="292" parent="274" name="precio">
       <DataType>money|0s</DataType>
       <Position>3</Position>
       <StateNumber>944</StateNumber>
       <TypeId>790</TypeId>
     </column>
-    <column id="294" parent="274" name="vrs_id">
+    <column id="293" parent="274" name="vrs_id">
       <DataType>varchar|0s</DataType>
       <Position>4</Position>
       <StateNumber>944</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <foreign-key id="295" parent="274" name="pago_vrs_id_fkey">
+    <foreign-key id="294" parent="274" name="pago_vrs_id_fkey">
       <ColNames>vrs_id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>25156</ObjectId>
@@ -5029,7 +5031,7 @@ true posixrules
       <RefTableName>version</RefTableName>
       <RefTableKind>table</RefTableKind>
     </foreign-key>
-    <index id="296" parent="274" name="pago_pkey">
+    <index id="295" parent="274" name="pago_pkey">
       <ColNames>nombre</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>25114</ObjectId>
@@ -5041,33 +5043,33 @@ true posixrules
       <CollationIds>100</CollationIds>
       <CollationParentNames>pg_catalog</CollationParentNames>
     </index>
-    <key id="297" parent="274" name="pago_pkey">
+    <key id="296" parent="274" name="pago_pkey">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>25115</ObjectId>
       <Primary>1</Primary>
       <StateNumber>944</StateNumber>
       <UnderlyingIndexId>25114</UnderlyingIndexId>
     </key>
-    <column id="298" parent="275" name="nombre">
+    <column id="297" parent="275" name="nombre">
       <DataType>varchar|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StateNumber>945</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="299" parent="275" name="anio">
+    <column id="298" parent="275" name="anio">
       <DataType>date|0s</DataType>
       <Position>2</Position>
       <StateNumber>945</StateNumber>
       <TypeId>1082</TypeId>
     </column>
-    <column id="300" parent="275" name="modelo">
+    <column id="299" parent="275" name="modelo">
       <DataType>varchar|0s</DataType>
       <Position>3</Position>
       <StateNumber>945</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <index id="301" parent="275" name="plataforma_pkey">
+    <index id="300" parent="275" name="plataforma_pkey">
       <ColNames>nombre</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>25121</ObjectId>
@@ -5079,33 +5081,33 @@ true posixrules
       <CollationIds>100</CollationIds>
       <CollationParentNames>pg_catalog</CollationParentNames>
     </index>
-    <key id="302" parent="275" name="plataforma_pkey">
+    <key id="301" parent="275" name="plataforma_pkey">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>25122</ObjectId>
       <Primary>1</Primary>
       <StateNumber>945</StateNumber>
       <UnderlyingIndexId>25121</UnderlyingIndexId>
     </key>
-    <column id="303" parent="276" name="numero">
+    <column id="302" parent="276" name="numero">
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StateNumber>946</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="304" parent="276" name="fecha_vencimiento">
+    <column id="303" parent="276" name="fecha_vencimiento">
       <DataType>date|0s</DataType>
       <Position>2</Position>
       <StateNumber>946</StateNumber>
       <TypeId>1082</TypeId>
     </column>
-    <column id="305" parent="276" name="nombre">
+    <column id="304" parent="276" name="nombre">
       <DataType>varchar|0s</DataType>
       <Position>3</Position>
       <StateNumber>946</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <index id="306" parent="276" name="tarjeta_pkey">
+    <index id="305" parent="276" name="tarjeta_pkey">
       <ColNames>numero</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>25128</ObjectId>
@@ -5114,57 +5116,57 @@ true posixrules
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="307" parent="276" name="tarjeta_pkey">
+    <key id="306" parent="276" name="tarjeta_pkey">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>25129</ObjectId>
       <Primary>1</Primary>
       <StateNumber>946</StateNumber>
       <UnderlyingIndexId>25128</UnderlyingIndexId>
     </key>
-    <column id="308" parent="277" name="numero">
+    <column id="307" parent="277" name="numero">
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StateNumber>947</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="309" parent="277" name="monto">
+    <column id="308" parent="277" name="monto">
       <DataType>money|0s</DataType>
       <Position>2</Position>
       <StateNumber>947</StateNumber>
       <TypeId>790</TypeId>
     </column>
-    <column id="310" parent="277" name="descuento">
+    <column id="309" parent="277" name="descuento">
       <DataType>money|0s</DataType>
       <Position>3</Position>
       <StateNumber>947</StateNumber>
       <TypeId>790</TypeId>
     </column>
-    <column id="311" parent="277" name="fecha_hora">
+    <column id="310" parent="277" name="fecha_hora">
       <DataType>timestamp|0s</DataType>
       <Position>4</Position>
       <StateNumber>947</StateNumber>
       <TypeId>1114</TypeId>
     </column>
-    <column id="312" parent="277" name="pgo_nombre">
+    <column id="311" parent="277" name="pgo_nombre">
       <DataType>varchar|0s</DataType>
       <Position>5</Position>
       <StateNumber>947</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="313" parent="277" name="usr_nickname">
-      <DataType>char|0s</DataType>
+    <column id="312" parent="277" name="usr_nickname">
+      <DataType>varchar|0s</DataType>
       <Position>6</Position>
-      <StateNumber>947</StateNumber>
-      <TypeId>1042</TypeId>
+      <StateNumber>2444</StateNumber>
+      <TypeId>1043</TypeId>
     </column>
-    <column id="314" parent="277" name="trt_numero">
+    <column id="313" parent="277" name="trt_numero">
       <DataType>integer|0s</DataType>
       <Position>7</Position>
       <StateNumber>947</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <foreign-key id="315" parent="277" name="transaccion_pgo_nombre_fkey">
+    <foreign-key id="314" parent="277" name="transaccion_pgo_nombre_fkey">
       <ColNames>pgo_nombre</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>25161</ObjectId>
@@ -5177,20 +5179,20 @@ true posixrules
       <RefTableName>pago</RefTableName>
       <RefTableKind>table</RefTableKind>
     </foreign-key>
-    <foreign-key id="316" parent="277" name="transaccion_usr_nickname_fkey">
+    <foreign-key id="315" parent="277" name="transaccion_usr_nickname_fkey">
       <ColNames>usr_nickname</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>42917</ObjectId>
+      <ObjectId>43222</ObjectId>
       <OnDelete>cascade</OnDelete>
       <OnUpdate>cascade</OnUpdate>
       <RefColNames>nickname</RefColNames>
       <RefColPositions>1</RefColPositions>
-      <StateNumber>2274</StateNumber>
+      <StateNumber>2444</StateNumber>
       <RefTableId>25137</RefTableId>
       <RefTableName>usuario</RefTableName>
       <RefTableKind>table</RefTableKind>
     </foreign-key>
-    <foreign-key id="317" parent="277" name="transaccion_trt_numero_fkey">
+    <foreign-key id="316" parent="277" name="transaccion_trt_numero_fkey">
       <ColNames>trt_numero</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>25171</ObjectId>
@@ -5203,48 +5205,48 @@ true posixrules
       <RefTableName>tarjeta</RefTableName>
       <RefTableKind>table</RefTableKind>
     </foreign-key>
-    <index id="318" parent="277" name="transaccion_pkey">
+    <index id="317" parent="277" name="transaccion_pkey">
       <ColNames>numero</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>25135</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>947</StateNumber>
+      <StateNumber>2444</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="319" parent="277" name="transaccion_pkey">
+    <key id="318" parent="277" name="transaccion_pkey">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>25136</ObjectId>
       <Primary>1</Primary>
       <StateNumber>947</StateNumber>
       <UnderlyingIndexId>25135</UnderlyingIndexId>
     </key>
-    <column id="320" parent="278" name="nickname">
+    <column id="319" parent="278" name="nickname">
       <DataType>varchar|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StateNumber>2274</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="321" parent="278" name="nombre">
+    <column id="320" parent="278" name="nombre">
       <DataType>varchar|0s</DataType>
       <Position>2</Position>
       <StateNumber>948</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="322" parent="278" name="fecha_nacimiento">
+    <column id="321" parent="278" name="fecha_nacimiento">
       <DataType>date|0s</DataType>
       <Position>3</Position>
       <StateNumber>948</StateNumber>
       <TypeId>1082</TypeId>
     </column>
-    <column id="323" parent="278" name="correo">
+    <column id="322" parent="278" name="correo">
       <DataType>varchar|0s</DataType>
       <Position>4</Position>
       <StateNumber>2276</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <index id="324" parent="278" name="usuario_pkey">
+    <index id="323" parent="278" name="usuario_pkey">
       <ColNames>nickname</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>42915</ObjectId>
@@ -5256,28 +5258,28 @@ true posixrules
       <CollationIds>100</CollationIds>
       <CollationParentNames>pg_catalog</CollationParentNames>
     </index>
-    <key id="325" parent="278" name="usuario_pkey">
+    <key id="324" parent="278" name="usuario_pkey">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>42916</ObjectId>
       <Primary>1</Primary>
       <StateNumber>2274</StateNumber>
       <UnderlyingIndexId>42915</UnderlyingIndexId>
     </key>
-    <column id="326" parent="279" name="usr_nickname">
+    <column id="325" parent="279" name="usr_nickname">
       <DataType>varchar|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StateNumber>2360</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="327" parent="279" name="trt_numero">
+    <column id="326" parent="279" name="trt_numero">
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StateNumber>2367</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <foreign-key id="328" parent="279" name="usuario_tarjeta_usr_nickname_fkey">
+    <foreign-key id="327" parent="279" name="usuario_tarjeta_usr_nickname_fkey">
       <ColNames>usr_nickname</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>43100</ObjectId>
@@ -5288,7 +5290,7 @@ true posixrules
       <RefTableName>usuario</RefTableName>
       <RefTableKind>table</RefTableKind>
     </foreign-key>
-    <foreign-key id="329" parent="279" name="usuario_tarjeta_trt_numero_fkey">
+    <foreign-key id="328" parent="279" name="usuario_tarjeta_trt_numero_fkey">
       <ColNames>trt_numero</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>43105</ObjectId>
@@ -5299,7 +5301,7 @@ true posixrules
       <RefTableName>tarjeta</RefTableName>
       <RefTableKind>table</RefTableKind>
     </foreign-key>
-    <index id="330" parent="279" name="usuario_tarjeta_pkey">
+    <index id="329" parent="279" name="usuario_tarjeta_pkey">
       <ColNames>usr_nickname
 trt_numero</ColNames>
       <NameSurrogate>1</NameSurrogate>
@@ -5312,45 +5314,45 @@ trt_numero</ColNames>
       <CollationIds>100</CollationIds>
       <CollationParentNames>pg_catalog</CollationParentNames>
     </index>
-    <key id="331" parent="279" name="usuario_tarjeta_pkey">
+    <key id="330" parent="279" name="usuario_tarjeta_pkey">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>43093</ObjectId>
       <Primary>1</Primary>
       <StateNumber>2367</StateNumber>
       <UnderlyingIndexId>43092</UnderlyingIndexId>
     </key>
-    <column id="332" parent="280" name="id">
+    <column id="331" parent="280" name="id">
       <DataType>varchar|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StateNumber>949</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="333" parent="280" name="requisitos">
+    <column id="332" parent="280" name="requisitos">
       <DataType>varchar|0s</DataType>
       <Position>2</Position>
       <StateNumber>949</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="334" parent="280" name="anio">
+    <column id="333" parent="280" name="anio">
       <DataType>date|0s</DataType>
       <Position>3</Position>
       <StateNumber>949</StateNumber>
       <TypeId>1082</TypeId>
     </column>
-    <column id="335" parent="280" name="plt_nombre">
+    <column id="334" parent="280" name="plt_nombre">
       <DataType>varchar|0s</DataType>
       <Position>4</Position>
       <StateNumber>949</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="336" parent="280" name="jgo_nombre">
+    <column id="335" parent="280" name="jgo_nombre">
       <DataType>varchar|0s</DataType>
       <Position>5</Position>
       <StateNumber>949</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <foreign-key id="337" parent="280" name="version_plt_nombre_fkey">
+    <foreign-key id="336" parent="280" name="version_plt_nombre_fkey">
       <ColNames>plt_nombre</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>25176</ObjectId>
@@ -5363,7 +5365,7 @@ trt_numero</ColNames>
       <RefTableName>plataforma</RefTableName>
       <RefTableKind>table</RefTableKind>
     </foreign-key>
-    <foreign-key id="338" parent="280" name="version_jgo_nombre_fkey">
+    <foreign-key id="337" parent="280" name="version_jgo_nombre_fkey">
       <ColNames>jgo_nombre</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>25181</ObjectId>
@@ -5376,7 +5378,7 @@ trt_numero</ColNames>
       <RefTableName>juego</RefTableName>
       <RefTableKind>table</RefTableKind>
     </foreign-key>
-    <index id="339" parent="280" name="version_pkey">
+    <index id="338" parent="280" name="version_pkey">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>25149</ObjectId>
@@ -5388,49 +5390,29 @@ trt_numero</ColNames>
       <CollationIds>100</CollationIds>
       <CollationParentNames>pg_catalog</CollationParentNames>
     </index>
-    <key id="340" parent="280" name="version_pkey">
+    <key id="339" parent="280" name="version_pkey">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>25150</ObjectId>
       <Primary>1</Primary>
       <StateNumber>949</StateNumber>
       <UnderlyingIndexId>25149</UnderlyingIndexId>
     </key>
-    <column id="341" parent="281" name="nickname">
-      <DataType>varchar|0s</DataType>
-      <Position>1</Position>
-      <StateNumber>2349</StateNumber>
-    </column>
-    <column id="342" parent="281" name="nombre">
-      <DataType>varchar|0s</DataType>
-      <Position>2</Position>
-      <StateNumber>2349</StateNumber>
-    </column>
-    <column id="343" parent="281" name="fecha_nacimiento">
-      <DataType>date|0s</DataType>
-      <Position>3</Position>
-      <StateNumber>2349</StateNumber>
-    </column>
-    <column id="344" parent="281" name="correo">
-      <DataType>varchar|0s</DataType>
-      <Position>4</Position>
-      <StateNumber>2349</StateNumber>
-    </column>
-    <column id="345" parent="282" name="nombre">
+    <column id="340" parent="281" name="nombre">
       <DataType>varchar|0s</DataType>
       <Position>1</Position>
       <StateNumber>986</StateNumber>
     </column>
-    <column id="346" parent="282" name="clasificacion">
+    <column id="341" parent="281" name="clasificacion">
       <DataType>varchar|0s</DataType>
       <Position>2</Position>
       <StateNumber>986</StateNumber>
     </column>
-    <column id="347" parent="282" name="descripcion">
+    <column id="342" parent="281" name="descripcion">
       <DataType>text|0s</DataType>
       <Position>3</Position>
       <StateNumber>986</StateNumber>
     </column>
-    <column id="348" parent="282" name="genero">
+    <column id="343" parent="281" name="genero">
       <DataType>varchar|0s</DataType>
       <Position>4</Position>
       <StateNumber>986</StateNumber>
